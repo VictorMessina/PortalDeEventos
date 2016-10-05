@@ -31,7 +31,7 @@ public class UsuarioCommand implements Command {
     TipoPessoaDAO tipoPessoaDAO = lookupTipoPessoaDAOBean();
     TipoUsuarioDAO tipoUsuarioDAO = lookupTipoUsuarioDAOBean();
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
-    
+
     private String returnPage = "/index.jsp";
     private HttpServletRequest request;
     private HttpServletResponse response;
@@ -109,43 +109,27 @@ public class UsuarioCommand implements Command {
                 } else {
 
                     Usuario userEvent = new Usuario();
-                    
+
                     Tipousuario userType = tipoUsuarioDAO.findById(Integer.parseInt(request.getParameter("tipoUsuario")));
 
                     Tipopessoa personType = tipoPessoaDAO.findById(Integer.parseInt(request.getParameter("tipoPessoa")));
-                    
+
                     userEvent.setUsername(request.getParameter("login"));
 
                     String md5InsertNormal = geraSenhaMD5(request.getParameter("password"));
 
                     userEvent.setPassword(md5InsertNormal);
 
-                    Usuarioinfo userinfo = new Usuarioinfo();
-
-                    userinfo.setNome(request.getParameter("nome"));
-                    userinfo.setEmail(request.getParameter("email"));
-                    userinfo.setDescricao(request.getParameter("descricao"));
-                    userinfo.setNumerocadastro(request.getParameter("numeroCadastro"));
-                    userinfo.setTelefone1(request.getParameter("telefone1"));
-                    userinfo.setTelefone2(request.getParameter("telefone2"));
-                    
-                    if(userType.getIdTipousuario() == 2){
-                        userinfo.setPreco(Double.parseDouble(request.getParameter("preco")));
-                    }
-                    else{
-                        userinfo.setPreco(0.0);
-                    }
                     userEvent.setFkTipopessoa(personType);
-                    
+
                     userEvent.setFkTipousuario(userType);
-                    
-                    userEvent.setUsuarioinfo(userinfo);
 
-                    userinfo.setUsuario(userEvent);
-
-                    usuarioDAO.persist(userEvent);
                     request.getSession().setAttribute("usuarioSessao", userEvent);
-                    returnPage = "/homepage.jsp";
+                    
+                    if(userEvent.getFkTipousuario().getIdTipousuario() == 2){
+                        returnPage = "/registerPromoter.jsp";
+                    }
+
                 }
 
                 break;

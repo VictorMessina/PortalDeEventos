@@ -18,9 +18,7 @@
             <p>Confirma Senha: <input type="password" name="password2" placeholder="Confirmar senha nova" required="required"/></p>
 
             <p>Escolha o tipo de cliente que deseja ser</p>
-            <p><input type="radio" name="tipoUsuario" value="1" checked="checked"/> Cliente </p>
             <p><input type="radio" name="tipoUsuario" value="2"/> Promoter </p>
-            <p><input type="radio" name="tipoUsuario" value="3"/> Fonecedor de Serviços </p>
 
             <p>Escolha o tipo de pessoa que deseja cadastrar</p>
             <p><input type="radio" name="tipoPessoa" value="1" checked="checked"/> Pessoa Fisica </p>
@@ -28,7 +26,7 @@
 
             <p><input type="hidden" name="command" value="Usuario"/></p>
             <p><input type="hidden" name="action" value="insert"/></p>
-            <p><input type="submit" value="AFILIAR-SE"/></p>
+            <p><input type="submit" value="Continuar"/></p>
         </form>
 
     </body>

@@ -31,7 +31,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 
     @Override
     public List<Usuario> find() {
-        return em.createNamedQuery("Tipopessoa.findAll",Usuario.class).getResultList();
+        return em.createNamedQuery("Usuario.findAll",Usuario.class).getResultList();
     }
 
     @Override
