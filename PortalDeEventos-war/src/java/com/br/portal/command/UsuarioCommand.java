@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.portal.command;
 
 import com.br.portal.dao.TipoPessoaDAO;
@@ -50,64 +45,53 @@ public class UsuarioCommand implements Command {
         switch (action) {
 
             case "login":
-
                 //up = usuario projeto
                 Usuario up = (Usuario) usuarioDAO.findByUserName(request.getParameter("login"));
 
                 String md5Login = geraSenhaMD5(request.getParameter("password"));
 
                 if (up == null) {
-                    request.getSession().setAttribute("errormsg", "Usuário não encontrado!, favor tente novamente");
-
+                    request.getSession().setAttribute("errormsg", "Usuário não encontrado! Por favor tente novamente.");
                 } else {
                     System.out.println(up.toString());
 
                     if (!up.getPassword().equals(md5Login)) {
-                        request.getSession().setAttribute("errormsg", "Senha não confere, favor tente novamente");
+                        request.getSession().setAttribute("errormsg", "Senha incorreta! Por favor tente novamente.");
                     }
 
                     if (up.getFkTipousuario().getIdTipousuario() == 1 && up.getPassword().equals(md5Login)) {
-
                         //jmsProdutor.sendMessage(MsgType.LOGIN," Usuario Cliente: " + up.getUsername() + " realizou login " + " \n" );
                         request.getSession().setAttribute("usuarioSessao", up);
                         returnPage = "/homepage.jsp";
 
                     } else if (up.getFkTipousuario().getIdTipousuario() == 2 && up.getPassword().equals(md5Login)) {
-
                         //jmsProdutor.sendMessage(MsgType.LOGIN," Usuario Promoter: " + up.getUsername() + " realizou login " + " \n" );
                         request.getSession().setAttribute("usuarioSessao", up);
                         returnPage = "/homepage.jsp";
 
                     } else if (up.getFkTipousuario().getIdTipousuario() == 3 && up.getPassword().equals(md5Login)) {
-
                         //jmsProdutor.sendMessage(MsgType.LOGIN,"Usuario Fornecedor de Serviços: " + up.getUsername() + " realizou login" + "\n");
                         request.getSession().setAttribute("usuarioSessao", up);
 
                         returnPage = "/homepage.jsp";
-
                     }
                 }
                 break;
 
             case "logout":
-
                 Usuario ups = (Usuario) request.getSession().getAttribute("usuarioSessao");
-
                 //jmsProdutor.sendMessage(MsgType.LOGOUT,"Usuario: " + ups.getUsername() + " realizou logout" + "\n");
                 request.getSession().setAttribute("usuarioSessao", null);
-
                 break;
 
             case "insert":
-
                 if (usuarioDAO.findByUserName(request.getParameter("login")) != null) {
                     returnPage = "/register.jsp";
-                    request.getSession().setAttribute("errormsg", "Usuário já utilizado!, favor utilizar outro para realizar o cadastro");
+                    request.getSession().setAttribute("errormsg", "Usuário já utilizado! Por favor utilize outro usuário para realizar o cadastro.");
                 } else if (!request.getParameter("password").equals(request.getParameter("password2"))) {
                     returnPage = "/register.jsp";
-                    request.getSession().setAttribute("errormsg", "Senha não confere, favor digitar senhas compativeis");
+                    request.getSession().setAttribute("errormsg", "Senha imcompatível! Por favor digite senhas compatíveis.");
                 } else {
-
                     Usuario userEvent = new Usuario();
 
                     Tipousuario userType = tipoUsuarioDAO.findById(Integer.parseInt(request.getParameter("tipoUsuario")));
@@ -125,16 +109,13 @@ public class UsuarioCommand implements Command {
                     userEvent.setFkTipousuario(userType);
 
                     request.getSession().setAttribute("usuarioSessao", userEvent);
-                    
-                    if(userEvent.getFkTipousuario().getIdTipousuario() == 2){
+
+                    if (userEvent.getFkTipousuario().getIdTipousuario() == 2) {
                         returnPage = "/registerPromoter.jsp";
                     }
-
                 }
-
                 break;
         }
-
     }
 
     @Override
@@ -143,9 +124,7 @@ public class UsuarioCommand implements Command {
     }
 
     private String geraSenhaMD5(String senha) {
-
         try {
-
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] arrayBytes = md.digest(senha.getBytes());
 
@@ -153,16 +132,13 @@ public class UsuarioCommand implements Command {
 
             for (int i = 0; i < arrayBytes.length; i++) {
                 sb.append(Integer.toHexString((arrayBytes[i] & 0xFF) | 0x100).substring(1, 3));
-
             }
-
             return sb.toString();
 
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(UsuarioCommand.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-
     }
 
     private UsuarioDAO lookupUsuarioDAOBean() {

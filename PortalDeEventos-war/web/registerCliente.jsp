@@ -1,7 +1,7 @@
 <%-- 
-    Document   : registerPromoter
-    Created on : 05/10/2016, 16:15:02
-    Author     : Victor M
+    Document   : registerCliente
+    Created on : 08/10/2016, 17:34:35
+    Author     : Letícia
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Afiliação de Promoters </title>
+        <title> Afiliação de Clientes </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="eventos.png">
         <!-- 
@@ -23,7 +23,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 865px;
+                margin-top: 775px;
             }
         </style>
     </head>
@@ -47,7 +47,7 @@
             <div class="cadastro">
                 <form action="FrontController" method="post">
                     <br>
-                    <h1><i> Afiliação de Promoters </i></h1>
+                    <h1><i> Afiliação de Clientes </i></h1>
                     <br><p> * Informações Obrigatórias </p>
                     <h1> Insira suas informações pessoais: </h1>
                     <h1> Nome Completo: *<br><input type="text" name="nome" placeholder="Nome Completo" maxlength="100" required/></h1>
@@ -63,9 +63,8 @@
                             <h1> CNPJ: *<br><input type="text" name="numeroCadastro" placeholder="CNPJ" maxlength="14" required/></h1>
                             </c:when>
                         </c:choose>
-                    <h1> Valor inicial de preço (R$): * <br><input type="number" name="preco" placeholder="Preço" required></h1>
-
-                    <h1><input type="hidden" name="command" value="Promoter"/></h1>
+                            
+                    <h1><input type="hidden" name="command" value="Cliente"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>
                     <br><h1><input type="submit" value="AFILIAR-SE"/></h1>
                 </form>

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : registerPromoter
-    Created on : 05/10/2016, 16:15:02
-    Author     : Victor M
+    Document   : registerFornecedor
+    Created on : 08/10/2016, 21:20:45
+    Author     : Letícia
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Afiliação de Promoters </title>
+        <title> Afiliação de Fornecedores de Serviços </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="eventos.png">
         <!-- 
@@ -21,9 +21,10 @@
         <!-- fontes -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+
         <style>
             .footer{
-                margin-top: 865px;
+                margin-top: 1215px;
             }
         </style>
     </head>
@@ -47,7 +48,7 @@
             <div class="cadastro">
                 <form action="FrontController" method="post">
                     <br>
-                    <h1><i> Afiliação de Promoters </i></h1>
+                    <h1><i> Afiliação de Fornecedores de Serviço </i></h1>
                     <br><p> * Informações Obrigatórias </p>
                     <h1> Insira suas informações pessoais: </h1>
                     <h1> Nome Completo: *<br><input type="text" name="nome" placeholder="Nome Completo" maxlength="100" required/></h1>
@@ -63,9 +64,20 @@
                             <h1> CNPJ: *<br><input type="text" name="numeroCadastro" placeholder="CNPJ" maxlength="14" required/></h1>
                             </c:when>
                         </c:choose>
-                    <h1> Valor inicial de preço (R$): * <br><input type="number" name="preco" placeholder="Preço" required></h1>
 
-                    <h1><input type="hidden" name="command" value="Promoter"/></h1>
+                    <br><br><br>
+
+                    <h1> Insira as informações do serviço que você fornece: *</h1>
+                    <select name="servico">
+                        <option value="-1"> Selecione a categoria do serviço </option>
+                        <option value="1"> BlaBla </option>
+                        <option value="2"> BleBle </option>
+                    </select>
+                    <h1> Nome do serviço: * <br><input type="text" name="nomeServico" placeholder="nome do serviço" required/></h1>
+                    <h1> Descrição do serviço: *<br><input type="text" name="descricaoServico" placeholder="descrição do serviço"/></h1>
+                    <h1> Valor inicial do serviço (R$): *<br><input type="number" name="servico" placeholder="valor do serviço" required/></h1>
+
+                    <h1><input type="hidden" name="command" value="Fornecedor"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>
                     <br><h1><input type="submit" value="AFILIAR-SE"/></h1>
                 </form>

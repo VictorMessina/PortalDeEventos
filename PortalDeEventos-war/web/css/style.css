@@ -1,0 +1,216 @@
+/*----------BASICO---------*/
+body {
+    background: white;
+    font-family:'roboto', sans-serif;
+    font-size:11px;
+    line-height:150%;
+    margin:0;
+    text-align:left;
+}
+a {
+    color:#000;
+    text-decoration:none;
+}
+i {
+    color: #6CA6CD;
+}
+a:hover {
+    color:{color:link hover};
+    transition:1s;
+}
+img {
+    opacity:1;
+    text-decoration:none;
+}
+h1 {
+    font-size:18px;
+    font-weight:bold;
+    line-height:170%;
+}
+p {
+    font-size:13px;
+    line-height:200%;
+}
+blockquote {
+    padding-left:10px;
+    margin:10px;
+    border-left:1px solid #eee;
+}
+.container {
+    width:1240px;
+    margin-left:calc(50% - 640px);
+    padding: 20px;
+}
+
+/*----------HEADER---------*/
+.topbar {
+    margin: 50px 0px 0px 120px;
+    /*---- top right bottom left --*/
+    width:1280px;
+    padding:30px 0px 40px 0px;
+    background: #F8F8FF;
+    margin-top: 20px;
+}
+.topbar img {
+    float:left;
+    width:35px;
+    margin-left:30px;
+}
+.title {
+    text-transform:uppercase;
+    float:left;
+    margin-left:10px;
+    font-size:18px;
+    font-weight:bold;
+}
+.subtitle {
+    float:left;
+    margin-left:10px;
+}
+.links {
+    float:right;
+    margin-top:-10px;
+}
+.links a {
+    position: left;
+    padding:15px;
+    text-transform:uppercase;
+    font-size:15px;
+    letter-spacing:1px;
+    font-weight:bold;
+}
+.links a:hover {
+    color: #6CA6CD;
+}
+
+/*----------SIDEBAR---------*/
+/* mtitulo mcaixa menus
+   ltitulo lcaixa links */
+.sidebar {
+    position:absolute;
+    width:300px;
+    margin: 50px 0px 0px 30px;
+    /*---- top right bottom left --*/
+}
+.mtitulo {
+    text-transform:uppercase;
+    font-size:15px;
+    font-weight:bold;
+    padding:15px;
+    color:{color:titles};
+    text-align:right;
+    font-style:italic;
+    letter-spacing:1px;
+    background: #EEEEE0;
+    margin-bottom:5px;
+}
+.mcaixa{
+    padding:20px;
+    margin-bottom:50px;
+    background:#F8F8FF;
+}
+.lcaixa a {
+    display:block;
+    padding:15px;
+    border-bottom:1px solid #eee;
+    text-transform:uppercase;
+    font-size:10px;
+    color:black;
+    font-weight:bold;
+}
+.lcaixa a:hover {
+    margin-left:5px;
+}
+
+/*----------POSTS---------*/
+.posts {
+    margin: 50px 0px 0px 420px;
+    /*---- top right bottom left --*/
+    width:740px;
+    background: #F8F8FF;
+    padding: 20px;
+}
+.text{
+    width:740px;
+    background: white;
+}
+
+/*----------FOOTER---------*/
+.footer {
+    margin: 470px 0px 20px 120px;
+    /*---- top right bottom left --*/
+    width:1280px;
+    padding:30px 0px 40px 0px;
+    background: #F8F8FF;
+    text-align: center;
+}
+
+/*----------CADASTRO---------*/
+.cadastro{
+    text-align: center;
+    margin-top: 60px;
+    margin-left: 358px;
+    width: 500px;
+    float:left;
+    background-color: #F8F8FF;
+}
+
+/*----------SELECT---------*/
+select {
+    background: white;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 16px 16px;
+    border: none;
+    border-radius: 6px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+/*----------FORM---------*/
+input[type="text"], 
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+input[type="number"],
+textarea {
+    color: black;
+    border: none;
+    padding: 16px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    background: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+/*----------BOTOES---------*/
+input[type="submit"],
+.button {
+    transition: background-color 0.35s ease-in-out;
+    background: #6CA6CD;
+    border-radius: 6px;
+    border-style: outset;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+/*----------TABELA (PAGINA SOBRE)---------*/
+table{
+    margin-top: 40px;
+    margin-left: 300px;
+}
