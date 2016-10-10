@@ -13,6 +13,7 @@
     </head>
     <body>
 
+        
         <c:if test="${usuarioSessao==null}" >
             <c:redirect url="index.jsp"></c:redirect> 
         </c:if>
