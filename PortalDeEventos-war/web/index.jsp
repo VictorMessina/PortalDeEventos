@@ -65,6 +65,8 @@
                     <form action="FrontController" method="POST">
                         <h1><input type="text" name="login" placeholder="login" required/></h1>
                         <h1><input type="password" name="password" placeholder="password" required/></h1>
+                        <p> <input type="hidden" name="command" value="Usuario" </p>
+                        <p> <input type="hidden" name="action" value="login" </p>
                         <h1><input type="checkbox" name="lembrar"> lembrar? </h1>
                         <h1><input type="submit" value="LOGIN"/></h1>
                     </form>
@@ -74,7 +76,7 @@
                     <h1> Ainda não se cadastrou? </h1>
                     <h1> Comece já! </h1>
                     <form action="register.jsp">
-                        <h1><input type="submit" value="SING UP"/></h1>
+                        <h1><input type="submit" value="SIGN UP"/></h1>
                     </form>
                 </div>
             </div>
