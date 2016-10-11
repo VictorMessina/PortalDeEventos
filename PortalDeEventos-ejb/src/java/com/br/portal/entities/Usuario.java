@@ -6,6 +6,7 @@
 package com.br.portal.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,14 +15,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,6 +40,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.username = :username"),
     @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")})
 public class Usuario implements Serializable {
+    @ManyToMany(mappedBy = "usuarioCollection")
+    private Collection<Evento> eventoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkFornecedor")
+    private Collection<Servico> servicoCollection;
+    @OneToMany(mappedBy = "fkPromoter")
+    private Collection<Evento> eventoCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkCliente")
+    private Collection<Evento> eventoCollection2;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -146,6 +158,42 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "com.br.portal.entities.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Evento> getEventoCollection() {
+        return eventoCollection;
+    }
+
+    public void setEventoCollection(Collection<Evento> eventoCollection) {
+        this.eventoCollection = eventoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Servico> getServicoCollection() {
+        return servicoCollection;
+    }
+
+    public void setServicoCollection(Collection<Servico> servicoCollection) {
+        this.servicoCollection = servicoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Evento> getEventoCollection1() {
+        return eventoCollection1;
+    }
+
+    public void setEventoCollection1(Collection<Evento> eventoCollection1) {
+        this.eventoCollection1 = eventoCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Evento> getEventoCollection2() {
+        return eventoCollection2;
+    }
+
+    public void setEventoCollection2(Collection<Evento> eventoCollection2) {
+        this.eventoCollection2 = eventoCollection2;
     }
     
 }
