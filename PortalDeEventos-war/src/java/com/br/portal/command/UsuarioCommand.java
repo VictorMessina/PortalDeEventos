@@ -108,10 +108,16 @@ public class UsuarioCommand implements Command {
 
                     userEvent.setFkTipousuario(userType);
 
-                    request.getSession().setAttribute("usuarioSessao", userEvent);
-
-                    if (userEvent.getFkTipousuario().getIdTipousuario() == 2) {
+                    request.getSession().setAttribute("usuarioSessao", userEvent);                   
+                    
+                    if (userEvent.getFkTipousuario().getIdTipousuario() == 1) {
+                        returnPage = "/registerCliente.jsp";
+                    }
+                    else if (userEvent.getFkTipousuario().getIdTipousuario() == 2) {
                         returnPage = "/registerPromoter.jsp";
+                    } 
+                    else if (userEvent.getFkTipousuario().getIdTipousuario() == 3) {
+                        returnPage = "/registerFornecedor.jsp";
                     }
                 }
                 break;

@@ -53,8 +53,8 @@
                     <h1> Nome Completo: *<br><input type="text" name="nome" placeholder="Nome Completo" maxlength="100" required/></h1>
                     <h1> Email: *<br><input type="email" name="email" placeholder="E-mail" maxlength="50" required/></h1>
                     <h1> Telefone 1: *<br><input type="tel" name="telefone1" placeholder="Telefone 1" maxlength="11" required/></h1>
-                    <h1> Telefone 2: *<br><input type="tel" name="telefone2" placeholder="Telefone 2" maxlength="11" required/></h1>
-                    <h1> Descrição: *<br><input type="text" name="descricao" placeholder="Descrição" maxlength="150" required/></h1>
+                    <h1> Telefone 2: <br><input type="tel" name="telefone2" placeholder="Telefone 2" maxlength="11" /></h1>
+                    <h1> Descrição: <br><input type="text" name="descricao" placeholder="Descrição" maxlength="150" /></h1>
                         <c:choose>
                             <c:when test="${usuarioSessao.getFkTipopessoa().getIdTipopessoa() == 1}">
                             <h1> CPF: *<br><input type="text" name="numeroCadastro" placeholder="CPF" maxlength="11" required/></h1>
