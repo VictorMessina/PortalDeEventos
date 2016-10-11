@@ -38,6 +38,11 @@
                 <a href="sobre.html">Sobre</a>
             </div>
         </div>
+        
+        <c:if test="${errormsg!=null && !''.equals(errormsg)}">
+            <p class="error">${errormsg}</p>
+            <c:set scope="session" var="errormsg" value=""></c:set>
+        </c:if>
 
         <div class="container">
             <div class="cadastro">
@@ -53,7 +58,8 @@
 
                     <h1> Escolha seu tipo de usuário: * </h1>
                     <h1><input type="radio" name="tipoUsuario" value="1" checked="checked"/> Cliente </h1>
-                    <h1><input type="radio" name="tipoUsuario" value="2"/> Promoter </h1>
+                    <h1><input type="radio" name="tipoUsuario" value="2"/> Promoter (organizador de eventos)</h1>
+                    <h1><input type="radio" name="tipoUsuario" value="3"/> Fornecedor de serviços </h1>
 
                     <br><br><br>
 

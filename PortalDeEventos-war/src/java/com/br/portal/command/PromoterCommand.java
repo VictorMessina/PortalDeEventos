@@ -63,7 +63,7 @@ public class PromoterCommand implements Command {
 
                 request.getSession().setAttribute("usuarioSessao", userEvent2);
                 request.getSession().setAttribute("successmsg", "Promoter afiliado com sucesso");
-                returnPage = "/homePage.jsp";
+                returnPage = "/homepage.jsp";
 
                 break;
         }

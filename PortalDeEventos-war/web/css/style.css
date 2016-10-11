@@ -214,3 +214,11 @@ table{
     margin-top: 40px;
     margin-left: 300px;
 }
+
+.success{
+    color: green;
+}
+
+.error{
+    color: red;
+}

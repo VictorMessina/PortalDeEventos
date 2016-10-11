@@ -54,7 +54,7 @@ public class ClienteCommand implements Command {
 
                 request.getSession().setAttribute("usuarioSessao", userEvent2);
                 request.getSession().setAttribute("successmsg", "Cliente afiliado com sucesso!");
-                returnPage = "/homePage.jsp";
+                returnPage = "/homepage.jsp";
 
                 break;
         }
