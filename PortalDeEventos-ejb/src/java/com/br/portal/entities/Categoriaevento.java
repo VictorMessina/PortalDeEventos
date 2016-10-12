@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author 31320600
+ * @author Hugo Keniti
  */
 @Entity
 @Table(name = "CATEGORIAEVENTO")
