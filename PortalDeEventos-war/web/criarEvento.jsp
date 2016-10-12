@@ -4,6 +4,7 @@
     Author     : HugoKeniti
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,6 +29,9 @@
 </head>
 
 <body>
+    <c:if test="${usuarioSessao==null}" >
+            <c:redirect url="index.jsp"></c:redirect> 
+    </c:if>  
     <div class="topbar">
         <img src="eventos.png" alt="LOGO"/>
         <div class="title">EVENTOS</div><br>
@@ -61,16 +65,20 @@
                     <h2> Novo Evento  </h2>
                     <p> * Informações Obrigatórias </p>
                     <br>
-                    <select name="categoria">
+                    
+                    <select name="idCatEvento">
                         <option value="-1"> Selecione a categoria do seu evento: *</option>
-                        <option value="1"> BlaBla </option>
-                        <option value="2"> BleBle </option>
+                         <c:forEach var="catEvento" items="${listaCatEvento}">
+                            <option value="${catEvento.getIdCategoriaevento()}"> ${catEvento.getNomecategoriaevento()} </option>
+                        </c:forEach>
                     </select>
                     <h1> Crie um título: * <br><input type="text" name="titulo" placeholder="título" required/></h1>
                     <h1> Adicione uma descrição: *<br><input type="text" name="descricao" placeholder="descriçao"/></h1>
                     <h1> Informe o local: *<br><input type="text" name="local" placeholder="local" required/></h1>
-                    <h1> Informe a data: *<br><input type="date" name="data" required/></h1>
-
+                    <h1> Informe a data: *<br><input type="date" name="data" placeholder="dd/mm/yyyy" required /></h1>
+                    
+                    <h1><input type="hidden" name="command" value="Evento"/></h1>
+                    <h1><input type="hidden" name="action" value="insert"/></h1>
                     <br><h1><input type="submit" value="CRIAR"/></h1><br>
 
                 </form>
