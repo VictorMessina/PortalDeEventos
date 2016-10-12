@@ -76,8 +76,7 @@ public class UsuarioCommand implements Command {
                         //jmsProdutor.sendMessage(MsgType.LOGIN," Usuario Cliente: " + up.getUsername() + " realizou login " + " \n" );
                         List<Categoriaevento> listaCat = categoriaEventoDAO.find();
                         request.getSession().setAttribute("listaCatEvento", listaCat);
-                        List<Evento> listaevento = eventoDAO.find();
-                        request.getSession().setAttribute("evento", listaevento);
+                        
                         request.getSession().setAttribute("usuarioSessao", up);
                         returnPage = "/homepage.jsp";
 

@@ -58,21 +58,19 @@
             </div>
             
                 <div class="eventos">
+                <c:forEach var="evento" items="${usuarioSessao.getEventoCollection2()}">
                     <div class="etitulo">
                         <i class="fa fa-calendar" style="float:right"></i> 
-                        <p>Nome do evento</p>
-                        <c:forEach var="e" items="${evento}">
-                            ${e.getTitulo()}
-                        </c:forEach> 
-                    </div>
+                        <p><c:out value="${evento.getTitulo()}"/><p>
+                   </div>
 
-                    <div class="ecaixa">
-                        <p> Descriçao do evento </p>
-                        <c:forEach var="e" items="${evento}">
-                            ${e.getDescricao()}
-                        </c:forEach> 
-                        
-                    </div>
+                <div class="ecaixa">
+                    <p> Descriçao: </p>
+                    <c:out value="${evento.getDescricao()}"/>
+                </div>                        
+                         
+                </c:forEach>                 
+            </div>
                 </div>
                
         </div>
