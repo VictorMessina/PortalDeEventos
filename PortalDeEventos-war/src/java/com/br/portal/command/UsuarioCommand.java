@@ -83,8 +83,6 @@ public class UsuarioCommand implements Command {
 
                     } else if (up.getFkTipousuario().getIdTipousuario() == 3 && up.getPassword().equals(md5Login)) {
                         //jmsProdutor.sendMessage(MsgType.LOGIN,"Usuario Fornecedor de Serviços: " + up.getUsername() + " realizou login" + "\n");
-                        List<Categoriaservico> listaCategorias = categoriaServicoDAO.find();
-                        request.getSession().setAttribute("listaCatServico", listaCategorias);
                         request.getSession().setAttribute("usuarioSessao", up);
 
                         returnPage = "/homepage.jsp";
