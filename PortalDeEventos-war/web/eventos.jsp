@@ -62,11 +62,12 @@
                     <div class="etitulo">
                         <i class="fa fa-calendar" style="float:right"></i> 
                         <p><c:out value="${evento.getTitulo()}"/><p>
+                        <p><c:out value="${evento.getDataEvento()}"/><p>
                    </div>
 
                 <div class="ecaixa">
-                    <p> Descriçao: </p>
-                    <c:out value="${evento.getDescricao()}"/>
+                    <p> Descriçao: <c:out value="${evento.getDescricao()}"/></p>
+                    <p> Local: <c:out value="${evento.getLugar()}"/></p>
                 </div>                        
                          
                 </c:forEach>                 
