@@ -1,9 +1,11 @@
 package com.br.portal.command;
 
+import com.br.portal.dao.CategoriaEventoDAO;
 import com.br.portal.dao.CategoriaServicoDAO;
 import com.br.portal.dao.TipoPessoaDAO;
 import com.br.portal.dao.TipoUsuarioDAO;
 import com.br.portal.dao.UsuarioDAO;
+import com.br.portal.entities.Categoriaevento;
 import com.br.portal.entities.Categoriaservico;
 import com.br.portal.entities.Tipopessoa;
 import com.br.portal.entities.Tipousuario;
@@ -25,8 +27,11 @@ import javax.servlet.http.HttpServletResponse;
  * @author Victor M
  */
 public class UsuarioCommand implements Command {
+
+    CategoriaEventoDAO categoriaEventoDAO = lookupCategoriaEventoDAOBean();
     
     CategoriaServicoDAO categoriaServicoDAO = lookupCategoriaServicoDAOBean();
+    
     TipoPessoaDAO tipoPessoaDAO = lookupTipoPessoaDAOBean();
     TipoUsuarioDAO tipoUsuarioDAO = lookupTipoUsuarioDAOBean();
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
@@ -66,6 +71,8 @@ public class UsuarioCommand implements Command {
 
                     if (up.getFkTipousuario().getIdTipousuario() == 1 && up.getPassword().equals(md5Login)) {
                         //jmsProdutor.sendMessage(MsgType.LOGIN," Usuario Cliente: " + up.getUsername() + " realizou login " + " \n" );
+                        List<Categoriaevento> listaCat = categoriaEventoDAO.find();
+                       request.getSession().setAttribute("listaCatEvento", listaCat);
                         request.getSession().setAttribute("usuarioSessao", up);
                         returnPage = "/homepage.jsp";
 
@@ -76,6 +83,8 @@ public class UsuarioCommand implements Command {
 
                     } else if (up.getFkTipousuario().getIdTipousuario() == 3 && up.getPassword().equals(md5Login)) {
                         //jmsProdutor.sendMessage(MsgType.LOGIN,"Usuario Fornecedor de Serviços: " + up.getUsername() + " realizou login" + "\n");
+                        List<Categoriaservico> listaCategorias = categoriaServicoDAO.find();
+                        request.getSession().setAttribute("listaCatServico", listaCategorias);
                         request.getSession().setAttribute("usuarioSessao", up);
 
                         returnPage = "/homepage.jsp";
@@ -116,6 +125,8 @@ public class UsuarioCommand implements Command {
                     request.getSession().setAttribute("usuarioSessao", userEvent);                   
                     
                     if (userEvent.getFkTipousuario().getIdTipousuario() == 1) {
+                       List<Categoriaevento> listaCat = categoriaEventoDAO.find();
+                       request.getSession().setAttribute("listaCatEvento", listaCat);
                         returnPage = "/registerCliente.jsp";
                     }
                     else if (userEvent.getFkTipousuario().getIdTipousuario() == 2) {
@@ -188,6 +199,16 @@ public class UsuarioCommand implements Command {
         try {
             Context c = new InitialContext();
             return (CategoriaServicoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/CategoriaServicoDAO!com.br.portal.dao.CategoriaServicoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private CategoriaEventoDAO lookupCategoriaEventoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (CategoriaEventoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/CategoriaEventoDAO!com.br.portal.dao.CategoriaEventoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
