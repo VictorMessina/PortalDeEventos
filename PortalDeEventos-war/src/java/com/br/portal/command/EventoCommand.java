@@ -72,7 +72,7 @@ public class EventoCommand implements Command {
                 eventoDAO.persist(evento);
                 request.getSession().setAttribute("eventoSessao", evento);
                 request.getSession().setAttribute("successmsg", "Evento criado com sucesso!");
-                returnPage = "/evento.jsp";
+                returnPage = "/eventos.jsp";
 
                 break;
         }
