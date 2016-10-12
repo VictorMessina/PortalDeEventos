@@ -51,31 +51,32 @@
                     <h1><i> Afiliação de Fornecedores de Serviço </i></h1>
                     <br><p> * Informações Obrigatórias </p>
                     <h1> Insira suas informações pessoais: </h1>
-                    <h1> Nome Completo: *<br><input type="text" name="nome" placeholder="Nome Completo" maxlength="100" required/></h1>
-                    <h1> Email: *<br><input type="email" name="email" placeholder="E-mail" maxlength="50" required/></h1>
-                    <h1> Telefone 1: *<br><input type="tel" name="telefone1" placeholder="Telefone 1" maxlength="11" required/></h1>
-                    <h1> Telefone 2: <br><input type="tel" name="telefone2" placeholder="Telefone 2" maxlength="11" /></h1>
-                    <h1> Descrição: <br><input type="text" name="descricao" placeholder="Descrição" maxlength="150" /></h1>
+                    <h1> Nome pessoal ou da empresa: *<br><input type="text" name="nome" placeholder="Nome Completo" maxlength="100" required/></h1>
+                    <h1> Email: *<br><input type="email" name="email" placeholder="Ex.: email@email.com" maxlength="50" required/></h1>
+                    <h1> Telefone 1 (com DDD, sem traços): *<br><input type="tel" name="telefone1" placeholder="Ex.: 11922223333" maxlength="11" required/></h1>
+                    <h1> Telefone 2 (com DDD, sem traços):<br><input type="tel" name="telefone2" placeholder="Ex.: 11922223333" maxlength="11" /></h1>
+                    <h1> Descrição: (Aparecerá no seu perfil público)<br><input type="text" name="descricao" placeholder="Descrição" maxlength="150" /></h1>
                         <c:choose>
                             <c:when test="${usuarioSessao.getFkTipopessoa().getIdTipopessoa() == 1}">
-                            <h1> CPF: *<br><input type="text" name="numeroCadastro" placeholder="CPF" maxlength="11" required/></h1>
+                            <h1> CPF (sem pontos ou traços):*<br><input type="text" name="numeroCadastro" placeholder="Ex.: 12345678910" maxlength="11" required/></h1>
                             </c:when>
                             <c:when test="${usuarioSessao.getFkTipopessoa().getIdTipopessoa() == 2}">
-                            <h1> CNPJ: *<br><input type="text" name="numeroCadastro" placeholder="CNPJ" maxlength="14" required/></h1>
+                            <h1> CNPJ (sem pontos ou traços):*<br><input type="text" name="numeroCadastro" placeholder="Ex.: 12345678900000" maxlength="14" required/></h1>
                             </c:when>
                         </c:choose>
 
                     <br><br><br>
 
                     <h1> Insira as informações do serviço que você fornece: *</h1>
-                    <select name="servico">
+                    <select name="idCatServico">
                         <option value="-1"> Selecione a categoria do serviço </option>
-                        <option value="1"> BlaBla </option>
-                        <option value="2"> BleBle </option>
+                        <c:forEach var="catServico" items="${listaCatServico}">
+                            <option value="${catServico.getIdCategoriaservico()}"> ${catServico.getNomecategoriaservico()} </option>
+                        </c:forEach>
                     </select>
                     <h1> Nome do serviço: * <br><input type="text" name="nomeServico" placeholder="nome do serviço" required/></h1>
                     <h1> Descrição do serviço: *<br><input type="text" name="descricaoServico" placeholder="descrição do serviço" required/></h1>
-                    <h1> Valor inicial do serviço (R$): *<br><input type="number" name="servico" placeholder="valor do serviço" required/></h1>
+                    <h1> Valor inicial do serviço (R$): *<br><input type="number" name="valorServico" placeholder="Ex.: 0,00" required/></h1>
 
                     <h1><input type="hidden" name="command" value="Fornecedor"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>
