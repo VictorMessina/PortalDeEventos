@@ -1,14 +1,17 @@
 package com.br.portal.command;
 
+import com.br.portal.dao.CategoriaServicoDAO;
 import com.br.portal.dao.TipoPessoaDAO;
 import com.br.portal.dao.TipoUsuarioDAO;
 import com.br.portal.dao.UsuarioDAO;
+import com.br.portal.entities.Categoriaservico;
 import com.br.portal.entities.Tipopessoa;
 import com.br.portal.entities.Tipousuario;
 import com.br.portal.entities.Usuario;
 import com.br.portal.entities.Usuarioinfo;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -22,10 +25,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author Victor M
  */
 public class UsuarioCommand implements Command {
-
+    
+    CategoriaServicoDAO categoriaServicoDAO = lookupCategoriaServicoDAOBean();
     TipoPessoaDAO tipoPessoaDAO = lookupTipoPessoaDAOBean();
     TipoUsuarioDAO tipoUsuarioDAO = lookupTipoUsuarioDAOBean();
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
+    
 
     private String returnPage = "/index.jsp";
     private HttpServletRequest request;
@@ -117,6 +122,8 @@ public class UsuarioCommand implements Command {
                         returnPage = "/registerPromoter.jsp";
                     } 
                     else if (userEvent.getFkTipousuario().getIdTipousuario() == 3) {
+                        List<Categoriaservico> listaCategorias = categoriaServicoDAO.find();
+                        request.getSession().setAttribute("listaCatServico", listaCategorias);
                         returnPage = "/registerFornecedor.jsp";
                     }
                 }
@@ -171,6 +178,16 @@ public class UsuarioCommand implements Command {
         try {
             Context c = new InitialContext();
             return (TipoPessoaDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/TipoPessoaDAO!com.br.portal.dao.TipoPessoaDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private CategoriaServicoDAO lookupCategoriaServicoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (CategoriaServicoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/CategoriaServicoDAO!com.br.portal.dao.CategoriaServicoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

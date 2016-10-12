@@ -51,7 +51,7 @@
                     <h1><i> Afiliação de Fornecedores de Serviço </i></h1>
                     <br><p> * Informações Obrigatórias </p>
                     <h1> Insira suas informações pessoais: </h1>
-                    <h1> Nome Completo: *<br><input type="text" name="nome" placeholder="Nome Completo" maxlength="100" required/></h1>
+                    <h1> Nome pessoal ou da empresa: *<br><input type="text" name="nome" placeholder="Nome Completo" maxlength="100" required/></h1>
                     <h1> Email: *<br><input type="email" name="email" placeholder="Ex.: email@email.com" maxlength="50" required/></h1>
                     <h1> Telefone 1 (com DDD, sem traços): *<br><input type="tel" name="telefone1" placeholder="Ex.: 11922223333" maxlength="11" required/></h1>
                     <h1> Telefone 2 (com DDD, sem traços):<br><input type="tel" name="telefone2" placeholder="Ex.: 11922223333" maxlength="11" /></h1>
@@ -76,7 +76,7 @@
                     </select>
                     <h1> Nome do serviço: * <br><input type="text" name="nomeServico" placeholder="nome do serviço" required/></h1>
                     <h1> Descrição do serviço: *<br><input type="text" name="descricaoServico" placeholder="descrição do serviço" required/></h1>
-                    <h1> Valor inicial do serviço (R$): *<br><input type="number" name="servico" placeholder="Ex.: 0,00" required/></h1>
+                    <h1> Valor inicial do serviço (R$): *<br><input type="number" name="valorServico" placeholder="Ex.: 0,00" required/></h1>
 
                     <h1><input type="hidden" name="command" value="Fornecedor"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>
