@@ -5,7 +5,7 @@
  */
 package com.br.portal.dao;
 
-import com.br.portal.entities.Evento;
+import com.br.portal.entities.Servico;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -19,41 +19,41 @@ import javax.persistence.PersistenceContextType;
  */
 @Stateless
 @LocalBean
-public class EventoDAO implements GenericDAO<Evento>{
+public class ServicoDAO implements GenericDAO<Servico>{
     
      @PersistenceContext(unitName = "EventosPU", type = PersistenceContextType.TRANSACTION)
      private EntityManager em;
 
     @Override
-    public void persist(Evento e) {
+    public void persist(Servico e) {
         em.persist(e);
     }
 
     @Override
-    public List<Evento> find() {
-        return em.createNamedQuery("Evento.findAll",Evento.class).getResultList();
+    public List<Servico> find() {
+        return em.createNamedQuery("Servico.findAll",Servico.class).getResultList();
     }
 
     @Override
-    public Evento findById(long id) {
-        return em.find(Evento.class, id);
+    public Servico findById(long id) {
+        return em.find(Servico.class, id);
     }
 
     @Override
-    public void update(Evento e) {
+    public void update(Servico e) {
         em.merge(e);
     }
 
     @Override
-    public void remove(Evento e) {
+    public void remove(Servico e) {
         em.remove(em.merge(e));
     }
     
-    public Evento findByName(String titulo) {
+    public Servico findByName(String titulo) {
 
-        List<Evento> eventoproj = find();
+        List<Servico> servicoproj = find();
 
-        for (Evento up : eventoproj) {
+        for (Servico up : servicoproj) {
             if (up.getTitulo().equals(titulo)) {
                 return up;
             }
