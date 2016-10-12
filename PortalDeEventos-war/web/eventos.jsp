@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <head>
     <title>EVENTOS</title>
@@ -20,6 +21,10 @@
 </head>
 
 <body>
+    <c:if test="${usuarioSessao==null}" >
+            <c:redirect url="index.jsp"></c:redirect> 
+    </c:if>
+            
     <div class="topbar">
         <img src="eventos.png" alt="LOGO"/>
         <div class="title">EVENTOS</div><br>
@@ -40,8 +45,8 @@
             <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
             <div class="mcaixa">
                 <div class="lcaixa">
-                    <a href="eventos.html">Meus Eventos</a>
-                    <a href="criarEvento.html">Criar Evento</a>
+                    <a href="eventos.jsp">Meus Eventos</a>
+                    <a href="criarEvento.jsp">Criar Evento</a>
                     <a href="">Buscar Promoter</a>
                 </div>
             </div>
@@ -55,20 +60,13 @@
             <div class="eventos">
                 <div class="etitulo">
                     <i class="fa fa-calendar" style="float:right"></i> 
-                    Nome do evento </div>
-
-                <div class="ecaixa">
-                    <p> Descriçao do evento </p>
+                    <p>Nome do evento</p>
+                    <c:out value="${eventoSessao.titulo}"/>
                 </div>
-                
-                <br><br>
-                
-                <div class="etitulo">
-                    <i class="fa fa-calendar" style="float:right"></i> 
-                    Nome do evento </div>
 
                 <div class="ecaixa">
                     <p> Descriçao do evento </p>
+                    <c:out value="${eventoSessao.descricao}"/>
                 </div>
             </div>
         </div>
