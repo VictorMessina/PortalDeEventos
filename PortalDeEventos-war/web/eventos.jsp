@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- fontes -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="style.css"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <style>
         .footer{
             margin-top: 500px;
@@ -32,7 +32,7 @@
 
         <div class="links">
             <a href="">Home</a>
-            <a href="eventos.html">Eventos</a>
+            <a href="eventos.jsp">Eventos</a>
             <a href="">Perfil</a>
             <a href="">Contato</a>
             <a href="sobre.html">Sobre</a>
