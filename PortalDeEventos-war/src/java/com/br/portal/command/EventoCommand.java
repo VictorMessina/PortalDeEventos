@@ -5,7 +5,15 @@
  */
 package com.br.portal.command;
 
+import com.br.portal.dao.CategoriaEventoDAO;
 import com.br.portal.dao.EventoDAO;
+import com.br.portal.dao.UsuarioDAO;
+import com.br.portal.entities.Categoriaevento;
+import com.br.portal.entities.Evento;
+import com.br.portal.entities.Usuario;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -18,10 +26,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author HugoKeniti
  */
-public class EventoCommand implements Command{
+public class EventoCommand implements Command {
 
+    UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
+
+    CategoriaEventoDAO categoriaEventoDAO = lookupCategoriaEventoDAOBean();
     EventoDAO eventoDAO = lookupEventoDAOBean();
     
+
     private String returnPage = "/index.jsp";
     private HttpServletRequest request;
     private HttpServletResponse response;
@@ -34,7 +46,36 @@ public class EventoCommand implements Command{
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String action = request.getParameter("action");
+        switch (action) {
+            case "insert":
+                Usuario userEvent2 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+                Categoriaevento catEvento = categoriaEventoDAO.findById(Integer.parseInt(request.getParameter("idCatEvento")));
+                Evento evento = new Evento();
+                evento.setTitulo(request.getParameter("titulo"));
+                evento.setDescricao(request.getParameter("descricao"));
+                String date = request.getParameter("data");
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date data = new Date();
+            try {
+                data = formatter.parse(date);
+                
+            } catch (ParseException ex) {
+                Logger.getLogger(EventoCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+                evento.setDataevento(data);
+                evento.setLugar(request.getParameter("local"));
+                evento.setFkCliente(userEvent2);
+                evento.setFkCategoriaevento(catEvento);
+                evento.setFkPromoter(null);
+                eventoDAO.persist(evento);
+                request.getSession().setAttribute("eventoSessao", evento);
+                request.getSession().setAttribute("successmsg", "Evento criado com sucesso!");
+                returnPage = "/evento.jsp";
+
+                break;
+        }
     }
 
     @Override
@@ -51,5 +92,25 @@ public class EventoCommand implements Command{
             throw new RuntimeException(ne);
         }
     }
-    
+
+    private CategoriaEventoDAO lookupCategoriaEventoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (CategoriaEventoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/CategoriaEventoDAO!com.br.portal.dao.CategoriaEventoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private UsuarioDAO lookupUsuarioDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (UsuarioDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/UsuarioDAO!com.br.portal.dao.UsuarioDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
 }
