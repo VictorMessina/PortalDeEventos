@@ -17,10 +17,11 @@
     pra escolher quais, ir em http://fontawesome.io/icons/
     e colocar <i class="fa fa-BLABLA" style="float:RIGHT OU LEFT"></i>
     -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- fontes -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="style.css"/>
+    
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!-- fontes -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <style>
         .footer{
             margin-top: 65px;
@@ -38,8 +39,8 @@
         <div class="subtitle">portal de eventos</div>
 
         <div class="links">
-            <a href="">Home</a>
-            <a href="eventos.html">Eventos</a>
+            <a href="index.jsp">Home</a>
+            <a href="eventos.jsp">Eventos</a>
             <a href="">Perfil</a>
             <a href="">Contato</a>
             <a href="sobre.html">Sobre</a>
@@ -52,8 +53,8 @@
             <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
             <div class="mcaixa">
                 <div class="lcaixa">
-                    <a href="eventos.html">Meus Eventos</a>
-                    <a href="criarEvento.html">Criar Evento</a>
+                    <a href="eventos.jsp">Meus Eventos</a>
+                    <a href="criarEvento.jsp">Criar Evento</a>
                     <a href="">Buscar Promoter</a>
                 </div>
             </div>
@@ -79,7 +80,7 @@
                     
                     <h1><input type="hidden" name="command" value="Evento"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>
-                    <br><h1><input type="submit" value="CRIAR"/></h1><br>
+                    <br><h1><input type="submit" value="CRIAR"/></h1>
 
                 </form>
             </div>
