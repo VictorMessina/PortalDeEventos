@@ -11,7 +11,7 @@
     <head>
         <title>EVENTOS</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="eventos.png">
+        <link rel="shortcut icon" href="laranja.ico.png">
         <!-- 
         pra fazer os icones bonitinhos, colocar o link.
         pra escolher quais, ir em http://fontawesome.io/icons/
@@ -33,7 +33,7 @@
 
     <body>
         <div class="topbar">
-            <img src="eventos.png"/>
+            <img src="laranja.ico"/>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
