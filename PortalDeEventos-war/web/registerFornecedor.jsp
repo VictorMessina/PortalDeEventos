@@ -11,7 +11,7 @@
     <head>
         <title> Afiliação de Fornecedores de Serviços </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="eventos.png">
+        <link rel="shortcut icon" href="laranja.ico">
         <!-- 
         pra fazer os icones bonitinhos, colocar o link.
         pra escolher quais, ir em http://fontawesome.io/icons/
@@ -24,7 +24,7 @@
 
         <style>
             .footer{
-                margin-top: 1215px;
+                margin-top: 87%;
             }
         </style>
     </head>
@@ -35,12 +35,12 @@
         </c:if>
 
         <div class="topbar">
-            <img src="eventos.png"/>
+            <img src="laranja.ico"/>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
             <div class="links">
-                <a href="sobre.html">Sobre</a>
+                <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
 

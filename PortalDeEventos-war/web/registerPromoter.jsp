@@ -11,7 +11,7 @@
     <head>
         <title> Afiliação de Promoters </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="eventos.png">
+        <link rel="shortcut icon" href="laranja.ico">
         <!-- 
         pra fazer os icones bonitinhos, colocar o link.
         pra escolher quais, ir em http://fontawesome.io/icons/
@@ -23,7 +23,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 865px;
+                margin-top: 62%;
             }
         </style>
     </head>
@@ -34,12 +34,12 @@
         </c:if>
 
         <div class="topbar">
-            <img src="eventos.png"/>
+            <img src="laranja.ico"/>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
             <div class="links">
-                <a href="sobre.html">Sobre</a>
+                <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
 

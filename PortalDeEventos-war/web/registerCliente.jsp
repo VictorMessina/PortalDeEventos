@@ -11,7 +11,7 @@
     <head>
         <title> Afiliação de Clientes </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="eventos.png">
+        <link rel="shortcut icon" href="laranja.ico">
         <!-- 
         pra fazer os icones bonitinhos, colocar o link.
         pra escolher quais, ir em http://fontawesome.io/icons/
@@ -23,7 +23,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 775px;
+                margin-top: 55%;
             }
         </style>
     </head>
@@ -34,12 +34,12 @@
         </c:if>
 
         <div class="topbar">
-            <img src="eventos.png"/>
+            <img src="laranja.ico"/>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
             <div class="links">
-                <a href="sobre.html">Sobre</a>
+                <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
 
@@ -63,7 +63,7 @@
                             <h1> CNPJ (sem pontos ou traços):*<br><input type="text" name="numeroCadastro" placeholder="Ex.: 12345678900000" maxlength="14" required/></h1>
                             </c:when>
                         </c:choose>
-                            
+
                     <h1><input type="hidden" name="command" value="Cliente"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>
                     <br><h1><input type="submit" value="AFILIAR-SE"/></h1>

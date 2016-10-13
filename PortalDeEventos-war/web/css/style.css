@@ -1,4 +1,4 @@
-/*----------BASICO---------*/
+/*----------BASICS---------*/
 body {
     background: white;
     font-family:'roboto', sans-serif;
@@ -7,16 +7,8 @@ body {
     margin:0;
     text-align:left;
 }
-a {
-    color:#000;
-    text-decoration:none;
-}
 i {
-    color: #6CA6CD;
-}
-a:hover {
-    color:{color:link hover};
-    transition:1s;
+    color: #FF7700;
 }
 img {
     opacity:1;
@@ -25,11 +17,16 @@ img {
 h1 {
     font-size:18px;
     font-weight:bold;
-    line-height:170%;
+    line-height:220%;
+}
+h2 {
+    font-size:22px;
+    font-weight:bold;
+    line-height:220%;
 }
 p {
     font-size:13px;
-    line-height:200%;
+    line-height:190%;
 }
 blockquote {
     padding-left:10px;
@@ -37,24 +34,23 @@ blockquote {
     border-left:1px solid #eee;
 }
 .container {
-    width:1240px;
-    margin-left:calc(50% - 640px);
-    padding: 20px;
+    width: 84%;
+    margin-left: 8%;
+    padding: 1%;
 }
 
 /*----------HEADER---------*/
 .topbar {
-    margin: 50px 0px 0px 120px;
+    margin: 1% 0% 0% 8%;
     /*---- top right bottom left --*/
-    width:1280px;
-    padding:30px 0px 40px 0px;
-    background: #F8F8FF;
-    margin-top: 20px;
+    width: 84%;
+    padding: 2% 0% 3% 0%;
+    background: #F0F0F0;
 }
 .topbar img {
     float:left;
-    width:35px;
-    margin-left:30px;
+    width:3%;
+    margin-left:15px;
 }
 .title {
     text-transform:uppercase;
@@ -62,6 +58,7 @@ blockquote {
     margin-left:10px;
     font-size:18px;
     font-weight:bold;
+    color: #0093B2;
 }
 .subtitle {
     float:left;
@@ -78,9 +75,11 @@ blockquote {
     font-size:15px;
     letter-spacing:1px;
     font-weight:bold;
+    color: #0093B2;
+    text-decoration:none;
 }
 .links a:hover {
-    color: #6CA6CD;
+    color: #FF7700;
 }
 
 /*----------SIDEBAR---------*/
@@ -88,8 +87,8 @@ blockquote {
    ltitulo lcaixa links */
 .sidebar {
     position:absolute;
-    width:300px;
-    margin: 50px 0px 0px 30px;
+    width:20%;
+    margin: 4% 0% 0% 2%;
     /*---- top right bottom left --*/
 }
 .mtitulo {
@@ -97,17 +96,17 @@ blockquote {
     font-size:15px;
     font-weight:bold;
     padding:15px;
-    color:{color:titles};
     text-align:right;
     font-style:italic;
     letter-spacing:1px;
-    background: #EEEEE0;
-    margin-bottom:5px;
+    background: #A8A8A8;
+    margin-bottom: 5px;
+    color: white;
 }
 .mcaixa{
-    padding:20px;
-    margin-bottom:50px;
-    background:#F8F8FF;
+    padding: 1%;
+    margin-bottom:4%;
+    background:#F0F0F0;
 }
 .lcaixa a {
     display:block;
@@ -115,44 +114,73 @@ blockquote {
     border-bottom:1px solid #eee;
     text-transform:uppercase;
     font-size:10px;
-    color:black;
+    color:#0093B2;
     font-weight:bold;
+    text-decoration: none;
 }
 .lcaixa a:hover {
     margin-left:5px;
+    color: #FF7700;
 }
 
 /*----------POSTS---------*/
 .posts {
-    margin: 50px 0px 0px 420px;
+    margin: 4% 0% 0% 33%;
     /*---- top right bottom left --*/
-    width:740px;
-    background: #F8F8FF;
-    padding: 20px;
+    width:58%;
+    background: white;
+    padding: 0% 2% 0% 2%;
+    /*---- top right bottom left --*/
 }
 .text{
-    width:740px;
+    width: 100%;
     background: white;
 }
 
+/*----------EVENTOS---------*/
+/* etitulo ecaixa eventos */
+.eventos {
+    position:absolute;
+    width:56%;
+}
+.etitulo {
+    text-transform:uppercase;
+    font-size:15px;
+    font-weight:bold;
+    padding:2%;
+    text-align:left;
+    font-style:italic;
+    letter-spacing:1px;
+    background: #A8A8A8;
+    width:80%;
+    color: white;
+}
+.ecaixa{
+    padding:2%;
+    margin-bottom: 4%;
+    background: #F0F0F0;
+    width: 80%;
+}
+
+
 /*----------FOOTER---------*/
 .footer {
-    margin: 470px 0px 20px 120px;
+    margin: 37% 0% 1% 8%;
     /*---- top right bottom left --*/
-    width:1280px;
-    padding:30px 0px 40px 0px;
-    background: #F8F8FF;
+    width: 84%;
+    padding: 2% 0% 3% 0%;
+    background: #F0F0F0;
     text-align: center;
 }
 
 /*----------CADASTRO---------*/
 .cadastro{
     text-align: center;
-    margin-top: 60px;
-    margin-left: 358px;
-    width: 500px;
+    margin-top: 5%;
+    margin-left: 29%;
+    width: 39%;
     float:left;
-    background-color: #F8F8FF;
+    background-color: #F0F0F0;
 }
 
 /*----------SELECT---------*/
@@ -193,7 +221,7 @@ textarea {
     border-color: black;
 }
 
-/*----------BOTOES---------*/
+/*----------BOTÕES---------*/
 input[type="submit"],
 .button {
     transition: background-color 0.35s ease-in-out;
@@ -208,19 +236,22 @@ input[type="submit"],
     text-transform: uppercase;
     font-size: 16px;
 }
+input[type="submit"]:hover,
+.button:hover {
+    background: #FF7700;
+}
 
 /*----------TABELA (PAGINA SOBRE)---------*/
 table{
-    margin-top: 40px;
-    margin-left: 300px;
+    margin-top: 3%;
+    margin-left: 23%;
 }
 
 /*----------MSG ERRO E SUCESSO---------*/
-
 .error{
     padding:5px;
     background-color: rgba(204,20,0,0.3);
-    width: 600px;
+    width: 46%;
     margin:10px auto;
     text-align: center;
     color: white;
@@ -231,7 +262,7 @@ table{
 .success{
     padding:5px;
     background-color: rgba(0,255,9,0.3);
-    width: 600px;
+    width: 46%;
     margin:10px auto;
     text-align: center;
     color: white;
