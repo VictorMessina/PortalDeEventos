@@ -25,7 +25,7 @@
 
         <style>
             .footer{
-                margin-top: 87%;
+                margin-top: 110%;
             }
         </style>
     </head>
@@ -69,8 +69,8 @@
                     <br><br><br>
 
                     <h1> Insira as informações do serviço que você fornece: *</h1>
+                    <h1>Selecione a categoria do serviço: *</h1>
                     <select name="idCatServico">
-                        <option value="-1"> Selecione a categoria do serviço </option>
                         <c:forEach var="catServico" items="${listaCatServico}">
                             <option value="${catServico.getIdCategoriaservico()}"> ${catServico.getNomecategoriaservico()} </option>
                         </c:forEach>

@@ -4,6 +4,7 @@
     Author     : Victor M
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -57,6 +58,11 @@
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
+        
+        <c:if test="${errormsg!=null && !''.equals(errormsg)}">
+            <p class="error">${errormsg}</p>
+            <c:set scope="session" var="errormsg" value=""></c:set>
+        </c:if>
 
         <div class="container">
             <div class="colunasindex">

@@ -67,17 +67,16 @@
                         <h2> Novo Evento  </h2>
                         <p> * Informações Obrigatórias </p>
                         <br>
-
+                        <h1>Selecione a categoria do evento: *</h1>
                         <select name="idCatEvento">
-                            <option value="-1"> Selecione a categoria do seu evento: *</option>
                             <c:forEach var="catEvento" items="${listaCatEvento}">
                                 <option value="${catEvento.getIdCategoriaevento()}"> ${catEvento.getNomecategoriaevento()} </option>
                             </c:forEach>
                         </select>
-                        <h1> Crie um título: * <br><input type="text" name="titulo" placeholder="título" required/></h1>
-                        <h1> Adicione uma descrição: *<br><input type="text" name="descricao" placeholder="descriçao"/></h1>
-                        <h1> Informe o local: *<br><input type="text" name="local" placeholder="local" required/></h1>
-                        <h1> Informe a data: *<br><input type="date" name="data" placeholder="dd/mm/yyyy" required /></h1>
+                        <h1> Título: * <br><input type="text" name="titulo" placeholder="título" required/></h1>
+                        <h1> Descrição: *<br><input type="text" name="descricao" placeholder="descriçao"/></h1>
+                        <h1> Local: *<br><input type="text" name="local" placeholder="local" required/></h1>
+                        <h1> Data: *<br><input type="date" name="data" placeholder="dd/mm/yyyy" required /></h1>
 
                         <h1><input type="hidden" name="command" value="Evento"/></h1>
                         <h1><input type="hidden" name="action" value="insert"/></h1>

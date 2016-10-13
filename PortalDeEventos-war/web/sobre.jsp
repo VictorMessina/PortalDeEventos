@@ -51,9 +51,9 @@
                     <td><img src="https://scontent.fcpq1-1.fna.fbcdn.net/v/t1.0-9/11698625_976878449028860_3921411231176410218_n.jpg?oh=96bce106d3add0782307db9e1b46d21a&oe=586276DC" alt="Letícia Garcia" height="200" width="200"></td>
                 </tr>
                 <tr>
-                    <td><img src="https://scontent.fcpq1-1.fna.fbcdn.net/v/t1.0-9/1457670_591978994228550_36718279_n.jpg?oh=c41a3bb5b30ce519d6b7149bca012f33&oe=589EB405" alt="Victor Messina" height="200" width="200"></td>
-
                     <td><img src="https://scontent.fcpq1-1.fna.fbcdn.net/v/t1.0-9/13055477_613901232096415_7971776520560186520_n.jpg?oh=2c21817ff0313e8b2779036a76e54bb6&oe=586C78CC" alt="Vitória Previato" height="200" width="200"></td>
+
+                    <td><img src="https://scontent.fcpq1-1.fna.fbcdn.net/v/t1.0-9/1457670_591978994228550_36718279_n.jpg?oh=c41a3bb5b30ce519d6b7149bca012f33&oe=589EB405" alt="Victor Messina"  height="200" width="200"></td>
                 </tr>
             </table>
             <br><br>

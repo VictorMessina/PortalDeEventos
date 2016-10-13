@@ -53,8 +53,7 @@
             <!-- usei a div cadastro pq ela já está posicionada no meio da página -->
             <div class="cadastro">
                 <h1> Bem vindo (a) ${usuarioSessao.getUsuarioinfo().getNome()} ! </h1>
-                <p> Entre na página EVENTOS para criar um novo evento. </p>
-                <p> Ou para visualizar os seus eventos atuais! </p>
+                <p> Entre na página EVENTOS para explorar o portal! </p>
             </div>
         </div>
 

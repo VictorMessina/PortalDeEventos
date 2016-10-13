@@ -57,21 +57,21 @@ public class EventoCommand implements Command {
                 String date = request.getParameter("data");
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 Date data = new Date();
-            try {
-                data = formatter.parse(date);
-                
-            } catch (ParseException ex) {
-                Logger.getLogger(EventoCommand.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                try {
+                    data = formatter.parse(date);
+
+                } catch (ParseException ex) {
+                    Logger.getLogger(EventoCommand.class.getName()).log(Level.SEVERE, null, ex);
+                }
         
                 evento.setDataevento(data);
                 evento.setLugar(request.getParameter("local"));
                 evento.setFkCliente(userEvent2);
                 evento.setFkCategoriaevento(catEvento);
-                evento.setFkPromoter(null);
                 eventoDAO.persist(evento);
-                request.getSession().setAttribute("eventoSessao", evento);
-                request.getSession().setAttribute("successmsg", "Evento criado com sucesso!");
+                request.getSession().setAttribute("successmsg", "Evento criado com sucesso!");  
+                userEvent2.getEventoCollection2().add(evento);
+                request.getSession().setAttribute("usuarioSessao", userEvent2);
                 returnPage = "/eventos.jsp";
 
                 break;

@@ -24,7 +24,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 62%;
+                margin-top: 82%;
             }
         </style>
     </head>
