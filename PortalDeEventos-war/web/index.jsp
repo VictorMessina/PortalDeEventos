@@ -26,7 +26,6 @@
             .footer{
                 margin-top: 450px;
             }
-
             /*----------COLUNAS---------*/
             .colunasindex{
                 text-align: center;
@@ -45,12 +44,18 @@
                 float:left;
                 background-color: #F8F8FF;
             }
+
+            /*----------HEADER---------*/
+            .topbar {
+                margin: 1% 0% 0% 8%;
+                /*---- top right bottom left --*/
+            }
         </style>
     </head>
 
     <body>
         <div class="topbar">
-            <img src="laranja.ico"/>
+            <a href="homepage.jsp"><img src="laranja.ico" alt="LOGO"/></a>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
@@ -58,7 +63,7 @@
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
-        
+
         <c:if test="${errormsg!=null && !''.equals(errormsg)}">
             <p class="error">${errormsg}</p>
             <c:set scope="session" var="errormsg" value=""></c:set>

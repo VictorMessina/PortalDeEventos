@@ -35,7 +35,7 @@
         </c:if>
 
         <div class="topbar">
-            <img src="laranja.ico"/>
+            <a href="homepage.jsp"><img src="laranja.ico" alt="LOGO"/></a>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
@@ -64,7 +64,7 @@
                             <h1> CNPJ (sem pontos ou traços):*<br><input type="text" name="numeroCadastro" placeholder="Ex.: 12345678900000" maxlength="14" required/></h1>
                             </c:when>
                         </c:choose>
-                    <h1> Valor inicial de preço (R$): * <br><input type="number" name="preco" placeholder="Ex.: 0,00" required></h1>
+                    <h1> Valor da comissão (R$): * <br><input type="number" name="preco" placeholder="Ex.: 0,00" required></h1>
 
                     <h1><input type="hidden" name="command" value="Promoter"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>

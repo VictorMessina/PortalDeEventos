@@ -29,8 +29,16 @@
             <c:redirect url="index.jsp"></c:redirect> 
         </c:if>
 
+        <div class="welcome">
+            <div class="wlinks">
+                <h3> Olá ${usuarioSessao.getUsuarioinfo().getNome()} !
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#A8A8A8;" href="FrontController?command=Usuario&action=logout">Logout</a></h3>
+            </div>
+        </div>
+
         <div class="topbar">
-            <img src="laranja.ico" alt="LOGO"/>
+            <a href="homepage.jsp"><img src="laranja.ico" alt="LOGO"/></a>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
@@ -40,15 +48,14 @@
                 <a href="profile.jsp">Perfil</a>
                 <a href="contato.jsp">Contato</a>
                 <a href="sobre.jsp">Sobre</a>
-                <a style="color:#A8A8A8;" href="FrontController?command=Usuario&action=logout">Logout</a>
             </div>
         </div>
-        
+
         <c:if test="${successmsg!=null && !''.equals(successmsg)}">
             <p class="success">${successmsg}</p>
             <c:set scope="session" var="successmsg" value=""></c:set>
         </c:if>
-            
+
         <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" >          
             <div class="container">
                 <div class="sidebar">
@@ -84,82 +91,82 @@
                 </div>
 
             </div>           
-            
+
         </c:if>
-            
+
         <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==2}" >
             <div class="container">
-            <div class="sidebar">
-                <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                <div class="mcaixa">
-                    <div class="lcaixa">
-                        <a href="eventos.jsp">Meus Eventos</a>
-                        <a href="">Buscar Fornecedores</a>
-                        <a href="">Relatórios Financeiros</a>
+                <div class="sidebar">
+                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                    <div class="mcaixa">
+                        <div class="lcaixa">
+                            <a href="eventos.jsp">Meus Eventos</a>
+                            <a href="">Buscar Fornecedores</a>
+                            <a href="">Relatórios Financeiros</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="posts">
-                <div class="text">
-                    <h2> Eventos </h2>
+                <div class="posts">
+                    <div class="text">
+                        <h2> Eventos </h2>
+                    </div>
+
+                    <div class="eventos">
+                        <c:forEach var="evento" items="${usuarioSessao.getEventoCollection1()}">
+                            <div class="etitulo">
+                                <i class="fa fa-calendar" style="float:right"></i> 
+                                <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataevento()}"/>
+                            </div>
+
+                            <div class="ecaixa">
+                                <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
+                                <p> Local: <c:out value="${evento.getLugar()}"/></p>
+                            </div>                        
+
+                        </c:forEach>                 
+                    </div>
                 </div>
 
-                <div class="eventos">
-                    <c:forEach var="evento" items="${usuarioSessao.getEventoCollection1()}">
-                        <div class="etitulo">
-                            <i class="fa fa-calendar" style="float:right"></i> 
-                            <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataevento()}"/>
-                        </div>
-
-                        <div class="ecaixa">
-                            <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
-                            <p> Local: <c:out value="${evento.getLugar()}"/></p>
-                        </div>                        
-
-                    </c:forEach>                 
-                </div>
-            </div>
-
-        </div>   
+            </div>   
         </c:if>
-            
+
         <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==3}" >
             <div class="container">
-            <div class="sidebar">
-                <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                <div class="mcaixa">
-                    <div class="lcaixa">
-                        <a href="eventos.jsp">Meus Eventos</a>
-                        <a href="">Relatórios Financeiros</a>
+                <div class="sidebar">
+                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                    <div class="mcaixa">
+                        <div class="lcaixa">
+                            <a href="eventos.jsp">Meus Eventos</a>
+                            <a href="">Relatórios Financeiros</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="posts">
-                <div class="text">
-                    <h2> Eventos </h2>
+                <div class="posts">
+                    <div class="text">
+                        <h2> Eventos </h2>
+                    </div>
+
+                    <!-- ALTERAR A COLLECTION DE ONDE ELE PEGA ESSES DADOS, ESSA É SÓ UMA SIMULAÇÃO-->
+                    <div class="eventos">
+                        <c:forEach var="evento" items="${usuarioSessao.getEventoCollection1()}">
+                            <div class="etitulo">
+                                <i class="fa fa-calendar" style="float:right"></i> 
+                                <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataevento()}"/>
+                            </div>
+
+                            <div class="ecaixa">
+                                <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
+                                <p> Local: <c:out value="${evento.getLugar()}"/></p>
+                            </div>                        
+
+                        </c:forEach>                 
+                    </div>
                 </div>
 
-                <!-- ALTERAR A COLLECTION DE ONDE ELE PEGA ESSES DADOS, ESSA É SÓ UMA SIMULAÇÃO-->
-                <div class="eventos">
-                    <c:forEach var="evento" items="${usuarioSessao.getEventoCollection1()}">
-                        <div class="etitulo">
-                            <i class="fa fa-calendar" style="float:right"></i> 
-                            <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataevento()}"/>
-                        </div>
+            </div>   
 
-                        <div class="ecaixa">
-                            <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
-                            <p> Local: <c:out value="${evento.getLugar()}"/></p>
-                        </div>                        
-
-                    </c:forEach>                 
-                </div>
-            </div>
-
-        </div>   
-            
         </c:if>
 
         <div class="footer">

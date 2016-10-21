@@ -22,6 +22,12 @@
         <!-- fontes -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .footer{
+                margin-top: 30%;
+            }
+        </style>
+
     </head>
 
     <body>
@@ -29,8 +35,16 @@
             <c:redirect url="index.jsp"></c:redirect> 
         </c:if>    
 
+        <div class="welcome">
+            <div class="wlinks">
+                <h3> Olá ${usuarioSessao.getUsuarioinfo().getNome()} !
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#A8A8A8;" href="FrontController?command=Usuario&action=logout">Logout</a></h3>
+            </div>
+        </div>
+
         <div class="topbar">
-            <img src="laranja.ico" alt="LOGO"/>
+            <a href="homepage.jsp"><img src="laranja.ico" alt="LOGO"/></a>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
@@ -40,7 +54,6 @@
                 <a href="profile.jsp">Perfil</a>
                 <a href="contato.jsp">Contato</a>
                 <a href="sobre.jsp">Sobre</a>
-                <a style="color:#A8A8A8;" href="FrontController?command=Usuario&action=logout">Logout</a>
             </div>
         </div>
 

@@ -33,9 +33,18 @@
     <body>
         <c:if test="${usuarioSessao==null}" >
             <c:redirect url="index.jsp"></c:redirect> 
-        </c:if>  
+        </c:if> 
+
+        <div class="welcome">
+            <div class="wlinks">
+                <h3> Olá ${usuarioSessao.getUsuarioinfo().getNome()} !
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#A8A8A8;" href="FrontController?command=Usuario&action=logout">Logout</a></h3>
+            </div>
+        </div>
+
         <div class="topbar">
-            <img src="laranja.ico" alt="LOGO"/>
+            <a href="homepage.jsp"><img src="laranja.ico" alt="LOGO"/></a>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
@@ -45,7 +54,6 @@
                 <a href="profile.jsp">Perfil</a>
                 <a href="contato.jsp">Contato</a>
                 <a href="sobre.jsp">Sobre</a>
-                <a style="color:#A8A8A8;" href="FrontController?command=Usuario&action=logout">Logout</a>
             </div>
         </div>
 

@@ -31,14 +31,26 @@
         </style>
     </head>
 
-    <body>
+    <body>  
+        <div class="welcome">
+            <div class="wlinks">
+                <h3> Olá ${usuarioSessao.getUsuarioinfo().getNome()} !
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#A8A8A8;" href="FrontController?command=Usuario&action=logout">Logout</a></h3>
+            </div>
+        </div>
+
         <div class="topbar">
-            <img src="laranja.ico"/>
+            <a href="homepage.jsp"><img src="laranja.ico" alt="LOGO"/></a>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
             <div class="links">
-                <a href="sobre.html">Sobre</a>
+                <a href="homepage.jsp">Home</a>
+                <a href="eventos.jsp">Eventos</a>
+                <a href="profile.jsp">Perfil</a>
+                <a href="contato.jsp">Contato</a>
+                <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
 

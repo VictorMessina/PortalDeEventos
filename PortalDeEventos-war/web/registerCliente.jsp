@@ -35,7 +35,7 @@
         </c:if>
 
         <div class="topbar">
-            <img src="laranja.ico"/>
+            <a href="homepage.jsp"><img src="laranja.ico" alt="LOGO"/></a>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
