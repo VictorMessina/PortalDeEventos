@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.portal.entities;
 
 import java.io.Serializable;
@@ -36,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuarioinfo.findByTelefone2", query = "SELECT u FROM Usuarioinfo u WHERE u.telefone2 = :telefone2"),
     @NamedQuery(name = "Usuarioinfo.findByDescricao", query = "SELECT u FROM Usuarioinfo u WHERE u.descricao = :descricao"),
     @NamedQuery(name = "Usuarioinfo.findByNumerocadastro", query = "SELECT u FROM Usuarioinfo u WHERE u.numerocadastro = :numerocadastro"),
-    @NamedQuery(name = "Usuarioinfo.findByPreco", query = "SELECT u FROM Usuarioinfo u WHERE u.preco = :preco")})
+    @NamedQuery(name = "Usuarioinfo.findByPreco", query = "SELECT u FROM Usuarioinfo u WHERE u.comissao = :comissao")})
 public class Usuarioinfo implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "COMISSAO")
@@ -67,9 +62,6 @@ public class Usuarioinfo implements Serializable {
     @Size(max = 14)
     @Column(name = "NUMEROCADASTRO")
     private String numerocadastro;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "PRECO")
-    private Double preco;
     @JoinColumn(name = "ID_USUARIOINFO", referencedColumnName = "ID_USUARIO", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Usuario usuario;
@@ -138,11 +130,11 @@ public class Usuarioinfo implements Serializable {
     }
 
     public Double getPreco() {
-        return preco;
+        return comissao;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setPreco(Double comissao) {
+        this.comissao = comissao;
     }
 
     public Usuario getUsuario() {
