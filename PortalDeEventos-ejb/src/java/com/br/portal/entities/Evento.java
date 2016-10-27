@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,6 +45,18 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Evento.findByDataevento", query = "SELECT e FROM Evento e WHERE e.dataevento = :dataevento"),
     @NamedQuery(name = "Evento.findByLugar", query = "SELECT e FROM Evento e WHERE e.lugar = :lugar")})
 public class Evento implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATAINI")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataini;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATAFIM")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datafim;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "evento")
+    private Caracteristicasevento caracteristicasevento;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -189,6 +203,30 @@ public class Evento implements Serializable {
     @Override
     public String toString() {
         return "com.br.portal.entities.Evento[ idEvento=" + idEvento + " ]";
+    }
+
+    public Date getDataini() {
+        return dataini;
+    }
+
+    public void setDataini(Date dataini) {
+        this.dataini = dataini;
+    }
+
+    public Date getDatafim() {
+        return datafim;
+    }
+
+    public void setDatafim(Date datafim) {
+        this.datafim = datafim;
+    }
+
+    public Caracteristicasevento getCaracteristicasevento() {
+        return caracteristicasevento;
+    }
+
+    public void setCaracteristicasevento(Caracteristicasevento caracteristicasevento) {
+        this.caracteristicasevento = caracteristicasevento;
     }
     
 }

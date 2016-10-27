@@ -38,6 +38,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuarioinfo.findByNumerocadastro", query = "SELECT u FROM Usuarioinfo u WHERE u.numerocadastro = :numerocadastro"),
     @NamedQuery(name = "Usuarioinfo.findByPreco", query = "SELECT u FROM Usuarioinfo u WHERE u.preco = :preco")})
 public class Usuarioinfo implements Serializable {
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "COMISSAO")
+    private Double comissao;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -173,6 +176,14 @@ public class Usuarioinfo implements Serializable {
     @Override
     public String toString() {
         return "com.br.portal.entities.Usuarioinfo[ idUsuarioinfo=" + idUsuarioinfo + " ]";
+    }
+
+    public Double getComissao() {
+        return comissao;
+    }
+
+    public void setComissao(Double comissao) {
+        this.comissao = comissao;
     }
     
 }
