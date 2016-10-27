@@ -76,7 +76,7 @@ public class UsuarioCommand implements Command {
                         //jmsProdutor.sendMessage(MsgType.LOGIN," Usuario Cliente: " + up.getUsername() + " realizou login " + " \n" );
                         List<Categoriaevento> listaCat = categoriaEventoDAO.find();
                         request.getSession().setAttribute("listaCatEvento", listaCat);
-                        
+
                         request.getSession().setAttribute("usuarioSessao", up);
                         returnPage = "/homepage.jsp";
 
@@ -141,6 +141,119 @@ public class UsuarioCommand implements Command {
                     }
                 }
                 break;
+
+            case "updatePassword":
+                String pwd = request.getParameter("password");
+                String pwd2 = request.getParameter("password2");
+                Usuario usuarioSessao = (Usuario) request.getSession().getAttribute("usuarioSessao");
+
+                usuarioSessao = usuarioDAO.findById(usuarioSessao.getIdUsuario());
+
+                if (pwd.equals(pwd2)) {
+
+                    String md5UpdateUser = geraSenhaMD5(pwd);
+                    usuarioSessao.setPassword(md5UpdateUser);
+                    usuarioDAO.update(usuarioSessao);
+
+                    returnPage = "/profile.jsp";
+
+                    request.getSession().setAttribute("successmsg", "Senha atualizada com sucesso");
+                } else {
+                    returnPage = "/profile.jsp";
+                    request.getSession().setAttribute("errormsg", "Senha não confere, favor digitar senhas compativeis");
+                }
+                break;
+
+            case "updateFullName":
+                String nomeCompleto = request.getParameter("fullname");
+                Usuario usuarioSessao2 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+
+                usuarioSessao2 = usuarioDAO.findById(usuarioSessao2.getIdUsuario());
+                usuarioSessao2.getUsuarioinfo().setNome(nomeCompleto);
+
+                usuarioDAO.update(usuarioSessao2);
+
+                request.getSession().setAttribute("usuarioSessao", usuarioSessao2);
+
+                request.getSession().setAttribute("successmsg", "Nome atualizado com sucesso");
+
+                returnPage = "/profile.jsp";
+
+                break;
+
+            case "updateEmail":
+
+                String email = request.getParameter("email");
+
+                Usuario usuarioSessao4 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+
+                usuarioSessao4 = usuarioDAO.findById(usuarioSessao4.getIdUsuario());
+                usuarioSessao4.getUsuarioinfo().setEmail(email);
+
+                usuarioDAO.update(usuarioSessao4);
+
+                request.getSession().setAttribute("usuarioSessao", usuarioSessao4);
+
+                request.getSession().setAttribute("successmsg", "Email atualizado com sucesso");
+
+                returnPage = "/profile.jsp";
+
+                break;
+
+            case "updateDescricao":
+                String descricao = request.getParameter("descricao");
+
+                Usuario usuarioSessao5 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+
+                usuarioSessao5 = usuarioDAO.findById(usuarioSessao5.getIdUsuario());
+                usuarioSessao5.getUsuarioinfo().setDescricao(descricao);
+
+                usuarioDAO.update(usuarioSessao5);
+
+                request.getSession().setAttribute("usuarioSessao", usuarioSessao5);
+
+                request.getSession().setAttribute("successmsg", "Email atualizado com sucesso");
+
+                returnPage = "/profile.jsp";
+
+                break;
+                
+            case "updateTelefone1":
+                String tel1 = request.getParameter("telefone1");
+
+                Usuario usuarioSessao6 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+
+                usuarioSessao6 = usuarioDAO.findById(usuarioSessao6.getIdUsuario());
+                usuarioSessao6.getUsuarioinfo().setTelefone1(tel1);
+
+                usuarioDAO.update(usuarioSessao6);
+
+                request.getSession().setAttribute("usuarioSessao", usuarioSessao6);
+
+                request.getSession().setAttribute("successmsg", "Telefone 1 atualizado com sucesso");
+
+                returnPage = "/profile.jsp";
+
+                break;
+                
+            case "updateTelefone2":
+                String tel2 = request.getParameter("telefone2");
+
+                Usuario usuarioSessao7 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+
+                usuarioSessao7 = usuarioDAO.findById(usuarioSessao7.getIdUsuario());
+                usuarioSessao7.getUsuarioinfo().setTelefone2(tel2);
+
+                usuarioDAO.update(usuarioSessao7);
+
+                request.getSession().setAttribute("usuarioSessao", usuarioSessao7);
+
+                request.getSession().setAttribute("successmsg", "Telefone 2 atualizado com sucesso");
+
+                returnPage = "/profile.jsp";
+
+                break;
+
         }
     }
 

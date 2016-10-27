@@ -101,7 +101,7 @@
                         </c:when>
                     </c:choose>
 
-                    <br><h1><input type="submit" value="EDITAR PERFIL"/></h1><br>
+                            <br><h1><a href="editProfile.jsp"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
             </div>
         </div>
 
