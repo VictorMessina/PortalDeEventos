@@ -19,7 +19,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 500px;
+                margin-top: 35%;
             }
         </style>
     </head>
@@ -102,7 +102,6 @@
                         <div class="lcaixa">
                             <a href="eventos.jsp">Meus Eventos</a>
                             <a href="">Buscar Fornecedores</a>
-                            <a href="">Relatórios Financeiros</a>
                         </div>
                     </div>
                 </div>
@@ -138,7 +137,6 @@
                     <div class="mcaixa">
                         <div class="lcaixa">
                             <a href="eventos.jsp">Meus Eventos</a>
-                            <a href="">Relatórios Financeiros</a>
                         </div>
                     </div>
                 </div>

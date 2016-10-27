@@ -25,7 +25,11 @@
 
         <style>
             .footer{
-                margin-top: 110%;
+                margin-top: 115%;
+            }
+            /*----------HEADER---------*/
+            .topbar {
+                margin: 1% 0% 0% 8%; /*---- top right bottom left --*/
             }
         </style>
     </head>
@@ -81,7 +85,7 @@
 
                     <h1><input type="hidden" name="command" value="Fornecedor"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>
-                    <br><h1><input type="submit" value="AFILIAR-SE"/></h1>
+                    <br><h1><input type="submit" value="AFILIAR-SE"/></h1><br>
                 </form>
             </div>
         </div>

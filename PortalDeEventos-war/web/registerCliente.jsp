@@ -24,7 +24,11 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 55%;
+                margin-top: 75%;
+            }
+            /*----------HEADER---------*/
+            .topbar {
+                margin: 1% 0% 0% 8%; /*---- top right bottom left --*/
             }
         </style>
     </head>
@@ -67,7 +71,7 @@
 
                     <h1><input type="hidden" name="command" value="Cliente"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>
-                    <br><h1><input type="submit" value="AFILIAR-SE"/></h1>
+                    <br><h1><input type="submit" value="AFILIAR-SE"/></h1><br>
                 </form>
             </div>
         </div>

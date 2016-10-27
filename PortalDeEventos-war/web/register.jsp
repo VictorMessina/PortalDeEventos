@@ -24,7 +24,11 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 87%;
+                margin-top: 88%;
+            }
+            /*----------HEADER---------*/
+            .topbar {
+                margin: 1% 0% 0% 8%; /*---- top right bottom left --*/
             }
         </style>
     </head>
@@ -39,43 +43,43 @@
             </div>
         </div>
 
-    <c:if test="${errormsg!=null && !''.equals(errormsg)}">
-        <p class="error">${errormsg}</p>
-        <c:set scope="session" var="errormsg" value=""></c:set>
-    </c:if>
+        <c:if test="${errormsg!=null && !''.equals(errormsg)}">
+            <p class="error">${errormsg}</p>
+            <c:set scope="session" var="errormsg" value=""></c:set>
+        </c:if>
 
-    <div class="container">
-        <div class="cadastro">
-            <form action="FrontController" method="post">
-                <br><h1><i> Afiliação de Usuários </i></h1>
-                <br><p> * Informações Obrigatórias </p>
-                <h1> Insira os dados da sua conta: </h1>
-                <h1> Login: *<br><input type="text" name="login" placeholder="login" maxlength="10" required/></h1>
-                <h1> Senha: *<br><input type="password" name="password" placeholder="Nova senha" required="required"/></h1>
-                <h1> Confirme a senha: *<br><input type="password" name="password2" placeholder="Confirmar senha nova" required="required"/></h1>
+        <div class="container">
+            <div class="cadastro">
+                <form action="FrontController" method="post">
+                    <br><h1><i> Afiliação de Usuários </i></h1>
+                    <br><p> * Informações Obrigatórias </p>
+                    <h1> Insira os dados da sua conta: </h1>
+                    <h1> Login: *<br><input type="text" name="login" placeholder="login" maxlength="10" required/></h1>
+                    <h1> Senha: *<br><input type="password" name="password" placeholder="senha" required="required"/></h1>
+                    <h1> Confirme a senha: *<br><input type="password" name="password2" placeholder="confirme senha" required="required"/></h1>
 
-                <br><br><br>
+                    <br><br><br>
 
-                <h1> Escolha seu tipo de usuário: * </h1>
-                <h1><input type="radio" name="tipoUsuario" value="1" checked="checked"/> Cliente </h1>
-                <h1><input type="radio" name="tipoUsuario" value="2"/> Promoter (organizador de eventos)</h1>
-                <h1><input type="radio" name="tipoUsuario" value="3"/> Fornecedor de serviços </h1>
+                    <h1> Escolha seu tipo de usuário: * </h1>
+                    <h1><input type="radio" name="tipoUsuario" value="1" checked="checked"/> Cliente </h1>
+                    <h1><input type="radio" name="tipoUsuario" value="2"/> Promoter (organizador de eventos)</h1>
+                    <h1><input type="radio" name="tipoUsuario" value="3"/> Fornecedor de serviços </h1>
 
-                <br><br><br>
+                    <br><br><br>
 
-                <h1> Selecione se você é Pessoa Física ou Jurídica: * </h1>
-                <h1><input type="radio" name="tipoPessoa" value="1" checked="checked"/> Pessoa Fisica </h1>
-                <h1><input type="radio" name="tipoPessoa" value="2"/> Pessoa Jurídica </h1>
+                    <h1> Selecione se você é Pessoa Física ou Jurídica: * </h1>
+                    <h1><input type="radio" name="tipoPessoa" value="1" checked="checked"/> Pessoa Fisica </h1>
+                    <h1><input type="radio" name="tipoPessoa" value="2"/> Pessoa Jurídica </h1>
 
-                <h1><input type="hidden" name="command" value="Usuario"/></h1>
-                <h1><input type="hidden" name="action" value="insert"/></h1>
-                <br><h1><input type="submit" value="CONTINUAR"/></h1>
-            </form>
+                    <h1><input type="hidden" name="command" value="Usuario"/></h1>
+                    <h1><input type="hidden" name="action" value="insert"/></h1>
+                    <br><h1><input type="submit" value="CONTINUAR"/></h1><br>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div class="footer">
-        Copyright © 2016. Hugo, Letícia, Victor, Vitória. All rights reserved.
-    </div>
-</body>
+        <div class="footer">
+            Copyright © 2016. Hugo, Letícia, Victor, Vitória. All rights reserved.
+        </div>
+    </body>
 </html>

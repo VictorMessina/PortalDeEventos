@@ -23,7 +23,27 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 45%;
+                margin-top: 15%;
+            }
+
+            /*----------BOTÕES---------*/
+            input[type="submit"],
+            #botao {
+                transition: background-color 0.35s ease-in-out;
+                background: #6CA6CD;
+                border-radius: 6px;
+                border-style: outset;
+                color: #fff;
+                cursor: pointer;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 14px;
+            }
+            input[type="submit"]:hover,
+            #botao:hover {
+                background: #FF7700;
             }
         </style>
         <script type="text/javascript">
@@ -80,13 +100,13 @@
                     form5.style.display = "none";
                     form6.style.display = "none";
                 }
-                 else if (num === 5) {
+                else if (num === 5) {
                     form5.style.display = "block";
                     form1.style.display = "none";
                     form2.style.display = "none";
                     form4.style.display = "none";
                     form6.style.display = "none";
-                } else if (num ===6 ) {
+                } else if (num === 6) {
                     form6.style.display = "block";
                     form1.style.display = "none";
                     form2.style.display = "none";
@@ -130,68 +150,78 @@
                 <p class="success">${successmsg}</p>
                 <c:set scope="session" var="successmsg" value=""></c:set>
             </c:if>
+
+            <br><br><br><br>
+            <center><button id="botao" onclick="mostrar(1)">Atualizar Senha</button>
+                <button id="botao" onclick="mostrar(2)">Atualizar nome</button>
+                <button id="botao" onclick="mostrar(3)">Atualizar Email</button>
+                <br><br><br>
+                <button id="botao" onclick="mostrar(4)">Atualizar Descrição</button>
+                <button id="botao" onclick="mostrar(5)">Atualizar Telefone 1</button>
+                <button id="botao" onclick="mostrar(6)">Atualizar Telefone 2</button>
+
+
+                <div>
+                    <!-- Atualizar senha -->
+                    <form id="form1" action="FrontController" method="POST">
+                        <br><br><br><h3>Atualizar Senha</h3>
+                        <p><input type="password" name="password" placeholder="nova senha" required="required"/></p>
+                        <p><input type="password" name="password2" placeholder="confirme nova senha" required="required"/></p>
+                        <p><input type="hidden" name="command" value="Usuario"/></p>
+                        <p><input type="hidden" name="action" value="updatePassword"/></p>
+                        <p><input type="submit" value="ALTERAR"/></p>
+                    </form>
+
+                    <!-- Atualizar nome -->
+                    <form id="form2" action="FrontController" method="POST">
+                        <br><br><br><h3>Atualizar Nome</h3>
+                        <p><input type="text" name="fullname" placeholder="Nome Completo" maxlength="100" required="required"/></p>
+                        <input type="hidden" name="command" value="Usuario"/>
+                        <input type="hidden" name="action" value="updateFullName"/>
+                        <p><input type="submit" value="ATUALIZAR"/></p>
+                    </form>
+
+                    <!-- Atualizar rmail -->
+                    <form id="form3" action="FrontController" method="POST">
+                        <br><br><br><h3>Atualizar Email</h3>
+                        <p><input type="email" name="email" placeholder="Ex.: email@email.com" maxlength="50" required="required"/></p>
+                        <input type="hidden" name="command" value="Usuario"/>
+                        <input type="hidden" name="action" value="updateEmail"/>
+                        <p><input type="submit" value="ATUALIZAR"/></p>
+                    </form>
+
+                    <!-- Atualizar descrição -->
+                    <form id="form4" action="FrontController" method="POST">
+                        <br><br><br><h3>Atualizar Descrição</h3>
+                        <p><input type="text" name="descricao" placeholder="Descrição" maxlength="150" required="required"/></p>
+                        <input type="hidden" name="command" value="Usuario"/>
+                        <input type="hidden" name="action" value="updateDescricao"/>
+                        <p><input type="submit" value="ATUALIZAR"/></p>
+                    </form>
+
+                    <!-- Atualizar telefone 1 -->
+                    <form id="form5" action="FrontController" method="POST">
+                        <br><br><br><h3>Atualizar Telefone 1</h3>
+                        <p><input type="tel" name="telefone1" placeholder="Ex.: 11922223333" maxlength="11" required="required"/></p>
+                        <input type="hidden" name="command" value="Usuario"/>
+                        <input type="hidden" name="action" value="updateTelefone1"/>
+                        <p><input type="submit" value="ATUALIZAR"/></p>
+                    </form>
+
+                    <!-- Atualizar telefone 2 -->
+                    <form id="form6" action="FrontController" method="POST">
+                        <br><br><br><h3>Atualizar Telefone 2</h3>
+                        <p><input type="tel" name="telefone2" placeholder="Ex.: 11922223333" maxlength="11" required="required"/></p>
+                        <input type="hidden" name="command" value="Usuario"/>
+                        <input type="hidden" name="action" value="updateTelefone2"/>
+                        <p><input type="submit" value="ATUALIZAR"/></p>
+                    </form>
+                </div>
+            </center>
         </div>
-
-        <button id="botao" onclick="mostrar(1)">Alterar Senha</button>
-        <button id="botao" onclick="mostrar(2)">Alterar nome</button>
-        <button id="botao" onclick="mostrar(3)">Alterar Email</button>
-        <button id="botao" onclick="mostrar(4)">Alterar Descrição</button>
-        <button id="botao" onclick="mostrar(5)">Alterar Telefone 1</button>
-        <button id="botao" onclick="mostrar(6)">Alterar Telefone 2</button>
-
-        <div>
-
-            <!-- Alterar senha -->
-            <form id="form1" action="FrontController" method="POST">
-                <br><br><br><h3>Alterar Senha</h3>
-                <p><input type="password" name="password" placeholder="Nova senha" required="required"/></p>
-                <p><input type="password" name="password2" placeholder="Confirmar senha nova" required="required"/></p>
-                <p><input type="hidden" name="command" value="Usuario"/></p>
-                <p><input type="hidden" name="action" value="updatePassword"/></p>
-                <p><input type="submit" value="ALTERAR"/></p>
-            </form>
-
-
-            <form id="form2" action="FrontController" method="POST">
-                <br><br><br><h3>Alterar Nome</h3>
-                <p><input type="text" name="fullname" placeholder="nome completo" maxlength="100" required="required"/></p>
-                <input type="hidden" name="command" value="Usuario"/>
-                <input type="hidden" name="action" value="updateFullName"/>
-                <p><input type="submit" value="ATUALIZAR"/></p>
-            </form>
-
-            <form id="form3" action="FrontController" method="POST">
-                <br><br><br><h3>Alterar Email</h3>
-                <p><input type="email" name="email" placeholder="email" maxlength="50" required="required"/></p>
-                <input type="hidden" name="command" value="Usuario"/>
-                <input type="hidden" name="action" value="updateEmail"/>
-                <p><input type="submit" value="ATUALIZAR"/></p>
-            </form>
-            
-            <form id="form4" action="FrontController" method="POST">
-                <br><br><br><h3>Alterar Descrição</h3>
-                <p><input type="text" name="descricao" placeholder="Descrição" maxlength="150" required="required"/></p>
-                <input type="hidden" name="command" value="Usuario"/>
-                <input type="hidden" name="action" value="updateDescricao"/>
-                <p><input type="submit" value="ATUALIZAR"/></p>
-            </form>
-            
-            <form id="form5" action="FrontController" method="POST">
-                <br><br><br><h3>Alterar Telefone 1</h3>
-                <p><input type="tel" name="telefone1" placeholder="telefone1" placeholder="Ex.: 11922223333" maxlength="11" required="required"/></p>
-                <input type="hidden" name="command" value="Usuario"/>
-                <input type="hidden" name="action" value="updateTelefone1"/>
-                <p><input type="submit" value="ATUALIZAR"/></p>
-            </form>
-            
-            <form id="form6" action="FrontController" method="POST">
-                <br><br><br><h3>Alterar Telefone 2</h3>
-                <p><input type="tel" name="telefone2" placeholder="telefone2" placeholder="Ex.: 11922223333" maxlength="11" required="required"/></p>
-                <input type="hidden" name="command" value="Usuario"/>
-                <input type="hidden" name="action" value="updateTelefone2"/>
-                <p><input type="submit" value="ATUALIZAR"/></p>
-            </form>
+                    
+        <div class="footer">
+            Copyright © 2016. Hugo, Letícia, Victor, Vitória. All rights reserved.
         </div>
-
     </body>
 </html>

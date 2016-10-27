@@ -43,6 +43,27 @@ blockquote {
     padding: 1%;
 }
 
+/*----------WELCOME---------*/
+.welcome {
+    margin: 1% 0% 0% 8%;
+    /*---- top right bottom left --*/
+    width: 84%;
+    background: #000;
+}
+.wlinks {
+    float:right;
+    margin-top:-60px;
+}
+.wlinks a {
+    padding:15px;
+    text-transform:uppercase;
+    font-size:15px;
+    letter-spacing:1px;
+    font-weight:bold;
+    color: #0093B2;
+    text-decoration:none;
+}
+
 /*----------HEADER---------*/
 .topbar {
     margin: 4% 0% 0% 8%;
@@ -84,27 +105,6 @@ blockquote {
 }
 .links a:hover {
     color: #FF7700;
-}
-
-/*----------WELCOME---------*/
-.welcome {
-    margin: 1% 0% 0% 8%;
-    /*---- top right bottom left --*/
-    width: 84%;
-    background: #000;
-}
-.wlinks {
-    float:right;
-    margin-top:-60px;
-}
-.wlinks a {
-    padding:15px;
-    text-transform:uppercase;
-    font-size:15px;
-    letter-spacing:1px;
-    font-weight:bold;
-    color: #0093B2;
-    text-decoration:none;
 }
 
 /*----------SIDEBAR---------*/
@@ -162,6 +162,17 @@ blockquote {
     background: white;
 }
 
+/*----------FOOTER---------*/
+.footer {
+    margin: 37% 0% 1% 8%;
+    /*---- top right bottom left --*/
+    width: 84%;
+    padding: 2% 0% 3% 0%;
+    background: #F0F0F0;
+    text-align: center;
+    font-size: 13px;
+}
+
 /*----------EVENTOS---------*/
 /* etitulo ecaixa eventos */
 .eventos {
@@ -187,23 +198,37 @@ blockquote {
     width: 80%;
 }
 
-
-/*----------FOOTER---------*/
-.footer {
-    margin: 37% 0% 1% 8%;
-    /*---- top right bottom left --*/
-    width: 84%;
-    padding: 2% 0% 3% 0%;
-    background: #F0F0F0;
-    text-align: center;
-}
-
 /*----------CADASTRO---------*/
 .cadastro{
     text-align: center;
     margin-top: 5%;
     margin-left: 29%;
     width: 39%;
+    float:left;
+    background-color: #F0F0F0;
+}
+
+/*----------TABELA (PAGINA SOBRE)---------*/
+table{
+    margin-top: 3%;
+    margin-left: 23%;
+}
+
+/*----------COLUNAS (PAGINA INDEX)---------*/
+.colunasindex{
+    text-align: center;
+    margin-top: 5%;
+}
+#conteudo-left{
+    width: 38%;
+    height: 380px;
+    margin-left: 11%;
+    float:left;
+    background-color: #F0F0F0;
+}
+#conteudo-right{
+    width: 38%;
+    height: 380px;
     float:left;
     background-color: #F0F0F0;
 }
@@ -266,12 +291,6 @@ input[type="submit"]:hover,
     background: #FF7700;
 }
 
-/*----------TABELA (PAGINA SOBRE)---------*/
-table{
-    margin-top: 3%;
-    margin-left: 23%;
-}
-
 /*----------MSG ERRO E SUCESSO---------*/
 .error{
     padding:5px;
@@ -283,7 +302,6 @@ table{
     position:relative;
     animation: anim 1s;
 }
-
 .success{
     padding:5px;
     background-color: rgba(0,255,9,0.3);

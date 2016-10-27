@@ -50,7 +50,6 @@
                 <a href="homepage.jsp">Home</a>
                 <a href="eventos.jsp">Eventos</a>
                 <a href="profile.jsp">Perfil</a>
-                <a href="contato.jsp">Contato</a>
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
@@ -100,8 +99,8 @@
                             <p> Preço: </p>
                         </c:when>
                     </c:choose>
-
-                            <br><h1><a href="editProfile.jsp"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
+                            
+                    <br><h1><a href="editProfile.jsp"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
             </div>
         </div>
 

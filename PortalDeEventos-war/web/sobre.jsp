@@ -28,28 +28,22 @@
             img{
                 border-radius: 50%;
             }
+            
+            /*----------HEADER---------*/
+            .topbar {
+                margin: 1% 0% 0% 8%; /*---- top right bottom left --*/
+            }
         </style>
     </head>
 
     <body>  
-        <div class="welcome">
-            <div class="wlinks">
-                <h3> Olá ${usuarioSessao.getUsuarioinfo().getNome()} !
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a style="color:#A8A8A8;" href="FrontController?command=Usuario&action=logout">Logout</a></h3>
-            </div>
-        </div>
-
         <div class="topbar">
             <a href="homepage.jsp"><img src="laranja.ico" alt="LOGO"/></a>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
 
             <div class="links">
-                <a href="homepage.jsp">Home</a>
-                <a href="eventos.jsp">Eventos</a>
-                <a href="profile.jsp">Perfil</a>
-                <a href="contato.jsp">Contato</a>
+                <a href="homepage.jsp">Voltar</a>
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>

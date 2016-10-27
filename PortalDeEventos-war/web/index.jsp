@@ -26,29 +26,9 @@
             .footer{
                 margin-top: 450px;
             }
-            /*----------COLUNAS---------*/
-            .colunasindex{
-                text-align: center;
-                margin-top: 60px;
-            }
-            #conteudo-left{
-                width: 500px;
-                height: 380px;
-                margin-left: 110px;
-                float:left;
-                background-color: #F8F8FF;
-            }
-            #conteudo-right{
-                width: 500px;
-                height: 380px;
-                float:left;
-                background-color: #F8F8FF;
-            }
-
             /*----------HEADER---------*/
             .topbar {
-                margin: 1% 0% 0% 8%;
-                /*---- top right bottom left --*/
+                margin: 1% 0% 0% 8%; /*---- top right bottom left --*/
             }
         </style>
     </head>
