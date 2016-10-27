@@ -68,7 +68,7 @@
                             <h1> CNPJ (sem pontos ou traços):*<br><input type="text" name="numeroCadastro" placeholder="Ex.: 12345678900000" maxlength="14" required/></h1>
                             </c:when>
                         </c:choose>
-                    <h1> Valor da comissão (R$): * <br><input type="number" name="preco" placeholder="Ex.: 0,00" required></h1>
+                    <h1> Valor da comissão (%): * <br><input type="number" name="comissao" placeholder="Ex.: 10%" required></h1>
 
                     <h1><input type="hidden" name="command" value="Promoter"/></h1>
                     <h1><input type="hidden" name="action" value="insert"/></h1>

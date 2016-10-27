@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.portal.command;
 
 import com.br.portal.dao.UsuarioDAO;
@@ -53,7 +48,7 @@ public class PromoterCommand implements Command {
                 userinfo.setNumerocadastro(request.getParameter("numeroCadastro"));
                 userinfo.setTelefone1(request.getParameter("telefone1"));
                 userinfo.setTelefone2(request.getParameter("telefone2"));
-                userinfo.setPreco(Double.parseDouble(request.getParameter("preco")));
+                userinfo.setPreco(Double.parseDouble(request.getParameter("comissao")));
 
                 userEvent2.setUsuarioinfo(userinfo);
 

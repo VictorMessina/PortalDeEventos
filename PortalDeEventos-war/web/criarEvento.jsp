@@ -52,7 +52,6 @@
                 <a href="homepage.jsp">Home</a>
                 <a href="eventos.jsp">Eventos</a>
                 <a href="profile.jsp">Perfil</a>
-                <a href="contato.jsp">Contato</a>
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>

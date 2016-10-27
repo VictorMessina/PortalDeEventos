@@ -81,7 +81,7 @@
                             <p> Telefone: ${usuarioSessao.getUsuarioinfo().getTelefone1()} </p>
                             <p> Telefone 2: ${usuarioSessao.getUsuarioinfo().getTelefone2()} </p>
                             <p> Descrição: ${usuarioSessao.getUsuarioinfo().getDescricao()} </p>
-                            <p> Comissão: ${usuarioSessao.getUsuarioinfo().getPreco()} </p>
+                            <p> Comissão: ${usuarioSessao.getUsuarioinfo().getPreco()} %</p>
                         </c:when>
 
                         <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
