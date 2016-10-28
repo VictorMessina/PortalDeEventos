@@ -6,7 +6,6 @@
 package com.br.portal.entities;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +47,7 @@ public class Caracteristicasevento implements Serializable {
     @Column(name = "TEMA")
     private String tema;
     @Column(name = "NCONVIDADOS")
-    private BigInteger nconvidados;
+    private Integer nconvidados;
     @Size(max = 150)
     @Column(name = "BUFFET")
     private String buffet;
@@ -85,11 +84,11 @@ public class Caracteristicasevento implements Serializable {
         this.tema = tema;
     }
 
-    public BigInteger getNconvidados() {
+    public Integer getNconvidados() {
         return nconvidados;
     }
 
-    public void setNconvidados(BigInteger nconvidados) {
+    public void setNconvidados(Integer nconvidados) {
         this.nconvidados = nconvidados;
     }
 
