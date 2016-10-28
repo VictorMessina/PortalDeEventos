@@ -83,7 +83,19 @@
                         <h1> Título: * <br><input type="text" name="titulo" placeholder="título" required/></h1>
                         <h1> Descrição: *<br><input type="text" name="descricao" placeholder="descriçao"/></h1>
                         <h1> Local: *<br><input type="text" name="local" placeholder="local" required/></h1>
-                        <h1> Data: *<br><input type="date" name="data" placeholder="dd/mm/yyyy" required /></h1>
+                        <h1> Data Inicial: *<br><input type="date" name="dataini" placeholder="dd/mm/yyyy" required /></h1>
+                        <h1> Hora de Inicio: *<br><input type="text" maxlength="2" pattern="[0-9]+$" name="horaini" placeholder="HH"required />
+                            <input type="text" maxlength="2" name="minini" pattern="[0-9]+$" placeholder="MM" required />
+                        </h1>
+                        <h1> Data Final: *<br><input type="date" name="datafim" placeholder="dd/mm/yyyy" required /></h1>
+                        <h1> Hora Fim: *<br><input type="text" maxlength="2" pattern="[0-9]+$"  name="horafim" placeholder="HH" required />
+                            <input type="text" maxlength="2" pattern="[0-9]+$" name="minfim" placeholder="MM" required />
+                        </h1>
+                        <h1> Tema: *<br><input type="text" name="tema" placeholder="Insira o tema do seu evento" required /></h1>
+                        <h1> Numero de convidados: *<br><input type="text"  name="nconvidados" placeholder="Numero de convidados" required /></h1>
+                        <h1> Descrição do Buffet: *<br><input type="text" name="buffet" placeholder="Descrição do Buffet" required /></h1>
+                        <h1> Descrição da decoração: *<br><input type="text" name="decoracao" placeholder="Descrição da decoração" required /></h1>
+                        <h1> Descrição das atrações: *<br><input type="text" name="atracoes" placeholder="Descrição das atrações" required /></h1>
 
                         <h1><input type="hidden" name="command" value="Evento"/></h1>
                         <h1><input type="hidden" name="action" value="insert"/></h1>

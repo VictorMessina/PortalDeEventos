@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDateTime"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -77,9 +78,10 @@
                         <c:forEach var="evento" items="${usuarioSessao.getEventoCollection2()}">
                             <div class="etitulo">
                                 <i class="fa fa-calendar" style="float:right"></i> 
-                                <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataevento()}"/>
+                                <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataini()}"/>
+                                <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDatafim()}"/>
                             </div>
-
+                       
                             <div class="ecaixa">
                                 <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
                                 <p> Local: <c:out value="${evento.getLugar()}"/></p>
