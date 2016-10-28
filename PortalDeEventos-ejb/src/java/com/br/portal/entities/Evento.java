@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Hugo Keniti
+ * @author HugoKeniti
  */
 @Entity
 @Table(name = "EVENTO")
@@ -42,21 +42,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Evento.findByIdEvento", query = "SELECT e FROM Evento e WHERE e.idEvento = :idEvento"),
     @NamedQuery(name = "Evento.findByTitulo", query = "SELECT e FROM Evento e WHERE e.titulo = :titulo"),
     @NamedQuery(name = "Evento.findByDescricao", query = "SELECT e FROM Evento e WHERE e.descricao = :descricao"),
-    @NamedQuery(name = "Evento.findByDataevento", query = "SELECT e FROM Evento e WHERE e.dataevento = :dataevento"),
+    @NamedQuery(name = "Evento.findByDataini", query = "SELECT e FROM Evento e WHERE e.dataini = :dataini"),
+    @NamedQuery(name = "Evento.findByDatafim", query = "SELECT e FROM Evento e WHERE e.datafim = :datafim"),
     @NamedQuery(name = "Evento.findByLugar", query = "SELECT e FROM Evento e WHERE e.lugar = :lugar")})
 public class Evento implements Serializable {
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "DATAINI")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataini;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "DATAFIM")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date datafim;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "evento")
-    private Caracteristicasevento caracteristicasevento;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,9 +63,14 @@ public class Evento implements Serializable {
     private String descricao;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DATAEVENTO")
-    @Temporal(TemporalType.DATE)
-    private Date dataevento;
+    @Column(name = "DATAINI")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataini;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATAFIM")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datafim;
     @Size(max = 100)
     @Column(name = "LUGAR")
     private String lugar;
@@ -84,6 +79,8 @@ public class Evento implements Serializable {
         @JoinColumn(name = "FK_FORNECEDOR", referencedColumnName = "ID_USUARIO")})
     @ManyToMany
     private Collection<Usuario> usuarioCollection;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "evento")
+    private Caracteristicasevento caracteristicasevento;
     @JoinColumn(name = "FK_CATEGORIAEVENTO", referencedColumnName = "ID_CATEGORIAEVENTO")
     @ManyToOne
     private Categoriaevento fkCategoriaevento;
@@ -101,10 +98,11 @@ public class Evento implements Serializable {
         this.idEvento = idEvento;
     }
 
-    public Evento(Long idEvento, String titulo, Date dataevento) {
+    public Evento(Long idEvento, String titulo, Date dataini, Date datafim) {
         this.idEvento = idEvento;
         this.titulo = titulo;
-        this.dataevento = dataevento;
+        this.dataini = dataini;
+        this.datafim = datafim;
     }
 
     public Long getIdEvento() {
@@ -131,12 +129,20 @@ public class Evento implements Serializable {
         this.descricao = descricao;
     }
 
-    public Date getDataevento() {
-        return dataevento;
+    public Date getDataini() {
+        return dataini;
     }
 
-    public void setDataevento(Date dataevento) {
-        this.dataevento = dataevento;
+    public void setDataini(Date dataini) {
+        this.dataini = dataini;
+    }
+
+    public Date getDatafim() {
+        return datafim;
+    }
+
+    public void setDatafim(Date datafim) {
+        this.datafim = datafim;
     }
 
     public String getLugar() {
@@ -154,6 +160,14 @@ public class Evento implements Serializable {
 
     public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
         this.usuarioCollection = usuarioCollection;
+    }
+
+    public Caracteristicasevento getCaracteristicasevento() {
+        return caracteristicasevento;
+    }
+
+    public void setCaracteristicasevento(Caracteristicasevento caracteristicasevento) {
+        this.caracteristicasevento = caracteristicasevento;
     }
 
     public Categoriaevento getFkCategoriaevento() {
@@ -203,30 +217,6 @@ public class Evento implements Serializable {
     @Override
     public String toString() {
         return "com.br.portal.entities.Evento[ idEvento=" + idEvento + " ]";
-    }
-
-    public Date getDataini() {
-        return dataini;
-    }
-
-    public void setDataini(Date dataini) {
-        this.dataini = dataini;
-    }
-
-    public Date getDatafim() {
-        return datafim;
-    }
-
-    public void setDatafim(Date datafim) {
-        this.datafim = datafim;
-    }
-
-    public Caracteristicasevento getCaracteristicasevento() {
-        return caracteristicasevento;
-    }
-
-    public void setCaracteristicasevento(Caracteristicasevento caracteristicasevento) {
-        this.caracteristicasevento = caracteristicasevento;
     }
     
 }

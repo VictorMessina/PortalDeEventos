@@ -5,7 +5,6 @@
  */
 package com.br.portal.entities;
 
-import com.br.portal.entities.Evento;
 import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Basic;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author 31402836
+ * @author HugoKeniti
  */
 @Entity
 @Table(name = "CARACTERISTICASEVENTO")
@@ -38,6 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Caracteristicasevento.findByDecoracao", query = "SELECT c FROM Caracteristicasevento c WHERE c.decoracao = :decoracao"),
     @NamedQuery(name = "Caracteristicasevento.findByAtracoes", query = "SELECT c FROM Caracteristicasevento c WHERE c.atracoes = :atracoes")})
 public class Caracteristicasevento implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -147,7 +147,7 @@ public class Caracteristicasevento implements Serializable {
 
     @Override
     public String toString() {
-        return "com.br.portal.dao.Caracteristicasevento[ idCaracteristicasevento=" + idCaracteristicasevento + " ]";
+        return "com.br.portal.entities.Caracteristicasevento[ idCaracteristicasevento=" + idCaracteristicasevento + " ]";
     }
     
 }

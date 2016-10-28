@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.br.portal.entities;
 
 import java.io.Serializable;
@@ -17,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Victor M
+ * @author HugoKeniti
  */
 @Entity
 @Table(name = "USUARIOINFO")
@@ -31,11 +36,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuarioinfo.findByTelefone2", query = "SELECT u FROM Usuarioinfo u WHERE u.telefone2 = :telefone2"),
     @NamedQuery(name = "Usuarioinfo.findByDescricao", query = "SELECT u FROM Usuarioinfo u WHERE u.descricao = :descricao"),
     @NamedQuery(name = "Usuarioinfo.findByNumerocadastro", query = "SELECT u FROM Usuarioinfo u WHERE u.numerocadastro = :numerocadastro"),
-    @NamedQuery(name = "Usuarioinfo.findByPreco", query = "SELECT u FROM Usuarioinfo u WHERE u.comissao = :comissao")})
+    @NamedQuery(name = "Usuarioinfo.findByComissao", query = "SELECT u FROM Usuarioinfo u WHERE u.comissao = :comissao")})
 public class Usuarioinfo implements Serializable {
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "COMISSAO")
-    private Double comissao;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,7 +48,7 @@ public class Usuarioinfo implements Serializable {
     @Size(max = 100)
     @Column(name = "NOME")
     private String nome;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 150)
     @Column(name = "EMAIL")
     private String email;
@@ -62,6 +64,9 @@ public class Usuarioinfo implements Serializable {
     @Size(max = 14)
     @Column(name = "NUMEROCADASTRO")
     private String numerocadastro;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "COMISSAO")
+    private Double comissao;
     @JoinColumn(name = "ID_USUARIOINFO", referencedColumnName = "ID_USUARIO", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Usuario usuario;
@@ -129,11 +134,11 @@ public class Usuarioinfo implements Serializable {
         this.numerocadastro = numerocadastro;
     }
 
-    public Double getPreco() {
+    public Double getComissao() {
         return comissao;
     }
 
-    public void setPreco(Double comissao) {
+    public void setComissao(Double comissao) {
         this.comissao = comissao;
     }
 
@@ -168,14 +173,6 @@ public class Usuarioinfo implements Serializable {
     @Override
     public String toString() {
         return "com.br.portal.entities.Usuarioinfo[ idUsuarioinfo=" + idUsuarioinfo + " ]";
-    }
-
-    public Double getComissao() {
-        return comissao;
-    }
-
-    public void setComissao(Double comissao) {
-        this.comissao = comissao;
     }
     
 }

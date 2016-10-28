@@ -6,7 +6,7 @@
 package com.br.portal.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Victor M
+ * @author HugoKeniti
  */
 @Entity
 @Table(name = "TIPOUSUARIO")
@@ -45,7 +45,7 @@ public class Tipousuario implements Serializable {
     @Column(name = "TITULOUSUARIO")
     private String titulousuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkTipousuario")
-    private List<Usuario> usuarioList;
+    private Collection<Usuario> usuarioCollection;
 
     public Tipousuario() {
     }
@@ -71,12 +71,12 @@ public class Tipousuario implements Serializable {
     }
 
     @XmlTransient
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
+    public Collection<Usuario> getUsuarioCollection() {
+        return usuarioCollection;
     }
 
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
+    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
+        this.usuarioCollection = usuarioCollection;
     }
 
     @Override

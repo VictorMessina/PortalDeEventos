@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.br.portal.entities;
 
 import java.io.Serializable;
@@ -24,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Victor M
+ * @author HugoKeniti
  */
 @Entity
 @Table(name = "USUARIO")
@@ -35,14 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.username = :username"),
     @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")})
 public class Usuario implements Serializable {
-    @ManyToMany(mappedBy = "usuarioCollection")
-    private Collection<Evento> eventoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkFornecedor")
-    private Collection<Servico> servicoCollection;
-    @OneToMany(mappedBy = "fkPromoter")
-    private Collection<Evento> eventoCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkCliente")
-    private Collection<Evento> eventoCollection2;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,6 +57,10 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 32)
     @Column(name = "PASSWORD")
     private String password;
+    @ManyToMany(mappedBy = "usuarioCollection")
+    private Collection<Evento> eventoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkFornecedor")
+    private Collection<Servico> servicoCollection;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Usuarioinfo usuarioinfo;
     @JoinColumn(name = "FK_TIPOPESSOA", referencedColumnName = "ID_TIPOPESSOA")
@@ -68,6 +69,10 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "FK_TIPOUSUARIO", referencedColumnName = "ID_TIPOUSUARIO")
     @ManyToOne(optional = false)
     private Tipousuario fkTipousuario;
+    @OneToMany(mappedBy = "fkPromoter")
+    private Collection<Evento> eventoCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkCliente")
+    private Collection<Evento> eventoCollection2;
 
     public Usuario() {
     }
@@ -106,6 +111,24 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
+    @XmlTransient
+    public Collection<Evento> getEventoCollection() {
+        return eventoCollection;
+    }
+
+    public void setEventoCollection(Collection<Evento> eventoCollection) {
+        this.eventoCollection = eventoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Servico> getServicoCollection() {
+        return servicoCollection;
+    }
+
+    public void setServicoCollection(Collection<Servico> servicoCollection) {
+        this.servicoCollection = servicoCollection;
+    }
+
     public Usuarioinfo getUsuarioinfo() {
         return usuarioinfo;
     }
@@ -128,6 +151,24 @@ public class Usuario implements Serializable {
 
     public void setFkTipousuario(Tipousuario fkTipousuario) {
         this.fkTipousuario = fkTipousuario;
+    }
+
+    @XmlTransient
+    public Collection<Evento> getEventoCollection1() {
+        return eventoCollection1;
+    }
+
+    public void setEventoCollection1(Collection<Evento> eventoCollection1) {
+        this.eventoCollection1 = eventoCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Evento> getEventoCollection2() {
+        return eventoCollection2;
+    }
+
+    public void setEventoCollection2(Collection<Evento> eventoCollection2) {
+        this.eventoCollection2 = eventoCollection2;
     }
 
     @Override
@@ -153,42 +194,6 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "com.br.portal.entities.Usuario[ idUsuario=" + idUsuario + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Evento> getEventoCollection() {
-        return eventoCollection;
-    }
-
-    public void setEventoCollection(Collection<Evento> eventoCollection) {
-        this.eventoCollection = eventoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Servico> getServicoCollection() {
-        return servicoCollection;
-    }
-
-    public void setServicoCollection(Collection<Servico> servicoCollection) {
-        this.servicoCollection = servicoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Evento> getEventoCollection1() {
-        return eventoCollection1;
-    }
-
-    public void setEventoCollection1(Collection<Evento> eventoCollection1) {
-        this.eventoCollection1 = eventoCollection1;
-    }
-
-    @XmlTransient
-    public Collection<Evento> getEventoCollection2() {
-        return eventoCollection2;
-    }
-
-    public void setEventoCollection2(Collection<Evento> eventoCollection2) {
-        this.eventoCollection2 = eventoCollection2;
     }
     
 }
