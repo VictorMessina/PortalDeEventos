@@ -11,7 +11,7 @@
     <head>
         <title> Sobre nós </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="laranja.ico.png">
+        <link rel="shortcut icon" href="laranja.ico">
         <!-- 
         pra fazer os icones bonitinhos, colocar o link.
         pra escolher quais, ir em http://fontawesome.io/icons/

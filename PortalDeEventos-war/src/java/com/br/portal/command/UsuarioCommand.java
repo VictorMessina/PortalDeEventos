@@ -275,6 +275,17 @@ public class UsuarioCommand implements Command {
 
                 break;
 
+            case "perfil":
+                Usuario usuarioSessao9 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+
+                usuarioSessao9 = usuarioDAO.findById(usuarioSessao9.getIdUsuario());
+
+                List<Servico> cServico = (List<Servico>) usuarioSessao9.getServicoCollection();
+
+                request.getSession().setAttribute("listaServico", cServico);
+                returnPage = "/profile.jsp";
+
+                break;
 
 //            case "updateNomeServico":
 //                String nomeServico = request.getParameter("nomeServico");
