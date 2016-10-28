@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : perfil
     Created on : 21/10/2016, 11:31:32
@@ -22,7 +23,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 45%;
+                margin-top: 60%;
             }
         </style>
 
@@ -49,7 +50,15 @@
             <div class="links">
                 <a href="homepage.jsp">Home</a>
                 <a href="eventos.jsp">Eventos</a>
-                <a href="profile.jsp">Perfil</a>
+                <c:choose>
+                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 1 || 
+                                    usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
+                            <a href="profile.jsp">Perfil</a>
+                    </c:when>
+                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
+                        <a href="FrontController?command=Usuario&action=perfil"> Perfil</a>
+                    </c:when>
+                </c:choose>   
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
@@ -93,13 +102,16 @@
                             <p> Descrição: ${usuarioSessao.getUsuarioinfo().getDescricao()} </p>
                             <br>
                             <h3> Dados de serviços: </h3>
-                            <p> >coloque aqui só o nominho serviço, sem o "nome:"< </p>
-                            <p> Categoria: </p>
-                            <p> Descrição: </p>
-                            <p> Preço: </p>
+                            <c:forEach var="servico" items="${listaServico}">
+                            <p> Nome: ${servico.getTitulo()} </p> 
+                            <p> Categoria: ${servico.getFkCategoriaservico().getNomecategoriaservico()}</p> 
+                            <p> Descrição: ${servico.getDescricao()} </p>  
+                            <p> Preço: ${servico.getPreço()}</p>  
+                            <br>
+                            </c:forEach>
                         </c:when>
                     </c:choose>
-                            
+
                     <br><h1><a href="editProfile.jsp"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
             </div>
         </div>
