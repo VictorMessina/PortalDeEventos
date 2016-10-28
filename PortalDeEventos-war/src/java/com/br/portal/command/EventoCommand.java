@@ -5,6 +5,7 @@
  */
 package com.br.portal.command;
 
+import com.br.portal.dao.CaracteristicaseventoDAO;
 import com.br.portal.dao.CategoriaEventoDAO;
 import com.br.portal.dao.EventoDAO;
 import com.br.portal.dao.UsuarioDAO;
@@ -28,8 +29,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EventoCommand implements Command {
 
-    UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
+    CaracteristicaseventoDAO caracteristicaseventoDAO = lookupCaracteristicaseventoDAOBean();
 
+    UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
     CategoriaEventoDAO categoriaEventoDAO = lookupCategoriaEventoDAOBean();
     EventoDAO eventoDAO = lookupEventoDAOBean();
     
@@ -54,17 +56,26 @@ public class EventoCommand implements Command {
                 Evento evento = new Evento();
                 evento.setTitulo(request.getParameter("titulo"));
                 evento.setDescricao(request.getParameter("descricao"));
-                String date = request.getParameter("data");
+                String dateini = request.getParameter("dataini");
+                String datefim = request.getParameter("datafim");
+                request.getParameter("tema");
+                int nconvidados = Integer.parseInt(request.getParameter("nconvidados"));
+                String buffet = request.getParameter("buffet");
+                String decoracao = request.getParameter("decoracao");
+                String atracoes = request.getParameter("atracoes");
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date data = new Date();
+                Date dataini = new Date();
+                Date datafim = new Date();
                 try {
-                    data = formatter.parse(date);
+                    dataini = formatter.parse(dateini);
+                    datafim = formatter.parse(datefim);
 
                 } catch (ParseException ex) {
                     Logger.getLogger(EventoCommand.class.getName()).log(Level.SEVERE, null, ex);
                 }
         
-                evento.setDataevento(data);
+                evento.setDataini(dataini);
+                evento.setDatafim(datafim);
                 evento.setLugar(request.getParameter("local"));
                 evento.setFkCliente(userEvent2);
                 evento.setFkCategoriaevento(catEvento);
@@ -107,6 +118,16 @@ public class EventoCommand implements Command {
         try {
             Context c = new InitialContext();
             return (UsuarioDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/UsuarioDAO!com.br.portal.dao.UsuarioDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private CaracteristicaseventoDAO lookupCaracteristicaseventoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (CaracteristicaseventoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/CaracteristicaseventoDAO!com.br.portal.dao.CaracteristicaseventoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

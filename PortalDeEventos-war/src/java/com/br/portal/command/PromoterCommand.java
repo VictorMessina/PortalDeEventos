@@ -48,7 +48,7 @@ public class PromoterCommand implements Command {
                 userinfo.setNumerocadastro(request.getParameter("numeroCadastro"));
                 userinfo.setTelefone1(request.getParameter("telefone1"));
                 userinfo.setTelefone2(request.getParameter("telefone2"));
-                userinfo.setPreco(Double.parseDouble(request.getParameter("comissao")));
+                userinfo.setComissao(Double.parseDouble(request.getParameter("comissao")));
 
                 userEvent2.setUsuarioinfo(userinfo);
 

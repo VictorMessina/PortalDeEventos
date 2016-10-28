@@ -44,7 +44,7 @@ public class ClienteCommand implements Command {
                 userinfo.setNumerocadastro(request.getParameter("numeroCadastro"));
                 userinfo.setTelefone1(request.getParameter("telefone1"));
                 userinfo.setTelefone2(request.getParameter("telefone2"));
-                userinfo.setPreco(0.0);
+                userinfo.setComissao(0.0);
 
                 userEvent2.setUsuarioinfo(userinfo);
 
