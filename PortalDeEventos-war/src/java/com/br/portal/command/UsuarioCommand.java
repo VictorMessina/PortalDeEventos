@@ -9,12 +9,15 @@ import com.br.portal.dao.UsuarioDAO;
 import com.br.portal.entities.Categoriaevento;
 import com.br.portal.entities.Categoriaservico;
 import com.br.portal.entities.Evento;
+import com.br.portal.entities.Servico;
 import com.br.portal.entities.Tipopessoa;
 import com.br.portal.entities.Tipousuario;
 import com.br.portal.entities.Usuario;
 import com.br.portal.entities.Usuarioinfo;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -217,7 +220,7 @@ public class UsuarioCommand implements Command {
                 returnPage = "/profile.jsp";
 
                 break;
-                
+
             case "updateTelefone1":
                 String tel1 = request.getParameter("telefone1");
 
@@ -235,7 +238,7 @@ public class UsuarioCommand implements Command {
                 returnPage = "/profile.jsp";
 
                 break;
-                
+
             case "updateTelefone2":
                 String tel2 = request.getParameter("telefone2");
 
@@ -254,6 +257,43 @@ public class UsuarioCommand implements Command {
 
                 break;
 
+            case "updateComissao":
+                String comissao = request.getParameter("comissao");
+
+                Usuario usuarioSessao8 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+
+                usuarioSessao8 = usuarioDAO.findById(usuarioSessao8.getIdUsuario());
+                usuarioSessao8.getUsuarioinfo().setComissao(Double.parseDouble(comissao));
+
+                usuarioDAO.update(usuarioSessao8);
+
+                request.getSession().setAttribute("usuarioSessao", usuarioSessao8);
+
+                request.getSession().setAttribute("successmsg", "Comissão atualizada com sucesso");
+
+                returnPage = "/profile.jsp";
+
+                break;
+
+
+//            case "updateNomeServico":
+//                String nomeServico = request.getParameter("nomeServico");
+//
+//                Usuario usuarioSessao10 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+//
+//                usuarioSessao10 = usuarioDAO.findById(usuarioSessao9.getIdUsuario());
+//                
+//                Precisa terminar...
+//                
+//                usuarioDAO.update(usuarioSessao10);
+//
+//                request.getSession().setAttribute("usuarioSessao", usuarioSessao10);
+//
+//                request.getSession().setAttribute("successmsg", "Nome Serviço atualizado com sucesso");
+//
+//                returnPage = "/profile.jsp";
+//
+//                break;
         }
     }
 

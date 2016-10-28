@@ -93,19 +93,15 @@
                             <p> Descrição: ${usuarioSessao.getUsuarioinfo().getDescricao()} </p>
                             <br>
                             <h3> Dados de serviços: </h3>
-                            <p> >coloque aqui só o nominho serviço, sem o "nome:"< </p>
-                            <p> Categoria: </p>
-                            <p> Descrição: </p>
-                            <p> Preço: </p>
                         </c:when>
                     </c:choose>
-                            
-                    <br><h1><a href="editProfile.jsp"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
-            </div>
-        </div>
 
-        <div class="footer">
-            Copyright © 2016. Hugo, Letícia, Victor, Vitória. All rights reserved.
-        </div>
-    </body>
-</html>
+                    <br><h1><a href="editProfile.jsp"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
+                    </div>
+                    </div>
+
+                    <div class="footer">
+                        Copyright © 2016. Hugo, Letícia, Victor, Vitória. All rights reserved.
+                    </div>
+                    </body>
+                    </html>

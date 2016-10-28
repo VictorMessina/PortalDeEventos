@@ -53,6 +53,7 @@
             var form4;
             var form5;
             var form6;
+            var form7;
             window.onload = function () {
                 form1 = document.getElementById("form1");
                 form2 = document.getElementById("form2");
@@ -60,6 +61,7 @@
                 form4 = document.getElementById("form4");
                 form5 = document.getElementById("form5");
                 form6 = document.getElementById("form6");
+                form7 = document.getElementById("form7");
 
                 form1.style.display = "none";
                 form2.style.display = "none";
@@ -67,6 +69,7 @@
                 form4.style.display = "none";
                 form5.style.display = "none";
                 form6.style.display = "none";
+                form7.style.display = "none";
             };
 
             function mostrar(num) {
@@ -77,6 +80,7 @@
                     form4.style.display = "none";
                     form5.style.display = "none";
                     form6.style.display = "none";
+                    form7.style.display = "none";
                 } else if (num === 2) {
                     form2.style.display = "block";
                     form1.style.display = "none";
@@ -84,6 +88,7 @@
                     form4.style.display = "none";
                     form5.style.display = "none";
                     form6.style.display = "none";
+                    form7.style.display = "none";
                 }
                 else if (num === 3) {
                     form3.style.display = "block";
@@ -92,6 +97,7 @@
                     form4.style.display = "none";
                     form5.style.display = "none";
                     form6.style.display = "none";
+                    form7.style.display = "none";
                 } else if (num === 4) {
                     form4.style.display = "block";
                     form1.style.display = "none";
@@ -99,6 +105,7 @@
                     form3.style.display = "none";
                     form5.style.display = "none";
                     form6.style.display = "none";
+                    form7.style.display = "none";
                 }
                 else if (num === 5) {
                     form5.style.display = "block";
@@ -106,6 +113,7 @@
                     form2.style.display = "none";
                     form4.style.display = "none";
                     form6.style.display = "none";
+                    form7.style.display = "none";
                 } else if (num === 6) {
                     form6.style.display = "block";
                     form1.style.display = "none";
@@ -113,6 +121,16 @@
                     form3.style.display = "none";
                     form4.style.display = "none";
                     form5.style.display = "none";
+                    form7.style.display = "none";
+                }
+                else if (num === 7) {
+                    form7.style.display = "block";
+                    form1.style.display = "none";
+                    form2.style.display = "none";
+                    form3.style.display = "none";
+                    form4.style.display = "none";
+                    form5.style.display = "none";
+                    form6.style.display = "none";
                 }
             }
         </script>
@@ -139,7 +157,23 @@
             <div class="links">
                 <a href="homepage.jsp">Home</a>
                 <a href="eventos.jsp">Eventos</a>
-                <a href="profile.jsp">Perfil</a>
+
+
+                <c:choose>
+                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 1 || 
+                                    usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
+                            
+                            <a href="profile.jsp">Perfil</a>
+                            
+                    </c:when>
+
+                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
+                        <a href="FrontController?command=Usuario&action=perfil"> Perfil</a>
+                    </c:when>
+
+                </c:choose>   
+
+
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
@@ -158,6 +192,23 @@
                 <button id="botao" onclick="mostrar(4)">Atualizar Descrição</button>
                 <button id="botao" onclick="mostrar(5)">Atualizar Telefone 1</button>
                 <button id="botao" onclick="mostrar(6)">Atualizar Telefone 2</button>
+
+                <c:choose>
+                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 1}">
+
+                    </c:when>
+
+                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
+
+                        <button id="botao" onclick="mostrar(7)">Atualizar comissão</button>
+
+                    </c:when>
+
+                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
+
+                    </c:when>
+
+                </c:choose>    
 
 
                 <div>
@@ -215,10 +266,19 @@
                         <input type="hidden" name="action" value="updateTelefone2"/>
                         <p><input type="submit" value="ATUALIZAR"/></p>
                     </form>
+
+                    <!-- Atualizar Comissão -->
+                    <form id="form7" action="FrontController" method="POST">
+                        <br><br><br><h3>Atualizar Comissão</h3>
+                        <p><input type="text" name="comissao" placeholder="10" maxlength="3" required="required"/></p>
+                        <input type="hidden" name="command" value="Usuario"/>
+                        <input type="hidden" name="action" value="updateComissao"/>
+                        <p><input type="submit" value="ATUALIZAR"/></p>
+                    </form>
                 </div>
             </center>
         </div>
-                    
+
         <div class="footer">
             Copyright © 2016. Hugo, Letícia, Victor, Vitória. All rights reserved.
         </div>
