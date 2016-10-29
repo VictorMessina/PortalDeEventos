@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author HugoKeniti
+ * @author Victor M
  */
 @Entity
 @Table(name = "CARACTERISTICASEVENTO")

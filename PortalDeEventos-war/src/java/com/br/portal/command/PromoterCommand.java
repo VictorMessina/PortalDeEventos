@@ -61,6 +61,25 @@ public class PromoterCommand implements Command {
                 returnPage = "/homepage.jsp";
 
                 break;
+                
+                
+            case "updateComissao":
+                String comissao = request.getParameter("comissao");
+
+                Usuario usuarioSessao8 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+
+                usuarioSessao8 = usuarioDAO.findById(usuarioSessao8.getIdUsuario());
+                usuarioSessao8.getUsuarioinfo().setComissao(Double.parseDouble(comissao));
+
+                usuarioDAO.update(usuarioSessao8);
+
+                request.getSession().setAttribute("usuarioSessao", usuarioSessao8);
+
+                request.getSession().setAttribute("successmsg", "Comissão atualizada com sucesso");
+
+                returnPage = "/profile.jsp";
+
+                break;
         }
     }
 

@@ -3,6 +3,7 @@ package com.br.portal.command;
 import com.br.portal.dao.CategoriaEventoDAO;
 import com.br.portal.dao.CategoriaServicoDAO;
 import com.br.portal.dao.EventoDAO;
+import com.br.portal.dao.ServicoDAO;
 import com.br.portal.dao.TipoPessoaDAO;
 import com.br.portal.dao.TipoUsuarioDAO;
 import com.br.portal.dao.UsuarioDAO;
@@ -13,11 +14,9 @@ import com.br.portal.entities.Servico;
 import com.br.portal.entities.Tipopessoa;
 import com.br.portal.entities.Tipousuario;
 import com.br.portal.entities.Usuario;
-import com.br.portal.entities.Usuarioinfo;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +31,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Victor M
  */
 public class UsuarioCommand implements Command {
+
+    ServicoDAO servicoDAO = lookupServicoDAOBean();
 
     EventoDAO eventoDAO = lookupEventoDAOBean();
 
@@ -257,54 +258,30 @@ public class UsuarioCommand implements Command {
 
                 break;
 
-            case "updateComissao":
-                String comissao = request.getParameter("comissao");
-
+            case "perfil":
                 Usuario usuarioSessao8 = (Usuario) request.getSession().getAttribute("usuarioSessao");
 
-                usuarioSessao8 = usuarioDAO.findById(usuarioSessao8.getIdUsuario());
-                usuarioSessao8.getUsuarioinfo().setComissao(Double.parseDouble(comissao));
+                List<Servico> listaServico = refreshServicos(usuarioSessao8);
 
-                usuarioDAO.update(usuarioSessao8);
-
-                request.getSession().setAttribute("usuarioSessao", usuarioSessao8);
-
-                request.getSession().setAttribute("successmsg", "Comissão atualizada com sucesso");
-
+                request.getSession().setAttribute("listaServico", listaServico);
                 returnPage = "/profile.jsp";
 
                 break;
-
-            case "perfil":
+                
+            case "editProfile":
                 Usuario usuarioSessao9 = (Usuario) request.getSession().getAttribute("usuarioSessao");
 
-                usuarioSessao9 = usuarioDAO.findById(usuarioSessao9.getIdUsuario());
+                List<Servico> listaServico2 = refreshServicos(usuarioSessao9);
 
-                List<Servico> cServico = (List<Servico>) usuarioSessao9.getServicoCollection();
-
-                request.getSession().setAttribute("listaServico", cServico);
-                returnPage = "/profile.jsp";
+                List<Categoriaservico> categorias = categoriaServicoDAO.find();
+                
+                request.getSession().setAttribute("listaServico", listaServico2);
+                
+                request.getSession().setAttribute("categorias", categorias);
+                
+                returnPage = "/editProfile.jsp";
 
                 break;
-
-//            case "updateNomeServico":
-//                String nomeServico = request.getParameter("nomeServico");
-//
-//                Usuario usuarioSessao10 = (Usuario) request.getSession().getAttribute("usuarioSessao");
-//
-//                usuarioSessao10 = usuarioDAO.findById(usuarioSessao9.getIdUsuario());
-//                
-//                Precisa terminar...
-//                
-//                usuarioDAO.update(usuarioSessao10);
-//
-//                request.getSession().setAttribute("usuarioSessao", usuarioSessao10);
-//
-//                request.getSession().setAttribute("successmsg", "Nome Serviço atualizado com sucesso");
-//
-//                returnPage = "/profile.jsp";
-//
-//                break;
         }
     }
 
@@ -391,4 +368,26 @@ public class UsuarioCommand implements Command {
         }
     }
 
+    private ServicoDAO lookupServicoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (ServicoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/ServicoDAO!com.br.portal.dao.ServicoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    public List<Servico> refreshServicos(Usuario us) {
+        List<Servico> lista2 = servicoDAO.find();
+        List<Servico> novaLista2 = new ArrayList<>();
+
+        for (Servico ser : lista2) {
+            if (ser.getFkFornecedor().getIdUsuario().equals(us.getIdUsuario())) {
+                novaLista2.add(ser);
+            }
+        }
+        return novaLista2;
+    }
+    
 }

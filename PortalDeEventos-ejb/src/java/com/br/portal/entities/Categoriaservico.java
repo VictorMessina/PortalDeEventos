@@ -6,7 +6,7 @@
 package com.br.portal.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HugoKeniti
+ * @author Victor M
  */
 @Entity
 @Table(name = "CATEGORIASERVICO")
@@ -44,7 +44,7 @@ public class Categoriaservico implements Serializable {
     @Column(name = "NOMECATEGORIASERVICO")
     private String nomecategoriaservico;
     @OneToMany(mappedBy = "fkCategoriaservico")
-    private Collection<Servico> servicoCollection;
+    private List<Servico> servicoList;
 
     public Categoriaservico() {
     }
@@ -70,12 +70,12 @@ public class Categoriaservico implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Servico> getServicoCollection() {
-        return servicoCollection;
+    public List<Servico> getServicoList() {
+        return servicoList;
     }
 
-    public void setServicoCollection(Collection<Servico> servicoCollection) {
-        this.servicoCollection = servicoCollection;
+    public void setServicoList(List<Servico> servicoList) {
+        this.servicoList = servicoList;
     }
 
     @Override

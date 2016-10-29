@@ -90,7 +90,7 @@
                             <p> Telefone: ${usuarioSessao.getUsuarioinfo().getTelefone1()} </p>
                             <p> Telefone 2: ${usuarioSessao.getUsuarioinfo().getTelefone2()} </p>
                             <p> Descrição: ${usuarioSessao.getUsuarioinfo().getDescricao()} </p>
-                            <p> Comissão: ${usuarioSessao.getUsuarioinfo().getPreco()} %</p>
+                            <p> Comissão: ${usuarioSessao.getUsuarioinfo().getComissao()} %</p>
                         </c:when>
 
                         <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
@@ -103,16 +103,24 @@
                             <br>
                             <h3> Dados de serviços: </h3>
                             <c:forEach var="servico" items="${listaServico}">
-                            <p> Nome: ${servico.getTitulo()} </p> 
-                            <p> Categoria: ${servico.getFkCategoriaservico().getNomecategoriaservico()}</p> 
-                            <p> Descrição: ${servico.getDescricao()} </p>  
-                            <p> Preço: ${servico.getPreço()}</p>  
-                            <br>
+                                <p> Nome: ${servico.getTitulo()} </p> 
+                                <p> Categoria: ${servico.getFkCategoriaservico().getNomecategoriaservico()}</p> 
+                                <p> Descrição: ${servico.getDescricao()} </p>  
+                                <p> Preço: ${servico.getPreço()}</p>  
+                                <br>
                             </c:forEach>
                         </c:when>
                     </c:choose>
 
-                    <br><h1><a href="editProfile.jsp"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
+                    <c:choose>
+                        <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 1 || 
+                                        usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
+                                <br><h1><a href="editProfile.jsp"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
+                                    </c:when>
+                                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
+                                <a href="FrontController?command=Usuario&action=editProfile"><input type="submit" value="EDITAR PERFIL"/></a>
+                        </c:when>
+                    </c:choose>
             </div>
         </div>
 

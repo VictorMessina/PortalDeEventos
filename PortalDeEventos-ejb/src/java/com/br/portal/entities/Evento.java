@@ -6,8 +6,8 @@
 package com.br.portal.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HugoKeniti
+ * @author Victor M
  */
 @Entity
 @Table(name = "EVENTO")
@@ -78,7 +78,7 @@ public class Evento implements Serializable {
         @JoinColumn(name = "FK_EVENTO", referencedColumnName = "ID_EVENTO")}, inverseJoinColumns = {
         @JoinColumn(name = "FK_FORNECEDOR", referencedColumnName = "ID_USUARIO")})
     @ManyToMany
-    private Collection<Usuario> usuarioCollection;
+    private List<Usuario> usuarioList;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "evento")
     private Caracteristicasevento caracteristicasevento;
     @JoinColumn(name = "FK_CATEGORIAEVENTO", referencedColumnName = "ID_CATEGORIAEVENTO")
@@ -154,12 +154,12 @@ public class Evento implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
     }
 
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
     }
 
     public Caracteristicasevento getCaracteristicasevento() {

@@ -6,7 +6,7 @@
 package com.br.portal.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HugoKeniti
+ * @author Victor M
  */
 @Entity
 @Table(name = "CATEGORIAEVENTO")
@@ -44,7 +44,7 @@ public class Categoriaevento implements Serializable {
     @Column(name = "NOMECATEGORIAEVENTO")
     private String nomecategoriaevento;
     @OneToMany(mappedBy = "fkCategoriaevento")
-    private Collection<Evento> eventoCollection;
+    private List<Evento> eventoList;
 
     public Categoriaevento() {
     }
@@ -70,12 +70,12 @@ public class Categoriaevento implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Evento> getEventoCollection() {
-        return eventoCollection;
+    public List<Evento> getEventoList() {
+        return eventoList;
     }
 
-    public void setEventoCollection(Collection<Evento> eventoCollection) {
-        this.eventoCollection = eventoCollection;
+    public void setEventoList(List<Evento> eventoList) {
+        this.eventoList = eventoList;
     }
 
     @Override

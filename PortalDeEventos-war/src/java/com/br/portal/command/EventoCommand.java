@@ -13,6 +13,7 @@ import com.br.portal.entities.Caracteristicasevento;
 import com.br.portal.entities.Categoriaevento;
 import com.br.portal.entities.Evento;
 import com.br.portal.entities.Usuario;
+import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -83,7 +84,7 @@ public class EventoCommand implements Command {
                 evento.setFkCategoriaevento(catEvento);
                 eventoDAO.persist(evento);
                 request.getSession().setAttribute("successmsg", "Evento criado com sucesso!");  
-                userEvent2.getEventoCollection2().add(evento);
+                userEvent2.getEventoList2().add(evento);
                 request.getSession().setAttribute("usuarioSessao", userEvent2);
                 returnPage = "/eventos.jsp";
 

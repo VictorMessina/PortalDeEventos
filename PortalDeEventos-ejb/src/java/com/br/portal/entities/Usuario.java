@@ -6,7 +6,7 @@
 package com.br.portal.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HugoKeniti
+ * @author Victor M
  */
 @Entity
 @Table(name = "USUARIO")
@@ -57,10 +57,10 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 32)
     @Column(name = "PASSWORD")
     private String password;
-    @ManyToMany(mappedBy = "usuarioCollection")
-    private Collection<Evento> eventoCollection;
+    @ManyToMany(mappedBy = "usuarioList")
+    private List<Evento> eventoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkFornecedor")
-    private Collection<Servico> servicoCollection;
+    private List<Servico> servicoList;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Usuarioinfo usuarioinfo;
     @JoinColumn(name = "FK_TIPOPESSOA", referencedColumnName = "ID_TIPOPESSOA")
@@ -70,9 +70,9 @@ public class Usuario implements Serializable {
     @ManyToOne(optional = false)
     private Tipousuario fkTipousuario;
     @OneToMany(mappedBy = "fkPromoter")
-    private Collection<Evento> eventoCollection1;
+    private List<Evento> eventoList1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkCliente")
-    private Collection<Evento> eventoCollection2;
+    private List<Evento> eventoList2;
 
     public Usuario() {
     }
@@ -112,21 +112,21 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Evento> getEventoCollection() {
-        return eventoCollection;
+    public List<Evento> getEventoList() {
+        return eventoList;
     }
 
-    public void setEventoCollection(Collection<Evento> eventoCollection) {
-        this.eventoCollection = eventoCollection;
+    public void setEventoList(List<Evento> eventoList) {
+        this.eventoList = eventoList;
     }
 
     @XmlTransient
-    public Collection<Servico> getServicoCollection() {
-        return servicoCollection;
+    public List<Servico> getServicoList() {
+        return servicoList;
     }
 
-    public void setServicoCollection(Collection<Servico> servicoCollection) {
-        this.servicoCollection = servicoCollection;
+    public void setServicoList(List<Servico> servicoList) {
+        this.servicoList = servicoList;
     }
 
     public Usuarioinfo getUsuarioinfo() {
@@ -154,21 +154,21 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Evento> getEventoCollection1() {
-        return eventoCollection1;
+    public List<Evento> getEventoList1() {
+        return eventoList1;
     }
 
-    public void setEventoCollection1(Collection<Evento> eventoCollection1) {
-        this.eventoCollection1 = eventoCollection1;
+    public void setEventoList1(List<Evento> eventoList1) {
+        this.eventoList1 = eventoList1;
     }
 
     @XmlTransient
-    public Collection<Evento> getEventoCollection2() {
-        return eventoCollection2;
+    public List<Evento> getEventoList2() {
+        return eventoList2;
     }
 
-    public void setEventoCollection2(Collection<Evento> eventoCollection2) {
-        this.eventoCollection2 = eventoCollection2;
+    public void setEventoList2(List<Evento> eventoList2) {
+        this.eventoList2 = eventoList2;
     }
 
     @Override
