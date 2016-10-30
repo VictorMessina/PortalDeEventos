@@ -37,6 +37,7 @@ public class EventoCommand implements Command {
     CategoriaEventoDAO categoriaEventoDAO = lookupCategoriaEventoDAOBean();
     EventoDAO eventoDAO = lookupEventoDAOBean();
     
+    
 
     private String returnPage = "/index.jsp";
     private HttpServletRequest request;
@@ -56,16 +57,11 @@ public class EventoCommand implements Command {
                 Usuario userEvent2 = (Usuario) request.getSession().getAttribute("usuarioSessao");
                 Categoriaevento catEvento = categoriaEventoDAO.findById(Integer.parseInt(request.getParameter("idCatEvento")));
                 Evento evento = new Evento();
-                Caracteristicasevento carac = new Caracteristicasevento();
+                
                 evento.setTitulo(request.getParameter("titulo"));
                 evento.setDescricao(request.getParameter("descricao"));
                 String dateini = request.getParameter("dataini");
                 String datefim = request.getParameter("datafim");
-                carac.setTema(request.getParameter("tema"));
-                carac.setNconvidados(Integer.parseInt(request.getParameter("nconvidados")));
-                carac.setBuffet(request.getParameter("buffet"));
-                carac.setDecoracao(request.getParameter("decoracao"));
-                carac.setAtracoes(request.getParameter("atracoes"));
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 Date dataini = new Date();
                 Date datafim = new Date();
@@ -82,7 +78,19 @@ public class EventoCommand implements Command {
                 evento.setLugar(request.getParameter("local"));
                 evento.setFkCliente(userEvent2);
                 evento.setFkCategoriaevento(catEvento);
+                
+                Caracteristicasevento carac = new Caracteristicasevento();
+                
+                carac.setTema(request.getParameter("tema"));
+                carac.setNconvidados(Integer.parseInt(request.getParameter("nconvidados")));
+                carac.setBuffet(request.getParameter("buffet"));
+                carac.setDecoracao(request.getParameter("decoracao"));
+                carac.setAtracoes(request.getParameter("atracoes"));
+                carac.setEvento(evento);
+                evento.setCaracteristicasevento(carac);
+                
                 eventoDAO.persist(evento);
+
                 request.getSession().setAttribute("successmsg", "Evento criado com sucesso!");  
                 userEvent2.getEventoList2().add(evento);
                 request.getSession().setAttribute("usuarioSessao", userEvent2);

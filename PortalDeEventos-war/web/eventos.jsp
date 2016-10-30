@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="eventos">
-                        <c:forEach var="evento" items="${usuarioSessao.getEventoCollection2()}">
+                        <c:forEach var="evento" items="${usuarioSessao.getEventoList2()}">
                             <div class="etitulo">
                                 <i class="fa fa-calendar" style="float:right"></i> 
                                 <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataini()}"/>
