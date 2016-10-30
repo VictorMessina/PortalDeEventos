@@ -13,12 +13,25 @@
         <title> Criar Evento </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="laranja.ico">
-        <!-- 
-        pra fazer os icones bonitinhos, colocar o link.
-        pra escolher quais, ir em http://fontawesome.io/icons/
-        e colocar <i class="fa fa-BLABLA" style="float:RIGHT OU LEFT"></i>
-        -->
-
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#txtFromDate").datepicker({
+                    numberOfMonths: 2,
+                    onSelect: function (selected) {
+                        $("#txtToDate").datepicker("option", "minDate", selected)
+                    }
+                });
+                $("#txtToDate").datepicker({
+                    numberOfMonths: 2,
+                    onSelect: function (selected) {
+                        $("#txtFromDate").datepicker("option", "maxDate", selected)
+                    }
+                });
+            });
+        </script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <!-- fontes -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -34,7 +47,6 @@
         <c:if test="${usuarioSessao==null}" >
             <c:redirect url="index.jsp"></c:redirect> 
         </c:if> 
-
         <div class="welcome">
             <div class="wlinks">
                 <h3> Olá ${usuarioSessao.getUsuarioinfo().getNome()} !
@@ -47,7 +59,6 @@
             <a href="homepage.jsp"><img src="laranja.ico" alt="LOGO"/></a>
             <div class="title">EVENTOS</div><br>
             <div class="subtitle">portal de eventos</div>
-
             <div class="links">
                 <a href="homepage.jsp">Home</a>
                 <a href="eventos.jsp">Eventos</a>
@@ -91,23 +102,44 @@
                         <h1> Título: * <br><input type="text" name="titulo" placeholder="título" required/></h1>
                         <h1> Descrição: *<br><input type="text" name="descricao" placeholder="descriçao"/></h1>
                         <h1> Local: *<br><input type="text" name="local" placeholder="local" required/></h1>
-                        <h1> Data Inicial: *<br><input type="date" name="dataini" placeholder="dd/mm/yyyy" required /></h1>
-                        <h1> Hora de Inicio: *<br><input type="text" maxlength="2" pattern="[0-9]+$" name="horaini" placeholder="HH"required />
-                            <input type="text" maxlength="2" name="minini" pattern="[0-9]+$" placeholder="MM" required />
-                        </h1>
-                        <h1> Data Final: *<br><input type="date" name="datafim" placeholder="dd/mm/yyyy" required /></h1>
-                        <h1> Hora Fim: *<br><input type="text" maxlength="2" pattern="[0-9]+$"  name="horafim" placeholder="HH" required />
-                            <input type="text" maxlength="2" pattern="[0-9]+$" name="minfim" placeholder="MM" required />
-                        </h1>
-                        <h1> Tema: *<br><input type="text" name="tema" placeholder="Insira o tema do seu evento" required /></h1>
-                        <h1> Numero de convidados: *<br><input type="text"  name="nconvidados" placeholder="Numero de convidados" required /></h1>
-                        <h1> Descrição do Buffet: *<br><input type="text" name="buffet" placeholder="Descrição do Buffet" required /></h1>
-                        <h1> Descrição da decoração: *<br><input type="text" name="decoracao" placeholder="Descrição da decoração" required /></h1>
-                        <h1> Descrição das atrações: *<br><input type="text" name="atracoes" placeholder="Descrição das atrações" required /></h1>
+                        <h1> Data Inicial: *</h1><br><input type="text" id="txtFromDate" name="dataini"/>
+                        <h1> Hora de Inicio: *<br>
+                            <select name="horaini" placeholder="HH">
+                                <c:forEach var="h" begin="0" end="24">
+                                    <option value="${h}">${h}</option>
+                                </c:forEach>
+                            </select>
 
-                        <h1><input type="hidden" name="command" value="Evento"/></h1>
-                        <h1><input type="hidden" name="action" value="insert"/></h1>
-                        <br><h1><input type="submit" value="CRIAR"/></h1>
+                            <select name="minini" placeholder="MM">
+                                <c:forEach var="m" begin="0" end="59">
+                                    <option value="${m}">${m}</option>
+                                </c:forEach>
+                            </select>
+
+                        </h1>
+                        <h1> Data Final: *<br><input type="text" id="txtToDate" name="datafim"/>
+                            <h1> Hora Fim: *<br>
+                                <select name="horafim" placeholder="HH">
+                                    <c:forEach var="h" begin="0" end="23">
+                                        <option value="${h}">${h}</option>
+                                    </c:forEach>
+                                </select>
+
+                                <select name="minfim" placeholder="MM">
+                                    <c:forEach var="m" begin="0" end="59">
+                                        <option value="${m}">${m}</option>
+                                    </c:forEach>
+                                </select>
+                            </h1>
+                            <h1> Tema: *<br><input type="text" name="tema" placeholder="Insira o tema do seu evento" required /></h1>
+                            <h1> Numero de convidados: *<br><input type="text"  name="nconvidados" placeholder="Numero de convidados" required /></h1>
+                            <h1> Descrição do Buffet: *<br><input type="text" name="buffet" placeholder="Descrição do Buffet" required /></h1>
+                            <h1> Descrição da decoração: *<br><input type="text" name="decoracao" placeholder="Descrição da decoração" required /></h1>
+                            <h1> Descrição das atrações: *<br><input type="text" name="atracoes" placeholder="Descrição das atrações" required /></h1>
+
+                            <h1><input type="hidden" name="command" value="Evento"/></h1>
+                            <h1><input type="hidden" name="action" value="insert"/></h1>
+                            <br><h1><input type="submit" value="CRIAR"/></h1>
 
                     </form>
                 </div>
