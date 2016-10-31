@@ -20,6 +20,7 @@
             $(document).ready(function () {
                 $("#txtFromDate").datepicker({
                     numberOfMonths: 2,
+                    minDate: 0,
                     onSelect: function (selected) {
                         $("#txtToDate").datepicker("option", "minDate", selected)
                     }
@@ -106,30 +107,54 @@
                         <h1> Hora de Inicio: *<br>
                             <select name="horaini" placeholder="HH">
                                 <c:forEach var="h" begin="0" end="24">
-                                    <option value="${h}">${h}</option>
+                                    <c:if test="${h < 10}">
+                                        <option value="${h}">0${h}</option>
+                                    </c:if>
+                                    <c:if test="${h > 9}">
+                                        <option value="${h}">${h}</option>
+                                    </c:if>    
                                 </c:forEach>
                             </select>
+                            H
 
                             <select name="minini" placeholder="MM">
                                 <c:forEach var="m" begin="0" end="59">
-                                    <option value="${m}">${m}</option>
+                                    <c:if test="${m < 10}">
+                                        <option value="${m}">0${m}</option>
+                                    </c:if>
+                                    <c:if test="${m > 9}">
+                                        <option value="${m}">${m}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
+                            M
 
                         </h1>
                         <h1> Data Final: *<br><input type="text" id="txtToDate" name="datafim"/>
                             <h1> Hora Fim: *<br>
                                 <select name="horafim" placeholder="HH">
                                     <c:forEach var="h" begin="0" end="23">
-                                        <option value="${h}">${h}</option>
+                                        <c:if test="${h < 10}">
+                                            <option value="${h}">0${h}</option>
+                                        </c:if>
+                                        <c:if test="${h > 9}">
+                                            <option value="${h}">${h}</option>
+                                        </c:if>
                                     </c:forEach>
                                 </select>
+                                H    
 
                                 <select name="minfim" placeholder="MM">
                                     <c:forEach var="m" begin="0" end="59">
+                                        <c:if test="${m < 10}">
+                                        <option value="${m}">0${m}</option>
+                                    </c:if>
+                                    <c:if test="${m > 9}">
                                         <option value="${m}">${m}</option>
+                                    </c:if>
                                     </c:forEach>
                                 </select>
+                                M
                             </h1>
                             <h1> Tema: *<br><input type="text" name="tema" placeholder="Insira o tema do seu evento" required /></h1>
                             <h1> Numero de convidados: *<br><input type="text"  name="nconvidados" placeholder="Numero de convidados" required /></h1>

@@ -62,12 +62,19 @@ public class EventoCommand implements Command {
                 evento.setDescricao(request.getParameter("descricao"));
                 String dateini = request.getParameter("dataini");
                 String datefim = request.getParameter("datafim");
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+                //SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
                 Date dataini = new Date();
                 Date datafim = new Date();
                 try {
                     dataini = formatter.parse(dateini);
                     datafim = formatter.parse(datefim);
+                    dataini.setHours(Integer.parseInt(request.getParameter("horaini")));
+                    dataini.setMinutes(Integer.parseInt(request.getParameter("minini")));
+                    dataini.setSeconds(0);
+                    datafim.setHours(Integer.parseInt(request.getParameter("horafim")));
+                    datafim.setMinutes(Integer.parseInt(request.getParameter("minfim")));
+                    datafim.setSeconds(0);
 
                 } catch (ParseException ex) {
                     Logger.getLogger(EventoCommand.class.getName()).log(Level.SEVERE, null, ex);
