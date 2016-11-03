@@ -105,11 +105,29 @@ public class EventoCommand implements Command {
                 returnPage = "/eventos.jsp";
 
                 break;
-            case "abrirEvento":
+            case "perfilEvento":
                 Evento eventoAtual = eventoDAO.findById(Integer.parseInt(request.getParameter("idEvento")));
                 request.getSession().setAttribute("eventoAtual", eventoAtual);
                 returnPage = "/eventoProfile.jsp";
                 break;
+            case "cronogramaEvento":
+                Evento eventoAtual2 = eventoDAO.findById(Integer.parseInt(request.getParameter("idEvento")));
+                request.getSession().setAttribute("eventoAtual", eventoAtual2);
+                returnPage = "/eventoCronograma.jsp";
+                break;
+            case "participantesEvento":
+                Evento eventoAtual3 = eventoDAO.findById(Integer.parseInt(request.getParameter("idEvento")));                
+//                List listaFornecedores = new List();
+//                request.getSession().setAttribute("listaFornecedores", listaFornecedores);
+                request.getSession().setAttribute("eventoAtual", eventoAtual3);
+                returnPage = "/eventoParticipantes.jsp";
+                break;
+            case "orcamentosEvento":
+                Evento eventoAtual4 = eventoDAO.findById(Integer.parseInt(request.getParameter("idEvento")));
+                request.getSession().setAttribute("eventoAtual", eventoAtual4);
+                returnPage = "/eventoOrcamentos.jsp";
+                break;
+            
         }
     }
 

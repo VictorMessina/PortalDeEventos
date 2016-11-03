@@ -1,6 +1,6 @@
 <%-- 
-    Document   : eventoProfile
-    Created on : 03/11/2016, 09:44:55
+    Document   : eventoParticipantes
+    Created on : 03/11/2016, 04:56:40
     Author     : Vitória
 --%>
 
@@ -115,30 +115,38 @@
                     </div>
                     
                     <div class="links2">
-                        <a class="selecionado" href="FrontController?command=Evento&action=perfilEvento&idEvento=${eventoAtual.getIdEvento()}">Perfil</a> |
+                        <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${eventoAtual.getIdEvento()}">Perfil</a> |
                         <a href="FrontController?command=Evento&action=cronogramaEvento&idEvento=${eventoAtual.getIdEvento()}">Cronograma</a> |
-                        <a href="FrontController?command=Evento&action=participantesEvento&idEvento=${eventoAtual.getIdEvento()}">Participantes</a> |
+                        <a class="selecionado" href="FrontController?command=Evento&action=participantesEvento&idEvento=${eventoAtual.getIdEvento()}">Participantes</a> |
                         <a href="FrontController?command=Evento&action=orcamentosEvento&idEvento=${eventoAtual.getIdEvento()}">Orçamentos</a>
                     </div>
 
                     <div class="ecaixa">                        
-                        <p> Local: <c:out value="${eventoAtual.getLugar()}"/></p>
-                        <p> Descrição: <c:out value="${eventoAtual.getDescricao()}"/></p>                        
-                        <p> Inicio: <c:out value="${eventoAtual.getDataini().getDay()}"/>/<c:out value="${eventoAtual.getDataini().getMonth()}"/>/2016</p>
-                        <p> Fim: <c:out value="${eventoAtual.getDatafim().getDay()}"/>/<c:out value="${eventoAtual.getDatafim().getMonth()}"/>/2016</p>
-                        <p> Categoria: <c:out value="${eventoAtual.getFkCategoriaevento().getNomecategoriaevento()}"/></p>
-                        <p> Tema: <c:out value="${eventoAtual.getCaracteristicasevento().getTema()}"/></p>
-                        <p> Número de convidados: <c:out value="${eventoAtual.getCaracteristicasevento().getNconvidados()}"/></p>
-                        <p> Descrição do buffet: <c:out value="${eventoAtual.getCaracteristicasevento().getBuffet()}"/></p>
-                        <p> Descrição da decoração: <c:out value="${eventoAtual.getCaracteristicasevento().getDecoracao()}"/></p>
-                        <p> Descrição das atrações: <c:out value="${eventoAtual.getCaracteristicasevento().getAtracoes()}"/></p>
-                                                
-                        <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" >
-                            <div style="text-align: center" >
-                                <a href="FrontController?command=Evento&action=editarEvento&idEvento=${eventoAtual.getIdEvento()}"><input type="submit" value="Editar evento"/></a>
-                            </div>
-                        </c:if>
+                        <h3>Dono do evento:</h3>
+                        <p><c:out value="${eventoAtual.getFkCliente().getUsuarioinfo().getNome()}"/></p>                        
                         
+                        <h3>Promoter:</h3>
+                        <c:choose>  
+                            <c:when test="${eventoAtual.getFkPromoter()==null}">
+                                <p> Este evento ainda não possui um promoter</p>
+                            </c:when>
+                            <c:otherwise>                            
+                                <p> <c:out value="${eventoAtual.getFkPromoter().getUsuarioinfo().getNome()}"/></p>
+                            </c:otherwise>
+                        </c:choose>
+                        
+                        <h3>Fornecedores de serviços:</h3>
+                        <c:choose>  
+                            <c:when test="${eventoAtual.getUsuarioList().isEmpty()}">
+                                <p>Este evento ainda não possui fornecedores de serviços</p>
+                            </c:when>
+                            <c:otherwise>                            
+                                <c:forEach var="fornecedor" items="${eventoAtual.getUsuarioList()}">
+                                    <p>${fornecedor.getUsuarioinfo().getNome()}</p> 
+                                    <br>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>                        
                     </div>    
             </div>
             
@@ -149,4 +157,5 @@
         </div>
     </body>
 </html>
+
 

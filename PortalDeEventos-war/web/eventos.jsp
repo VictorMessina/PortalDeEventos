@@ -95,7 +95,7 @@
                                 <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
                                 <p> Local: <c:out value="${evento.getLugar()}"/></p>
                                 <div style="text-align: center" >
-                                    <a href="FrontController?command=Evento&action=abrirEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
+                                    <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
                                 </div>
                             </div>                        
 
@@ -137,7 +137,7 @@
                                 <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
                                 <p> Local: <c:out value="${evento.getLugar()}"/></p>
                                 <div style="text-align: center" >
-                                    <a href="FrontController?command=Evento&action=abrirEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
+                                    <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
                                 </div>
                             </div>                        
 
@@ -178,7 +178,7 @@
                                 <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
                                 <p> Local: <c:out value="${evento.getLugar()}"/></p>
                                 <div style="text-align: center" >
-                                    <a href="FrontController?command=Evento&action=abrirEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
+                                    <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
                                 </div>
                             </div>                        
 

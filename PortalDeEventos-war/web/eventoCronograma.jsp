@@ -1,8 +1,3 @@
-<%-- 
-    Document   : eventoProfile
-    Created on : 03/11/2016, 09:44:55
-    Author     : Vitória
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -115,27 +110,18 @@
                     </div>
                     
                     <div class="links2">
-                        <a class="selecionado" href="FrontController?command=Evento&action=perfilEvento&idEvento=${eventoAtual.getIdEvento()}">Perfil</a> |
-                        <a href="FrontController?command=Evento&action=cronogramaEvento&idEvento=${eventoAtual.getIdEvento()}">Cronograma</a> |
+                        <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${eventoAtual.getIdEvento()}">Perfil</a> |
+                        <a class="selecionado" href="FrontController?command=Evento&action=cronogramaEvento&idEvento=${eventoAtual.getIdEvento()}">Cronograma</a> |
                         <a href="FrontController?command=Evento&action=participantesEvento&idEvento=${eventoAtual.getIdEvento()}">Participantes</a> |
                         <a href="FrontController?command=Evento&action=orcamentosEvento&idEvento=${eventoAtual.getIdEvento()}">Orçamentos</a>
                     </div>
 
                     <div class="ecaixa">                        
-                        <p> Local: <c:out value="${eventoAtual.getLugar()}"/></p>
-                        <p> Descrição: <c:out value="${eventoAtual.getDescricao()}"/></p>                        
-                        <p> Inicio: <c:out value="${eventoAtual.getDataini().getDay()}"/>/<c:out value="${eventoAtual.getDataini().getMonth()}"/>/2016</p>
-                        <p> Fim: <c:out value="${eventoAtual.getDatafim().getDay()}"/>/<c:out value="${eventoAtual.getDatafim().getMonth()}"/>/2016</p>
-                        <p> Categoria: <c:out value="${eventoAtual.getFkCategoriaevento().getNomecategoriaevento()}"/></p>
-                        <p> Tema: <c:out value="${eventoAtual.getCaracteristicasevento().getTema()}"/></p>
-                        <p> Número de convidados: <c:out value="${eventoAtual.getCaracteristicasevento().getNconvidados()}"/></p>
-                        <p> Descrição do buffet: <c:out value="${eventoAtual.getCaracteristicasevento().getBuffet()}"/></p>
-                        <p> Descrição da decoração: <c:out value="${eventoAtual.getCaracteristicasevento().getDecoracao()}"/></p>
-                        <p> Descrição das atrações: <c:out value="${eventoAtual.getCaracteristicasevento().getAtracoes()}"/></p>
-                                                
-                        <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" >
+                        <p> Este evento ainda não possui um cronograma.</p>
+                                             
+                        <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==2}" >
                             <div style="text-align: center" >
-                                <a href="FrontController?command=Evento&action=editarEvento&idEvento=${eventoAtual.getIdEvento()}"><input type="submit" value="Editar evento"/></a>
+                                <a href="FrontController?command=Evento&action=editarCronograma&idEvento=${eventoAtual.getIdEvento()}"><input type="submit" value="Criar cronograma"/></a>
                             </div>
                         </c:if>
                         
