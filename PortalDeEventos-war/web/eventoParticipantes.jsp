@@ -51,15 +51,7 @@
             <div class="links">
                 <a href="homepage.jsp">Home</a>
                 <a href="eventos.jsp">Eventos</a>
-                <c:choose>
-                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 1 || 
-                                    usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
-                            <a href="profile.jsp">Perfil</a>
-                    </c:when>
-                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
-                        <a href="FrontController?command=Usuario&action=perfil"> Perfil</a>
-                    </c:when>
-                </c:choose>   
+                <a href="FrontController?command=Usuario&action=perfil&idUsuario=${usuarioSessao.getIdUsuario()}"> Perfil</a>                      
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
@@ -123,7 +115,7 @@
 
                     <div class="ecaixa">                        
                         <h3>Dono do evento:</h3>
-                        <p><c:out value="${eventoAtual.getFkCliente().getUsuarioinfo().getNome()}"/></p>                        
+                        <p><a href="FrontController?command=Usuario&action=perfil&idUsuario=${eventoAtual.getFkCliente().getIdUsuario()}"> <c:out value="${eventoAtual.getFkCliente().getUsuarioinfo().getNome()}"/></a></p>                        
                         
                         <h3>Promoter:</h3>
                         <c:choose>  
@@ -131,7 +123,7 @@
                                 <p> Este evento ainda não possui um promoter</p>
                             </c:when>
                             <c:otherwise>                            
-                                <p> <c:out value="${eventoAtual.getFkPromoter().getUsuarioinfo().getNome()}"/></p>
+                                <p><a href="FrontController?command=Usuario&action=perfil&idUsuario=${eventoAtual.getFkPromoter().getIdUsuario()}"> <c:out value="${eventoAtual.getFkPromoter().getUsuarioinfo().getNome()}"/></a></p>  
                             </c:otherwise>
                         </c:choose>
                         
@@ -142,7 +134,7 @@
                             </c:when>
                             <c:otherwise>                            
                                 <c:forEach var="fornecedor" items="${eventoAtual.getUsuarioList()}">
-                                    <p>${fornecedor.getUsuarioinfo().getNome()}</p> 
+                                    <p><a href="FrontController?command=Usuario&action=perfil&idUsuario=${fornecedor.getIdUsuario()}"> <c:out value="${fornecedor.getUsuarioinfo().getNome()}"/></a></p>  
                                     <br>
                                 </c:forEach>
                             </c:otherwise>

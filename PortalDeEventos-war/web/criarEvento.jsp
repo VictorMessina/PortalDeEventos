@@ -63,15 +63,7 @@
             <div class="links">
                 <a href="homepage.jsp">Home</a>
                 <a href="eventos.jsp">Eventos</a>
-                <c:choose>
-                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 1 || 
-                                    usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
-                            <a href="profile.jsp">Perfil</a>
-                    </c:when>
-                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
-                        <a href="FrontController?command=Usuario&action=perfil"> Perfil</a>
-                    </c:when>
-                </c:choose>   
+                <a href="FrontController?command=Usuario&action=perfil&idUsuario=${usuarioSessao.getIdUsuario()}"> Perfil</a>                      
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>

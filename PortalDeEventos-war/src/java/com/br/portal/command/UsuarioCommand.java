@@ -259,11 +259,14 @@ public class UsuarioCommand implements Command {
                 break;
 
             case "perfil":
-                Usuario usuarioSessao8 = (Usuario) request.getSession().getAttribute("usuarioSessao");
+                Usuario usuarioPerfil = usuarioDAO.findById(Integer.parseInt(request.getParameter("idUsuario")));
 
-                List<Servico> listaServico = refreshServicos(usuarioSessao8);
-
-                request.getSession().setAttribute("listaServico", listaServico);
+                if (usuarioPerfil.getFkTipousuario().getIdTipousuario() == 3){
+                    List<Servico> listaServico = refreshServicos(usuarioPerfil);                    
+                    request.getSession().setAttribute("listaServico", listaServico);
+                }
+               
+                request.getSession().setAttribute("usuarioPerfil", usuarioPerfil);
                 returnPage = "/profile.jsp";
 
                 break;

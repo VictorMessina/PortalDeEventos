@@ -50,15 +50,7 @@
             <div class="links">
                 <a href="homepage.jsp">Home</a>
                 <a href="eventos.jsp">Eventos</a>
-                <c:choose>
-                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 1 || 
-                                    usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
-                            <a href="profile.jsp">Perfil</a>
-                    </c:when>
-                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
-                        <a href="FrontController?command=Usuario&action=perfil"> Perfil</a>
-                    </c:when>
-                </c:choose>   
+                <a href="FrontController?command=Usuario&action=perfil&idUsuario=${usuarioSessao.getIdUsuario()}"> Perfil</a>                      
                 <a href="sobre.jsp">Sobre</a>
             </div>
         </div>
@@ -71,19 +63,19 @@
 
             <!-- usei a div cadastro pq ela já está posicionada no meio da página -->
             <div class="cadastro">
-                <h1> ${usuarioSessao.getUsuarioinfo().getNome()} </h3>
+                <h1> ${usuarioPerfil.getUsuarioinfo().getNome()} </h3>
                 <h3> Dados pessoais: </h3>
-                <p> Email: ${usuarioSessao.getUsuarioinfo().getEmail()} </p>
-                <p> Telefone: ${usuarioSessao.getUsuarioinfo().getTelefone1()} </p>
-                <p> Telefone 2: ${usuarioSessao.getUsuarioinfo().getTelefone2()} </p>
-                <p> Descrição: ${usuarioSessao.getUsuarioinfo().getDescricao()} </p>
+                <p> Email: ${usuarioPerfil.getUsuarioinfo().getEmail()} </p>
+                <p> Telefone: ${usuarioPerfil.getUsuarioinfo().getTelefone1()} </p>
+                <p> Telefone 2: ${usuarioPerfil.getUsuarioinfo().getTelefone2()} </p>
+                <p> Descrição: ${usuarioPerfil.getUsuarioinfo().getDescricao()} </p>
                     <c:choose>                       
 
-                        <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
-                            <p> Comissão: ${usuarioSessao.getUsuarioinfo().getComissao()} %</p>
+                        <c:when test="${usuarioPerfil.getFkTipousuario().getIdTipousuario() == 2}">
+                            <p> Comissão: ${usuarioPerfil.getUsuarioinfo().getComissao()} %</p>
                         </c:when>
 
-                        <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">                            
+                        <c:when test="${usuarioPerfil.getFkTipousuario().getIdTipousuario() == 3}">                            
                             <br>
                             <h3> Dados de serviços: </h3>
                             <c:forEach var="servico" items="${listaServico}">
@@ -96,15 +88,10 @@
                         </c:when>
                     </c:choose>
 
-                    <c:choose>
-                        <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 1 || 
-                                        usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
-                                <br><h1><a href="editProfile.jsp"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
-                                    </c:when>
-                                    <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
-                                <a href="FrontController?command=Usuario&action=editProfile"><input type="submit" value="EDITAR PERFIL"/></a>
-                        </c:when>
-                    </c:choose>
+                    <c:if test="${usuarioSessao.getIdUsuario() == usuarioPerfil.getIdUsuario()}">
+                        <br><h1><a href="FrontController?command=Usuario&action=editProfile"><input type="submit" value="EDITAR PERFIL"/></a></h1><br>
+                    </c:if>
+                                  
             </div>
         </div>
 
