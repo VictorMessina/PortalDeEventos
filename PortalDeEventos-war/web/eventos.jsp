@@ -1,4 +1,4 @@
-<%@page import="java.time.LocalDateTime"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -86,13 +86,17 @@
                         <c:forEach var="evento" items="${usuarioSessao.getEventoList2()}">
                             <div class="etitulo">
                                 <i class="fa fa-calendar" style="float:right"></i> 
-                                <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataini()}"/>
-                                <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDatafim()}"/>
+                                <p><c:out value="${evento.getTitulo()}"/>            
+                                (<c:out value="${evento.getDataini().getDay()}"/>/<c:out value="${evento.getDataini().getMonth()}"/>/2016 a <c:out value="${evento.getDatafim().getDay()}"/>/<c:out value="${evento.getDatafim().getMonth()}"/>/2016)</p>
+                                                                 
                             </div>
                        
                             <div class="ecaixa">
                                 <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
                                 <p> Local: <c:out value="${evento.getLugar()}"/></p>
+                                <div style="text-align: center" >
+                                    <a href="FrontController?command=Evento&action=abrirEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
+                                </div>
                             </div>                        
 
                         </c:forEach>                 
@@ -121,15 +125,20 @@
                     </div>
 
                     <div class="eventos">
-                        <c:forEach var="evento" items="${usuarioSessao.getEventoCollection1()}">
+                        <c:forEach var="evento" items="${usuarioSessao.getEventoList2()}">
                             <div class="etitulo">
                                 <i class="fa fa-calendar" style="float:right"></i> 
-                                <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataevento()}"/>
+                                <p><c:out value="${evento.getTitulo()}"/>            
+                                (<c:out value="${evento.getDataini().getDay()}"/>/<c:out value="${evento.getDataini().getMonth()}"/>/2016 a <c:out value="${evento.getDatafim().getDay()}"/>/<c:out value="${evento.getDatafim().getMonth()}"/>/2016)</p>
+                                                                 
                             </div>
-
+                       
                             <div class="ecaixa">
                                 <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
                                 <p> Local: <c:out value="${evento.getLugar()}"/></p>
+                                <div style="text-align: center" >
+                                    <a href="FrontController?command=Evento&action=abrirEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
+                                </div>
                             </div>                        
 
                         </c:forEach>                 
@@ -157,15 +166,20 @@
 
                     <!-- ALTERAR A COLLECTION DE ONDE ELE PEGA ESSES DADOS, ESSA É SÓ UMA SIMULAÇÃO-->
                     <div class="eventos">
-                        <c:forEach var="evento" items="${usuarioSessao.getEventoCollection1()}">
+                        <c:forEach var="evento" items="${usuarioSessao.getEventoList2()}">
                             <div class="etitulo">
                                 <i class="fa fa-calendar" style="float:right"></i> 
-                                <c:out value="${evento.getTitulo()}"/> - <c:out value="${evento.getDataevento()}"/>
+                                <p><c:out value="${evento.getTitulo()}"/>            
+                                (<c:out value="${evento.getDataini().getDay()}"/>/<c:out value="${evento.getDataini().getMonth()}"/>/2016 a <c:out value="${evento.getDatafim().getDay()}"/>/<c:out value="${evento.getDatafim().getMonth()}"/>/2016)</p>
+                                                                 
                             </div>
-
+                       
                             <div class="ecaixa">
                                 <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
                                 <p> Local: <c:out value="${evento.getLugar()}"/></p>
+                                <div style="text-align: center" >
+                                    <a href="FrontController?command=Evento&action=abrirEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
+                                </div>
                             </div>                        
 
                         </c:forEach>                 

@@ -71,35 +71,19 @@
 
             <!-- usei a div cadastro pq ela já está posicionada no meio da página -->
             <div class="cadastro">
-                <h1> Olá! Aqui estão todas informações que <br> apareceram no seu perfil público: </h3>
-                    <br>
-                    <c:choose>
-                        <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 1}">
-                            <h3> Dados pessoais: </h3>
-                            <p> Nome: ${usuarioSessao.getUsuarioinfo().getNome()} </p>
-                            <p> Email: ${usuarioSessao.getUsuarioinfo().getEmail()} </p>
-                            <p> Telefone: ${usuarioSessao.getUsuarioinfo().getTelefone1()} </p>
-                            <p> Telefone 2: ${usuarioSessao.getUsuarioinfo().getTelefone2()} </p>
-                            <p> Descrição: ${usuarioSessao.getUsuarioinfo().getDescricao()} </p>
-                        </c:when>
+                <h1> ${usuarioSessao.getUsuarioinfo().getNome()} </h3>
+                <h3> Dados pessoais: </h3>
+                <p> Email: ${usuarioSessao.getUsuarioinfo().getEmail()} </p>
+                <p> Telefone: ${usuarioSessao.getUsuarioinfo().getTelefone1()} </p>
+                <p> Telefone 2: ${usuarioSessao.getUsuarioinfo().getTelefone2()} </p>
+                <p> Descrição: ${usuarioSessao.getUsuarioinfo().getDescricao()} </p>
+                    <c:choose>                       
 
                         <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 2}">
-                            <h3> Dados pessoais: </h3>
-                            <p> Nome: ${usuarioSessao.getUsuarioinfo().getNome()} </p>
-                            <p> Email: ${usuarioSessao.getUsuarioinfo().getEmail()} </p>
-                            <p> Telefone: ${usuarioSessao.getUsuarioinfo().getTelefone1()} </p>
-                            <p> Telefone 2: ${usuarioSessao.getUsuarioinfo().getTelefone2()} </p>
-                            <p> Descrição: ${usuarioSessao.getUsuarioinfo().getDescricao()} </p>
                             <p> Comissão: ${usuarioSessao.getUsuarioinfo().getComissao()} %</p>
                         </c:when>
 
-                        <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">
-                            <h3> Dados pessoais: </h3>
-                            <p> Nome: ${usuarioSessao.getUsuarioinfo().getNome()} </p>
-                            <p> Email: ${usuarioSessao.getUsuarioinfo().getEmail()} </p>
-                            <p> Telefone: ${usuarioSessao.getUsuarioinfo().getTelefone1()} </p>
-                            <p> Telefone 2: ${usuarioSessao.getUsuarioinfo().getTelefone2()} </p>
-                            <p> Descrição: ${usuarioSessao.getUsuarioinfo().getDescricao()} </p>
+                        <c:when test="${usuarioSessao.getFkTipousuario().getIdTipousuario() == 3}">                            
                             <br>
                             <h3> Dados de serviços: </h3>
                             <c:forEach var="servico" items="${listaServico}">

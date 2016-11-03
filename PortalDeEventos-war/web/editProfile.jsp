@@ -426,8 +426,8 @@
                     <form id="form7" action="FrontController" method="POST">
                         <br><h3>Comissão atual</h3>
                         <p><input type="text" value="${usuarioSessao.getUsuarioinfo().getComissao()}"/></p>
-                        <br><h3>Nova comissão</h3>
-                        <p><input type="text" name="comissao" placeholder="10" maxlength="3" required="required"/></p>
+                        <br><h3>Nova comissão (%)</h3>
+                        <p><input type="number" name="comissao" placeholder="Ex.: 10%" required></p>
                         <input type="hidden" name="command" value="Promoter"/>
                         <input type="hidden" name="action" value="updateComissao"/>
                         <p><input type="submit" value="ATUALIZAR"/></p>
@@ -501,7 +501,7 @@
                             </c:forEach> 
 
                         </select>
-                        <p><input type="number" name="precoServico" placeholder="10" maxlength="500" required="required"/></p>
+                        <p><input type="number" name="precoServico" placeholder="10" required="required"/></p>
                         <input type="hidden" name="command" value="Fornecedor"/>
                         <input type="hidden" name="action" value="updatePrecoServico"/>
                         <p><input type="submit" value="ATUALIZAR"/></p>

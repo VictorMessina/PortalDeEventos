@@ -17,6 +17,7 @@ import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -103,6 +104,11 @@ public class EventoCommand implements Command {
                 request.getSession().setAttribute("usuarioSessao", userEvent2);
                 returnPage = "/eventos.jsp";
 
+                break;
+            case "abrirEvento":
+                Evento eventoAtual = eventoDAO.findById(Integer.parseInt(request.getParameter("idEvento")));
+                request.getSession().setAttribute("eventoAtual", eventoAtual);
+                returnPage = "/eventoProfile.jsp";
                 break;
         }
     }

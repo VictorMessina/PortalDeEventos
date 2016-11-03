@@ -192,6 +192,7 @@ blockquote {
     color: white;
 }
 .ecaixa{
+    text-align: center;
     padding:2%;
     margin-bottom: 4%;
     background: #F0F0F0;

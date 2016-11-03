@@ -157,7 +157,7 @@
                                 M
                             </h1>
                             <h1> Tema: *<br><input type="text" name="tema" placeholder="Insira o tema do seu evento" required /></h1>
-                            <h1> Numero de convidados: *<br><input type="text"  name="nconvidados" placeholder="Numero de convidados" required /></h1>
+                            <h1> Numero de convidados: *<br><input type="number"  name="nconvidados" placeholder="Numero de convidados" required /></h1>
                             <h1> Descrição do Buffet: *<br><input type="text" name="buffet" placeholder="Descrição do Buffet" required /></h1>
                             <h1> Descrição da decoração: *<br><input type="text" name="decoracao" placeholder="Descrição da decoração" required /></h1>
                             <h1> Descrição das atrações: *<br><input type="text" name="atracoes" placeholder="Descrição das atrações" required /></h1>
