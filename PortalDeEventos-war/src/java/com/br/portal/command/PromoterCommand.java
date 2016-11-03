@@ -77,7 +77,7 @@ public class PromoterCommand implements Command {
 
                 request.getSession().setAttribute("successmsg", "Comissão atualizada com sucesso");
 
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
         }

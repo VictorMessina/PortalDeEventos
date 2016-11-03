@@ -110,7 +110,7 @@ public class FornecedorCommand implements Command {
                     request.getSession().setAttribute("successmsg", "Nome Serviço atualizado com sucesso");
 
                 }
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 
@@ -141,7 +141,7 @@ public class FornecedorCommand implements Command {
 
                     request.getSession().setAttribute("successmsg", "Descrição Serviço atualizado com sucesso");
                 }
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 
@@ -186,7 +186,7 @@ public class FornecedorCommand implements Command {
 
                     request.getSession().setAttribute("successmsg", "Categoria Serviço atualizado com sucesso");
                 }
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 
@@ -218,7 +218,7 @@ public class FornecedorCommand implements Command {
                     request.getSession().setAttribute("successmsg", "Preço do Serviço atualizado com sucesso");
                 }
 
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 
@@ -249,7 +249,7 @@ public class FornecedorCommand implements Command {
                     request.getSession().setAttribute("successmsg", "Serviço cadastrado com sucesso");
                 }
 
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 
@@ -272,7 +272,7 @@ public class FornecedorCommand implements Command {
                     request.getSession().setAttribute("successmsg", "Servico deletado com sucesso");
                 }
 
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
                 break;
 
         }

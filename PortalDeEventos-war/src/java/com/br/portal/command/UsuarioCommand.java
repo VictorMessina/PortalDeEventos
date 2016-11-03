@@ -159,11 +159,11 @@ public class UsuarioCommand implements Command {
                     usuarioSessao.setPassword(md5UpdateUser);
                     usuarioDAO.update(usuarioSessao);
 
-                    returnPage = "/profile.jsp";
+                    returnPage = "/editProfile.jsp";
 
                     request.getSession().setAttribute("successmsg", "Senha atualizada com sucesso");
                 } else {
-                    returnPage = "/profile.jsp";
+                    returnPage = "/editProfile.jsp";
                     request.getSession().setAttribute("errormsg", "Senha não confere, favor digitar senhas compativeis");
                 }
                 break;
@@ -181,7 +181,7 @@ public class UsuarioCommand implements Command {
 
                 request.getSession().setAttribute("successmsg", "Nome atualizado com sucesso");
 
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 
@@ -200,7 +200,7 @@ public class UsuarioCommand implements Command {
 
                 request.getSession().setAttribute("successmsg", "Email atualizado com sucesso");
 
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 
@@ -218,7 +218,7 @@ public class UsuarioCommand implements Command {
 
                 request.getSession().setAttribute("successmsg", "Email atualizado com sucesso");
 
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 
@@ -236,7 +236,7 @@ public class UsuarioCommand implements Command {
 
                 request.getSession().setAttribute("successmsg", "Telefone 1 atualizado com sucesso");
 
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 
@@ -254,7 +254,7 @@ public class UsuarioCommand implements Command {
 
                 request.getSession().setAttribute("successmsg", "Telefone 2 atualizado com sucesso");
 
-                returnPage = "/profile.jsp";
+                returnPage = "/editProfile.jsp";
 
                 break;
 

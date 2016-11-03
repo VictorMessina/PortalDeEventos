@@ -314,6 +314,8 @@
                 <p class="error">${errormsg}</p>
                 <c:set scope="session" var="errormsg" value=""></c:set>
             </c:if>
+            <br><br>    
+            <a href="FrontController?command=Usuario&action=perfil&idUsuario=${usuarioSessao.getIdUsuario()}">< Voltar</a>
 
             <br><br><br><br>
             <center><button id="botao" onclick="mostrar(1)">Atualizar Senha</button>
