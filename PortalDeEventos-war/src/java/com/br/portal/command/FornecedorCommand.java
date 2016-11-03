@@ -103,6 +103,8 @@ public class FornecedorCommand implements Command {
                         }
                     }
 
+                    usuarioSessao.setServicoList(listaServico);
+                    
                     usuarioDAO.update(usuarioSessao);
 
                     request.getSession().setAttribute("listaServico", listaServico);
@@ -134,6 +136,8 @@ public class FornecedorCommand implements Command {
                             servico2.setDescricao(descricaoServico);
                         }
                     }
+                    
+                    usuarioSessao2.setServicoList(listaServico2);
 
                     usuarioDAO.update(usuarioSessao2);
 
@@ -179,6 +183,8 @@ public class FornecedorCommand implements Command {
                             servico3.setFkCategoriaservico(categoriaServico);
                         }
                     }
+                    
+                    usuarioSessao3.setServicoList(listaServico3);
 
                     usuarioDAO.update(usuarioSessao3);
 
@@ -211,6 +217,8 @@ public class FornecedorCommand implements Command {
                         }
                     }
 
+                    usuarioSessao4.setServicoList(listaServico4);
+                    
                     usuarioDAO.update(usuarioSessao4);
 
                     request.getSession().setAttribute("listaServico", listaServico4);
