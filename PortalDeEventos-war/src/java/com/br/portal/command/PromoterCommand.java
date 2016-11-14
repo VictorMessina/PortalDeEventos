@@ -1,8 +1,11 @@
 package com.br.portal.command;
 
+import com.br.portal.dao.OrcamentoDAO;
 import com.br.portal.dao.UsuarioDAO;
+import com.br.portal.entities.Orcamento;
 import com.br.portal.entities.Usuario;
 import com.br.portal.entities.Usuarioinfo;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -16,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Victor M
  */
 public class PromoterCommand implements Command {
+
+    OrcamentoDAO orcamentoDAO = lookupOrcamentoDAOBean();
 
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
 
@@ -61,8 +66,7 @@ public class PromoterCommand implements Command {
                 returnPage = "/homepage.jsp";
 
                 break;
-                
-                
+
             case "updateComissao":
                 String comissao = request.getParameter("comissao");
 
@@ -80,6 +84,17 @@ public class PromoterCommand implements Command {
                 returnPage = "/editProfile.jsp";
 
                 break;
+
+            case "buscaOrcamento":
+
+                List<Orcamento> listaOrcamento = orcamentoDAO.find();
+
+                request.getSession().setAttribute("listaOrcamento", listaOrcamento);
+
+                returnPage = "/eventoOrcamentos.jsp";
+
+                break;
+
         }
     }
 
@@ -92,6 +107,16 @@ public class PromoterCommand implements Command {
         try {
             Context c = new InitialContext();
             return (UsuarioDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/UsuarioDAO!com.br.portal.dao.UsuarioDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private OrcamentoDAO lookupOrcamentoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (OrcamentoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/OrcamentoDAO!com.br.portal.dao.OrcamentoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

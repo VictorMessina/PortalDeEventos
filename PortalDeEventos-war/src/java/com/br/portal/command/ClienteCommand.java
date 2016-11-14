@@ -1,8 +1,12 @@
 package com.br.portal.command;
 
+import com.br.portal.dao.EventoDAO;
+import com.br.portal.dao.OrcamentoDAO;
 import com.br.portal.dao.UsuarioDAO;
+import com.br.portal.entities.Orcamento;
 import com.br.portal.entities.Usuario;
 import com.br.portal.entities.Usuarioinfo;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -17,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ClienteCommand implements Command {
 
+    EventoDAO eventoDAO = lookupEventoDAOBean();
+    OrcamentoDAO orcamentoDAO = lookupOrcamentoDAOBean();
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
 
     private String returnPage = "/index.jsp";
@@ -57,6 +63,41 @@ public class ClienteCommand implements Command {
                 returnPage = "/homepage.jsp";
 
                 break;
+
+            case "buscarPromoter":
+
+                List<Usuario> listaUsuarios = usuarioDAO.find();
+
+                request.getSession().setAttribute("listaUsuarios", listaUsuarios);
+                returnPage = "/buscarPromoter.jsp";
+
+                break;
+
+            case "solicitarOrcamento":
+
+                Long idPromoter = Long.parseLong(request.getParameter("idPromoter"));
+                Long idEvento = Long.parseLong(request.getParameter("idEvento"));
+                
+                Usuario usuarioSolicitante = (Usuario) request.getSession().getAttribute("usuarioSessao");
+              
+                if (idEvento == -1) {
+                    request.getSession().setAttribute("errormsg", "Nenhum Evento foi selecionado.");
+                } else {
+
+                    Orcamento orcamento = new Orcamento();
+
+                    orcamento.setFkPromoter(usuarioDAO.findById(idPromoter));
+                    orcamento.setFkEvento(eventoDAO.findById(idEvento));
+                    orcamento.setFkSolicitante(usuarioSolicitante);
+                    orcamento.setValor(null); 
+
+                    orcamentoDAO.persist(orcamento);
+                }
+
+                request.getSession().setAttribute("successmsg", "Orçamento solicitado com sucesso");
+                returnPage = "FrontController?command=Cliente&action=buscarPromoter";
+
+                break;
         }
     }
 
@@ -75,4 +116,23 @@ public class ClienteCommand implements Command {
         }
     }
 
+    private OrcamentoDAO lookupOrcamentoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (OrcamentoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/OrcamentoDAO!com.br.portal.dao.OrcamentoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private EventoDAO lookupEventoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (EventoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/EventoDAO!com.br.portal.dao.EventoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
 }

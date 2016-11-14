@@ -64,7 +64,7 @@
                         <div class="lcaixa">
                             <a href="eventos.jsp">Meus Eventos</a>
                             <a href="criarEvento.jsp">Criar Evento</a>
-                            <a href="">Buscar Promoter</a>
+                            <a href="FrontController?command=Cliente&action=buscarPromoter">Buscar Promoter</a>
                         </div>
                     </div>
                 </div>
@@ -107,6 +107,7 @@
                         <div class="lcaixa">
                             <a href="eventos.jsp">Meus Eventos</a>
                             <a href="">Buscar Fornecedores</a>
+                            <a href="FrontController?command=Promoter&action=buscaOrcamento">Orçamentos Solicitados</a>
                         </div>
                     </div>
                 </div>

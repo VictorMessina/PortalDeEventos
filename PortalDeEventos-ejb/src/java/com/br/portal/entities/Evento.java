@@ -21,6 +21,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -46,6 +47,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Evento.findByDatafim", query = "SELECT e FROM Evento e WHERE e.datafim = :datafim"),
     @NamedQuery(name = "Evento.findByLugar", query = "SELECT e FROM Evento e WHERE e.lugar = :lugar")})
 public class Evento implements Serializable {
+
+    @OneToMany(mappedBy = "fkEvento")
+    private List<Orcamento> orcamentoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -217,6 +221,15 @@ public class Evento implements Serializable {
     @Override
     public String toString() {
         return "com.br.portal.entities.Evento[ idEvento=" + idEvento + " ]";
+    }
+
+    @XmlTransient
+    public List<Orcamento> getOrcamentoList() {
+        return orcamentoList;
+    }
+
+    public void setOrcamentoList(List<Orcamento> orcamentoList) {
+        this.orcamentoList = orcamentoList;
     }
     
 }
