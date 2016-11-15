@@ -1,9 +1,8 @@
 <%-- 
-    Document   : buscarPromoters
-    Created on : 13/11/2016, 10:43:41
-    Author     : Victor M
+    Document   : promoterOrcamentos
+    Created on : 15/11/2016, 18:41:11
+    Author     : Vitória
 --%>
-
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -12,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Buscar promoter </title>
+        <title> Eventos </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="laranja.ico">
         <!-- 
@@ -26,7 +25,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 85%;
+                margin-top: 35%;
             }
         </style>
     </head>
@@ -63,56 +62,57 @@
         </c:if>
 
         <div class="container">
+
+             
             <div class="sidebar">
                 <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
                 <div class="mcaixa">
                     <div class="lcaixa">
                         <a href="eventos.jsp">Meus Eventos</a>
-                        <a href="criarEvento.jsp">Criar Evento</a>
-                        <a href="FrontController?command=Cliente&action=buscarPromoter">Buscar Promoter</a>
-                    </div>
+                        <a href="FrontController?command=Promoter&action=buscaOrcamento">Orçamentos Solicitados</a>
                 </div>
-            </div>
-
+                </div>
+            </div>               
+            
             <div class="posts">
                 <div class="text">
-                    <h2>Promoters</h2>
+                    <h2> Orçamentos solicitados </h2>
                 </div>
 
                 <div class="eventos">
-                    <c:forEach var="promoter" items="${listaUsuarios}">
-                        <c:if test="${promoter.getFkTipousuario().getIdTipousuario()== 2}">
+                    <c:if test="${listaOrcamento.isEmpty()}">                            
+                        <p>Você ainda nao está possui nenhuma solicitação de orçamento.</p>
+                    </c:if>
+                    <c:forEach var="orcamento" items="${listaOrcamento}">
+                        <div class="etitulo">
+                            <i class="fa fa-calendar" style="float:right"></i> 
+                            <c:out value="${orcamento.getFkEvento().getTitulo()}"/>    
+                        </div>
 
-                            <div class="etitulo">
-                                <p>Nome: <a href="FrontController?command=Usuario&action=perfil&idUsuario=${promoter.getIdUsuario()}"> <c:out value="${promoter.getUsuarioinfo().getNome()}"/></a></p>
-                            </div>
+                        <div class="ecaixa">  
+                                <div style="text-align: center" >
+                                    <c:if test="${orcamento.getValor()==null}">
+                                        <p style="color:#0093B2">Você ainda não enviou um orçamento para este evento.</p>
+                                        <p>Clique abaixo para visualizar as informações do evento e enviar um orçamento.</p>
+                                    </c:if>
+                                    <c:if test="${orcamento.getValor()!=null}">
+                                        <p style="color:#0093B2">Orçamento enviado: ${orcamento.getValor()}  </p>
+                                        <p>Clique abaixo para visualizar as informações do evento e editar o orçamento enviado.</p>
+                                    </c:if>
+                                    <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="ENVIAR ORÇAMENTO"/></a>
+                                </div>                               
+                        </div>                      
 
-                            <div class="ecaixa">  
-                                <p> Descrição: ${promoter.getUsuarioinfo().getDescricao()} </p>
-                                <p> Comissão padrão: ${promoter.getUsuarioinfo().getComissao()} % </p>
-                                <form action="FrontController" method="POST">
-                                    <select name="idEvento" required>
-                                        <option value="-1"> Selecione um evento </option>
-                                        <c:forEach var="evento" items="${usuarioSessao.getEventoList2()}">
-                                            <option value="${evento.getIdEvento()}"> ${evento.getTitulo()} </option>
-                                        </c:forEach>
-                                    </select>
-                                    <p><input type="hidden" name="idPromoter" value="${promoter.getIdUsuario()}"/></p>
-                                    <p><input type="hidden" name="command" value="Cliente"/></p>
-                                    <p><input type="hidden" name="action" value="solicitarOrcamento"/></p>
-                                    <p><input type="submit" value="Solicitar Orçamento"/></p>
-                                </form>
-                               
-                            </div>
-                        </c:if>
-                    </c:forEach>
+                    </c:forEach>                 
                 </div>
             </div>
+
         </div>
 
-    <div class="footer">
-        Copyright © 2016. Hugo, Letícia, Victor, Vitória. All rights reserved.
-    </div>
-</body>
+        <div class="footer">
+            Copyright © 2016. Hugo, Letícia, Victor, Vitória. All rights reserved.
+        </div>
+    </body>
 </html>
+
 

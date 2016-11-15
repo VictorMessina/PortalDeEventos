@@ -80,12 +80,35 @@ public class UsuarioCommand implements Command {
                         //jmsProdutor.sendMessage(MsgType.LOGIN," Usuario Cliente: " + up.getUsername() + " realizou login " + " \n" );
                         List<Categoriaevento> listaCat = categoriaEventoDAO.find();
                         request.getSession().setAttribute("listaCatEvento", listaCat);
+                        
+                        List<Evento> listaEventosAux = eventoDAO.find();
+                        List<Evento> listaEventos = new ArrayList<>();
 
+                        for (Evento evento : listaEventosAux) {
+                            if (evento.getFkCliente().getIdUsuario().equals(up.getIdUsuario())) {
+                                listaEventos.add(evento);
+                            }
+                        }
+                        
+                        request.getSession().setAttribute("listaEventos", listaEventos);
                         request.getSession().setAttribute("usuarioSessao", up);
                         returnPage = "/homepage.jsp";
 
                     } else if (up.getFkTipousuario().getIdTipousuario() == 2 && up.getPassword().equals(md5Login)) {
                         //jmsProdutor.sendMessage(MsgType.LOGIN," Usuario Promoter: " + up.getUsername() + " realizou login " + " \n" );
+                        
+                        List<Evento> listaEventosAux = eventoDAO.find();
+                        List<Evento> listaEventos = new ArrayList<>();
+
+                        for (Evento evento : listaEventosAux) {
+                            if(evento.getFkPromoter()!=null){
+                                if (evento.getFkPromoter().getIdUsuario().equals(up.getIdUsuario())) {
+                                    listaEventos.add(evento);
+                                }
+                            }
+                        }
+                        
+                        request.getSession().setAttribute("listaEventos", listaEventos);
                         request.getSession().setAttribute("usuarioSessao", up);
                         returnPage = "/homepage.jsp";
 

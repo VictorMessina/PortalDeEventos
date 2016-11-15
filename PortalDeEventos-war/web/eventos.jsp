@@ -56,18 +56,42 @@
             <c:set scope="session" var="successmsg" value=""></c:set>
         </c:if>
 
-        <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" >          
+                 
             <div class="container">
-                <div class="sidebar">
-                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                    <div class="mcaixa">
-                        <div class="lcaixa">
-                            <a href="eventos.jsp">Meus Eventos</a>
-                            <a href="criarEvento.jsp">Criar Evento</a>
-                            <a href="FrontController?command=Cliente&action=buscarPromoter">Buscar Promoter</a>
+                
+                <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" > 
+                    <div class="sidebar">
+                        <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                        <div class="mcaixa">
+                            <div class="lcaixa">
+                                <a href="eventos.jsp">Meus Eventos</a>
+                                <a href="criarEvento.jsp">Criar Evento</a>
+                                <a href="FrontController?command=Cliente&action=buscarPromoter">Buscar Promoter</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </c:if>
+                <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==2}" > 
+                    <div class="sidebar">
+                        <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                        <div class="mcaixa">
+                            <div class="lcaixa">
+                                <a href="eventos.jsp">Meus Eventos</a>
+                                <a href="FrontController?command=Promoter&action=buscaOrcamento">Orçamentos Solicitados</a>
+                        </div>
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==3}" > 
+                    <div class="sidebar">
+                        <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                        <div class="mcaixa">
+                            <div class="lcaixa">
+                                <a href="eventos.jsp">Meus Eventos</a>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
 
                 <div class="posts">
                     <div class="text">
@@ -75,11 +99,14 @@
                     </div>
 
                     <div class="eventos">
-                        <c:forEach var="evento" items="${usuarioSessao.getEventoList2()}">
+                        <c:if test="${listaEventos.isEmpty()}">                            
+                            <p>Você ainda nao está vinculado(a) a nenhum evento.</p>
+                        </c:if>
+                        <c:forEach var="evento" items="${listaEventos}">
                             <div class="etitulo">
                                 <i class="fa fa-calendar" style="float:right"></i> 
-                                <p><c:out value="${evento.getTitulo()}"/>            
-                                (<c:out value="${evento.getDataini().getDay()}"/>/<c:out value="${evento.getDataini().getMonth()}"/>/2016 a <c:out value="${evento.getDatafim().getDay()}"/>/<c:out value="${evento.getDatafim().getMonth()}"/>/2016)</p>
+                                <c:out value="${evento.getTitulo()}"/>            
+                                (<c:out value="${evento.getDataini().getDay()}"/>/<c:out value="${evento.getDataini().getMonth()}"/>/2016 a <c:out value="${evento.getDatafim().getDay()}"/>/<c:out value="${evento.getDatafim().getMonth()}"/>/2016)
                                                                  
                             </div>
                        
@@ -89,100 +116,13 @@
                                 <div style="text-align: center" >
                                     <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
                                 </div>
-                            </div>                        
+                            </div>                       
 
                         </c:forEach>                 
                     </div>
                 </div>
 
             </div>           
-
-        </c:if>
-
-        <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==2}" >
-            <div class="container">
-                <div class="sidebar">
-                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                    <div class="mcaixa">
-                        <div class="lcaixa">
-                            <a href="eventos.jsp">Meus Eventos</a>
-                            <a href="">Buscar Fornecedores</a>
-                            <a href="FrontController?command=Promoter&action=buscaOrcamento">Orçamentos Solicitados</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="posts">
-                    <div class="text">
-                        <h2> Eventos </h2>
-                    </div>
-
-                    <div class="eventos">
-                        <c:forEach var="evento" items="${usuarioSessao.getEventoList2()}">
-                            <div class="etitulo">
-                                <i class="fa fa-calendar" style="float:right"></i> 
-                                <p><c:out value="${evento.getTitulo()}"/>            
-                                (<c:out value="${evento.getDataini().getDay()}"/>/<c:out value="${evento.getDataini().getMonth()}"/>/2016 a <c:out value="${evento.getDatafim().getDay()}"/>/<c:out value="${evento.getDatafim().getMonth()}"/>/2016)</p>
-                                                                 
-                            </div>
-                       
-                            <div class="ecaixa">
-                                <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
-                                <p> Local: <c:out value="${evento.getLugar()}"/></p>
-                                <div style="text-align: center" >
-                                    <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
-                                </div>
-                            </div>                        
-
-                        </c:forEach>                 
-                    </div>
-                </div>
-
-            </div>   
-        </c:if>
-
-        <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==3}" >
-            <div class="container">
-                <div class="sidebar">
-                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                    <div class="mcaixa">
-                        <div class="lcaixa">
-                            <a href="eventos.jsp">Meus Eventos</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="posts">
-                    <div class="text">
-                        <h2> Eventos </h2>
-                    </div>
-
-                    <!-- ALTERAR A COLLECTION DE ONDE ELE PEGA ESSES DADOS, ESSA É SÓ UMA SIMULAÇÃO-->
-                    <div class="eventos">
-                        <c:forEach var="evento" items="${usuarioSessao.getEventoList2()}">
-                            <div class="etitulo">
-                                <i class="fa fa-calendar" style="float:right"></i> 
-                                <p><c:out value="${evento.getTitulo()}"/>            
-                                (<c:out value="${evento.getDataini().getDay()}"/>/<c:out value="${evento.getDataini().getMonth()}"/>/2016 a <c:out value="${evento.getDatafim().getDay()}"/>/<c:out value="${evento.getDatafim().getMonth()}"/>/2016)</p>
-                                                                 
-                            </div>
-                       
-                            <div class="ecaixa">
-                                <p> Descrição: <c:out value="${evento.getDescricao()}"/></p>
-                                <p> Local: <c:out value="${evento.getLugar()}"/></p>
-                                <div style="text-align: center" >
-                                    <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="Mais info"/></a>
-                                </div>
-                            </div>                        
-
-                        </c:forEach>                 
-                    </div>
-                </div>
-
-            </div>   
-
-        </c:if>
-
         <div class="footer">
             Copyright © 2016. Hugo, Letícia, Victor, Vitória. All rights reserved.
         </div>

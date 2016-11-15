@@ -5,6 +5,7 @@ import com.br.portal.dao.UsuarioDAO;
 import com.br.portal.entities.Orcamento;
 import com.br.portal.entities.Usuario;
 import com.br.portal.entities.Usuarioinfo;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,12 +87,19 @@ public class PromoterCommand implements Command {
                 break;
 
             case "buscaOrcamento":
+                Usuario usuarioSessao = (Usuario) request.getSession().getAttribute("usuarioSessao");
+                
+                List<Orcamento> listaOrcamentoAux = orcamentoDAO.find();
+                List<Orcamento> listaOrcamento = new ArrayList<>();
 
-                List<Orcamento> listaOrcamento = orcamentoDAO.find();
-
-                request.getSession().setAttribute("listaOrcamento", listaOrcamento);
-
-                returnPage = "/eventoOrcamentos.jsp";
+                for (Orcamento orcamento : listaOrcamentoAux) {                    
+                    if (orcamento.getFkPromoter().getIdUsuario().equals(usuarioSessao.getIdUsuario())) {
+                        listaOrcamento.add(orcamento);
+                    }                    
+                }
+                
+                request.getSession().setAttribute("listaOrcamento", listaOrcamento);                             
+                returnPage = "/promoterOrcamentos.jsp";
 
                 break;
 

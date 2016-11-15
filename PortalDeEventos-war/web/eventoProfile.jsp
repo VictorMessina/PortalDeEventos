@@ -63,40 +63,38 @@
             
         <div class="container">
 
-            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" >
-                    <div class="sidebar">
-                        <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                        <div class="mcaixa">
-                            <div class="lcaixa">
-                                <a href="eventos.jsp">Meus Eventos</a>
-                                <a href="criarEvento.jsp">Criar Evento</a>
-                                <a href="">Buscar Promoter</a>
-                            </div>
+            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" > 
+                <div class="sidebar">
+                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                    <div class="mcaixa">
+                        <div class="lcaixa">
+                            <a href="eventos.jsp">Meus Eventos</a>
+                            <a href="criarEvento.jsp">Criar Evento</a>
+                            <a href="FrontController?command=Cliente&action=buscarPromoter">Buscar Promoter</a>
                         </div>
                     </div>
+                </div>
             </c:if>
-
-            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==2}" >            
-                    <div class="sidebar">
-                        <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                        <div class="mcaixa">
-                            <div class="lcaixa">
-                                <a href="eventos.jsp">Meus Eventos</a>
-                                <a href="">Buscar Fornecedores</a>
-                            </div>
-                        </div>
-                    </div>   
+            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==2}" > 
+                <div class="sidebar">
+                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                    <div class="mcaixa">
+                        <div class="lcaixa">
+                            <a href="eventos.jsp">Meus Eventos</a>
+                            <a href="FrontController?command=Promoter&action=buscaOrcamento">Orçamentos Solicitados</a>
+                    </div>
+                    </div>
+                </div>
             </c:if>
-
-            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==3}" >
-                    <div class="sidebar">
-                        <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                        <div class="mcaixa">
-                            <div class="lcaixa">
-                                <a href="eventos.jsp">Meus Eventos</a>
-                            </div>
+            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==3}" > 
+                <div class="sidebar">
+                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                    <div class="mcaixa">
+                        <div class="lcaixa">
+                            <a href="eventos.jsp">Meus Eventos</a>
                         </div>
                     </div>
+                </div>
             </c:if>
             
             <div class="posts">
@@ -109,15 +107,18 @@
                     <div class="links2">
                         <a class="selecionado" href="FrontController?command=Evento&action=perfilEvento&idEvento=${eventoAtual.getIdEvento()}">Perfil</a> |
                         <a href="FrontController?command=Evento&action=cronogramaEvento&idEvento=${eventoAtual.getIdEvento()}">Cronograma</a> |
-                        <a href="FrontController?command=Evento&action=participantesEvento&idEvento=${eventoAtual.getIdEvento()}">Participantes</a> |
-                        <a href="FrontController?command=Evento&action=orcamentosEvento&idEvento=${eventoAtual.getIdEvento()}">Orçamentos</a>
+                        <a href="FrontController?command=Evento&action=participantesEvento&idEvento=${eventoAtual.getIdEvento()}">Participantes</a> 
+                        
+                        <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" > 
+                            | <a href="FrontController?command=Evento&action=orcamentosEvento&idEvento=${eventoAtual.getIdEvento()}">Orçamentos</a>
+                        </c:if>
                     </div>
 
                     <div class="ecaixa">                        
                         <p> Local: <c:out value="${eventoAtual.getLugar()}"/></p>
                         <p> Descrição: <c:out value="${eventoAtual.getDescricao()}"/></p>                        
-                        <p> Inicio: <c:out value="${eventoAtual.getDataini().getDay()}"/>/<c:out value="${eventoAtual.getDataini().getMonth()}"/>/2016</p>
-                        <p> Fim: <c:out value="${eventoAtual.getDatafim().getDay()}"/>/<c:out value="${eventoAtual.getDatafim().getMonth()}"/>/2016</p>
+                        <p> Inicio: <c:out value="${eventoAtual.getDataini()}"/></p>
+                        <p> Fim: <c:out value="${eventoAtual.getDatafim()}"/></p>
                         <p> Categoria: <c:out value="${eventoAtual.getFkCategoriaevento().getNomecategoriaevento()}"/></p>
                         <p> Tema: <c:out value="${eventoAtual.getCaracteristicasevento().getTema()}"/></p>
                         <p> Número de convidados: <c:out value="${eventoAtual.getCaracteristicasevento().getNconvidados()}"/></p>

@@ -63,65 +63,62 @@
 
         <div class="container">
 
-            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" >
-                <div class="sidebar">
-                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                    <div class="mcaixa">
-                        <div class="lcaixa">
-                            <a href="eventos.jsp">Meus Eventos</a>
-                            <a href="criarEvento.jsp">Criar Evento</a>
-                            <a href="FrontController?command=Cliente&action=buscarPromoter">Buscar Promoter</a>
+            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" > 
+                    <div class="sidebar">
+                        <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                        <div class="mcaixa">
+                            <div class="lcaixa">
+                                <a href="eventos.jsp">Meus Eventos</a>
+                                <a href="criarEvento.jsp">Criar Evento</a>
+                                <a href="FrontController?command=Cliente&action=buscarPromoter">Buscar Promoter</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </c:if>
-
-            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==2}" >            
-                <div class="sidebar">
-                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                    <div class="mcaixa">
-                        <div class="lcaixa">
-                            <a href="eventos.jsp">Meus Eventos</a>
-                            <a href="">Buscar Fornecedores</a>
-                            <a href="FrontController?command=Promoter&action=buscaOrcamento">Orçamentos Solicitados</a>
+                </c:if>
+                <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==2}" > 
+                    <div class="sidebar">
+                        <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                        <div class="mcaixa">
+                            <div class="lcaixa">
+                                <a href="eventos.jsp">Meus Eventos</a>
+                                <a href="FrontController?command=Promoter&action=buscaOrcamento">Orçamentos Solicitados</a>
+                        </div>
                         </div>
                     </div>
-                </div>   
-            </c:if>
-
-            <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==3}" >
-                <div class="sidebar">
-                    <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
-                    <div class="mcaixa">
-                        <div class="lcaixa">
-                            <a href="eventos.jsp">Meus Eventos</a>
+                </c:if>
+                <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==3}" > 
+                    <div class="sidebar">
+                        <div class="mtitulo"><i class="fa fa-list" style="float:left"></i> MENU </div>
+                        <div class="mcaixa">
+                            <div class="lcaixa">
+                                <a href="eventos.jsp">Meus Eventos</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </c:if>
+                </c:if>
 
             <div class="posts">
-                <a href="eventos.jsp">< Voltar</a>
-                <div class="etitulo">
-                    <i class="fa fa-calendar" style="float:right"></i> 
-                    <p><c:out value="${eventoAtual.getTitulo()}"/>            
-                </div>
-
-                <div class="links2">
-                    <a class="selecionado" href="FrontController?command=Evento&action=perfilEvento&idEvento=${eventoAtual.getIdEvento()}">Perfil</a> |
-                    <a href="FrontController?command=Evento&action=cronogramaEvento&idEvento=${eventoAtual.getIdEvento()}">Cronograma</a> |
-                    <a href="FrontController?command=Evento&action=participantesEvento&idEvento=${eventoAtual.getIdEvento()}">Participantes</a> |
-                    <a class="selecionado" href="FrontController?command=Evento&action=orcamentosEvento&idEvento=${eventoAtual.getIdEvento()}">Orçamentos</a>
-                </div>
-
-                <div class="ecaixa">          
-                    <h2>Orçamentos Solicitados</h2>
-                    <c:forEach var="orcamento" items="${listaOrcamento}">
-                        <c:if test="${orcamento.getFkPromoter().getIdUsuario() == usuarioSessao.getIdUsuario()}">
-                            <h1>  ${orcamento.getFkEvento().getTitulo()} </h1>
+                 <a href="eventos.jsp">< Voltar</a>
+                    <div class="etitulo">
+                        <i class="fa fa-calendar" style="float:right"></i> 
+                        <p><c:out value="${eventoAtual.getTitulo()}"/>            
+                    </div>
+                    
+                    <div class="links2">
+                        <a class="selecionado" href="FrontController?command=Evento&action=perfilEvento&idEvento=${eventoAtual.getIdEvento()}">Perfil</a> |
+                        <a href="FrontController?command=Evento&action=cronogramaEvento&idEvento=${eventoAtual.getIdEvento()}">Cronograma</a> |
+                        <a href="FrontController?command=Evento&action=participantesEvento&idEvento=${eventoAtual.getIdEvento()}">Participantes</a> 
+                        
+                        <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" > 
+                            | <a href="FrontController?command=Evento&action=orcamentosEvento&idEvento=${eventoAtual.getIdEvento()}">Orçamentos</a>
                         </c:if>
-                    </c:forEach> 
-                </div>    
+                    </div>
+
+                         
+                <div class="ecaixa">                        
+                        <p> Este evento não possui orçamentos.</p> 
+               </div>  
+                   
             </div>
 
         </div>

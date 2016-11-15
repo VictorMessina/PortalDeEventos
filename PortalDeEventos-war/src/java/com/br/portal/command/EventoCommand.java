@@ -99,8 +99,10 @@ public class EventoCommand implements Command {
                 
                 eventoDAO.persist(evento);
 
-                request.getSession().setAttribute("successmsg", "Evento criado com sucesso!");  
-                userEvent2.getEventoList2().add(evento);
+                request.getSession().setAttribute("successmsg", "Evento criado com sucesso!");                
+                List listaEventos = (List) request.getSession().getAttribute("listaEventos");
+                listaEventos.add(evento);
+                request.getSession().setAttribute("listaEventos", listaEventos);
                 request.getSession().setAttribute("usuarioSessao", userEvent2);
                 returnPage = "/eventos.jsp";
 
@@ -124,6 +126,8 @@ public class EventoCommand implements Command {
                 break;
             case "orcamentosEvento":
                 Evento eventoAtual4 = eventoDAO.findById(Integer.parseInt(request.getParameter("idEvento")));
+                
+                
                 request.getSession().setAttribute("eventoAtual", eventoAtual4);
                 returnPage = "/eventoOrcamentos.jsp";
                 break;
