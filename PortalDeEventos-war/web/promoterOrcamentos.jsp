@@ -97,7 +97,7 @@
                                     </c:if>
                                     <c:if test="${orcamento.getValor()!=null}">
                                         <p style="color:#0093B2"><b>Orçamento enviado:</b> R$ ${orcamento.getValor()}  </p>
-                                        <p style="color:#0093B2"><b>Descrição:</b> ${orcamentoAtual.getDescricao()}  </p>
+                                        <p style="color:#0093B2"><b>Descrição:</b> ${orcamento.getDescricao()}  </p>
                                         <p>Clique abaixo para visualizar as informações do evento e editar o orçamento enviado.</p>
                                     </c:if>
                                     <a href="FrontController?command=Promoter&action=visualizarOrcamento&idOrcamento=${orcamento.getIdOrcamento()}"><input type="submit" value="ENVIAR ORÇAMENTO"/></a>

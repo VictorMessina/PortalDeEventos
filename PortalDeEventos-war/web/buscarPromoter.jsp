@@ -61,6 +61,11 @@
             <p class="success">${successmsg}</p>
             <c:set scope="session" var="successmsg" value=""></c:set>
         </c:if>
+            
+        <c:if test="${errormsg!=null && !''.equals(errormsg)}">
+            <p class="error">${errormsg}</p>
+            <c:set scope="session" var="errormsg" value=""></c:set>
+        </c:if>
 
         <div class="container">
             <div class="sidebar">
@@ -83,13 +88,13 @@
                     <c:forEach var="promoter" items="${listaUsuarios}">
                         <c:if test="${promoter.getFkTipousuario().getIdTipousuario()== 2}">
 
-                            <div class="etitulo">
-                                <p>Nome: <a href="FrontController?command=Usuario&action=perfil&idUsuario=${promoter.getIdUsuario()}"> <c:out value="${promoter.getUsuarioinfo().getNome()}"/></a></p>
+                            <div class="etitulo" style="text-align:center">
+                                Perfil: <a href="FrontController?command=Usuario&action=perfil&idUsuario=${promoter.getIdUsuario()}"> <c:out value="${promoter.getUsuarioinfo().getNome()}"/></a>
                             </div>
 
                             <div class="ecaixa">  
-                                <p> Descrição: ${promoter.getUsuarioinfo().getDescricao()} </p>
-                                <p> Comissão padrão: ${promoter.getUsuarioinfo().getComissao()} % </p>
+                                <p> <b>Descrição:</b> ${promoter.getUsuarioinfo().getDescricao()} </p>
+                                <p> <b>Comissão padrão:</b> ${promoter.getUsuarioinfo().getComissao()} % </p>
                                 <form action="FrontController" method="POST">
                                     <select name="idEvento" required>
                                         <option value="-1"> Selecione um evento </option>

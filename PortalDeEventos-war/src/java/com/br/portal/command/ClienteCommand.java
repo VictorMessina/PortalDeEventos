@@ -81,19 +81,32 @@ public class ClienteCommand implements Command {
                 Usuario usuarioSolicitante = (Usuario) request.getSession().getAttribute("usuarioSessao");
               
                 if (idEvento == -1) {
-                    request.getSession().setAttribute("errormsg", "Nenhum Evento foi selecionado.");
+                    request.getSession().setAttribute("errormsg", "Nenhum Evento foi selecionado.");                
                 } else {
-
-                    Orcamento orcamento = new Orcamento();
-
-                    orcamento.setFkPromoter(usuarioDAO.findById(idPromoter));
-                    orcamento.setFkEvento(eventoDAO.findById(idEvento));
-                    orcamento.setFkSolicitante(usuarioSolicitante);
-                    orcamento.setValor(null); 
-
-                    orcamentoDAO.persist(orcamento);
                     
-                    request.getSession().setAttribute("successmsg", "Orçamento solicitado com sucesso");
+                    List<Orcamento> listaOrcamentoAux = orcamentoDAO.find();
+                    boolean flag = true;
+
+                    for (Orcamento orcamento : listaOrcamentoAux) {
+                        if(orcamento.getFkPromoter().getIdUsuario()==idPromoter && orcamento.getFkEvento().getIdEvento()==idEvento){
+                            request.getSession().setAttribute("errormsg", "Um orçamento para este evento já foi enviado a este promoter.");   
+                            flag = false;
+                            break;
+                        }
+                    }
+
+                    if(flag){
+                        Orcamento orcamento = new Orcamento();
+
+                        orcamento.setFkPromoter(usuarioDAO.findById(idPromoter));
+                        orcamento.setFkEvento(eventoDAO.findById(idEvento));
+                        orcamento.setFkSolicitante(usuarioSolicitante);
+                        orcamento.setValor(null); 
+
+                        orcamentoDAO.persist(orcamento);
+
+                        request.getSession().setAttribute("successmsg", "Orçamento solicitado com sucesso");
+                    }
                 }
 
                 returnPage = "FrontController?command=Cliente&action=buscarPromoter";
