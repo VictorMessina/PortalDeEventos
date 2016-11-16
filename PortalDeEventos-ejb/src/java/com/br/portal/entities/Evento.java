@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Victor M
+ * @author Vitória
  */
 @Entity
 @Table(name = "EVENTO")
@@ -47,10 +47,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Evento.findByDatafim", query = "SELECT e FROM Evento e WHERE e.datafim = :datafim"),
     @NamedQuery(name = "Evento.findByLugar", query = "SELECT e FROM Evento e WHERE e.lugar = :lugar")})
 public class Evento implements Serializable {
-
-    @OneToMany(mappedBy = "fkEvento")
-    private List<Orcamento> orcamentoList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -85,15 +81,17 @@ public class Evento implements Serializable {
     private List<Usuario> usuarioList;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "evento")
     private Caracteristicasevento caracteristicasevento;
-    @JoinColumn(name = "FK_CATEGORIAEVENTO", referencedColumnName = "ID_CATEGORIAEVENTO")
-    @ManyToOne
-    private Categoriaevento fkCategoriaevento;
-    @JoinColumn(name = "FK_PROMOTER", referencedColumnName = "ID_USUARIO")
-    @ManyToOne
-    private Usuario fkPromoter;
     @JoinColumn(name = "FK_CLIENTE", referencedColumnName = "ID_USUARIO")
     @ManyToOne(optional = false)
     private Usuario fkCliente;
+    @JoinColumn(name = "FK_PROMOTER", referencedColumnName = "ID_USUARIO")
+    @ManyToOne
+    private Usuario fkPromoter;
+    @JoinColumn(name = "FK_CATEGORIAEVENTO", referencedColumnName = "ID_CATEGORIAEVENTO")
+    @ManyToOne
+    private Categoriaevento fkCategoriaevento;
+    @OneToMany(mappedBy = "fkEvento")
+    private List<Orcamento> orcamentoList;
 
     public Evento() {
     }
@@ -174,12 +172,12 @@ public class Evento implements Serializable {
         this.caracteristicasevento = caracteristicasevento;
     }
 
-    public Categoriaevento getFkCategoriaevento() {
-        return fkCategoriaevento;
+    public Usuario getFkCliente() {
+        return fkCliente;
     }
 
-    public void setFkCategoriaevento(Categoriaevento fkCategoriaevento) {
-        this.fkCategoriaevento = fkCategoriaevento;
+    public void setFkCliente(Usuario fkCliente) {
+        this.fkCliente = fkCliente;
     }
 
     public Usuario getFkPromoter() {
@@ -190,12 +188,21 @@ public class Evento implements Serializable {
         this.fkPromoter = fkPromoter;
     }
 
-    public Usuario getFkCliente() {
-        return fkCliente;
+    public Categoriaevento getFkCategoriaevento() {
+        return fkCategoriaevento;
     }
 
-    public void setFkCliente(Usuario fkCliente) {
-        this.fkCliente = fkCliente;
+    public void setFkCategoriaevento(Categoriaevento fkCategoriaevento) {
+        this.fkCategoriaevento = fkCategoriaevento;
+    }
+
+    @XmlTransient
+    public List<Orcamento> getOrcamentoList() {
+        return orcamentoList;
+    }
+
+    public void setOrcamentoList(List<Orcamento> orcamentoList) {
+        this.orcamentoList = orcamentoList;
     }
 
     @Override
@@ -221,15 +228,6 @@ public class Evento implements Serializable {
     @Override
     public String toString() {
         return "com.br.portal.entities.Evento[ idEvento=" + idEvento + " ]";
-    }
-
-    @XmlTransient
-    public List<Orcamento> getOrcamentoList() {
-        return orcamentoList;
-    }
-
-    public void setOrcamentoList(List<Orcamento> orcamentoList) {
-        this.orcamentoList = orcamentoList;
     }
     
 }

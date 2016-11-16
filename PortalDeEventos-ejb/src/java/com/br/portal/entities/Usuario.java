@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Victor M
+ * @author Vitória
  */
 @Entity
 @Table(name = "USUARIO")
@@ -40,10 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.username = :username"),
     @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")})
 public class Usuario implements Serializable {
-
-    @OneToMany(mappedBy = "fkPromoter")
-    private List<Orcamento> orcamentoList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,20 +58,24 @@ public class Usuario implements Serializable {
     private String password;
     @ManyToMany(mappedBy = "usuarioList")
     private List<Evento> eventoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkFornecedor")
-    private List<Servico> servicoList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private Usuarioinfo usuarioinfo;
-    @JoinColumn(name = "FK_TIPOPESSOA", referencedColumnName = "ID_TIPOPESSOA")
-    @ManyToOne(optional = false)
-    private Tipopessoa fkTipopessoa;
     @JoinColumn(name = "FK_TIPOUSUARIO", referencedColumnName = "ID_TIPOUSUARIO")
     @ManyToOne(optional = false)
     private Tipousuario fkTipousuario;
-    @OneToMany(mappedBy = "fkPromoter")
-    private List<Evento> eventoList1;
+    @JoinColumn(name = "FK_TIPOPESSOA", referencedColumnName = "ID_TIPOPESSOA")
+    @ManyToOne(optional = false)
+    private Tipopessoa fkTipopessoa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkCliente")
+    private List<Evento> eventoList1;
+    @OneToMany(mappedBy = "fkPromoter")
     private List<Evento> eventoList2;
+    @OneToMany(mappedBy = "fkPromoter")
+    private List<Orcamento> orcamentoList;
+    @OneToMany(mappedBy = "fkSolicitante")
+    private List<Orcamento> orcamentoList1;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private Usuarioinfo usuarioinfo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkFornecedor")
+    private List<Servico> servicoList;
 
     public Usuario() {
     }
@@ -123,21 +123,12 @@ public class Usuario implements Serializable {
         this.eventoList = eventoList;
     }
 
-    @XmlTransient
-    public List<Servico> getServicoList() {
-        return servicoList;
+    public Tipousuario getFkTipousuario() {
+        return fkTipousuario;
     }
 
-    public void setServicoList(List<Servico> servicoList) {
-        this.servicoList = servicoList;
-    }
-
-    public Usuarioinfo getUsuarioinfo() {
-        return usuarioinfo;
-    }
-
-    public void setUsuarioinfo(Usuarioinfo usuarioinfo) {
-        this.usuarioinfo = usuarioinfo;
+    public void setFkTipousuario(Tipousuario fkTipousuario) {
+        this.fkTipousuario = fkTipousuario;
     }
 
     public Tipopessoa getFkTipopessoa() {
@@ -146,14 +137,6 @@ public class Usuario implements Serializable {
 
     public void setFkTipopessoa(Tipopessoa fkTipopessoa) {
         this.fkTipopessoa = fkTipopessoa;
-    }
-
-    public Tipousuario getFkTipousuario() {
-        return fkTipousuario;
-    }
-
-    public void setFkTipousuario(Tipousuario fkTipousuario) {
-        this.fkTipousuario = fkTipousuario;
     }
 
     @XmlTransient
@@ -172,6 +155,41 @@ public class Usuario implements Serializable {
 
     public void setEventoList2(List<Evento> eventoList2) {
         this.eventoList2 = eventoList2;
+    }
+
+    @XmlTransient
+    public List<Orcamento> getOrcamentoList() {
+        return orcamentoList;
+    }
+
+    public void setOrcamentoList(List<Orcamento> orcamentoList) {
+        this.orcamentoList = orcamentoList;
+    }
+
+    @XmlTransient
+    public List<Orcamento> getOrcamentoList1() {
+        return orcamentoList1;
+    }
+
+    public void setOrcamentoList1(List<Orcamento> orcamentoList1) {
+        this.orcamentoList1 = orcamentoList1;
+    }
+
+    public Usuarioinfo getUsuarioinfo() {
+        return usuarioinfo;
+    }
+
+    public void setUsuarioinfo(Usuarioinfo usuarioinfo) {
+        this.usuarioinfo = usuarioinfo;
+    }
+
+    @XmlTransient
+    public List<Servico> getServicoList() {
+        return servicoList;
+    }
+
+    public void setServicoList(List<Servico> servicoList) {
+        this.servicoList = servicoList;
     }
 
     @Override
@@ -197,15 +215,6 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "com.br.portal.entities.Usuario[ idUsuario=" + idUsuario + " ]";
-    }
-
-    @XmlTransient
-    public List<Orcamento> getOrcamentoList() {
-        return orcamentoList;
-    }
-
-    public void setOrcamentoList(List<Orcamento> orcamentoList) {
-        this.orcamentoList = orcamentoList;
     }
     
 }

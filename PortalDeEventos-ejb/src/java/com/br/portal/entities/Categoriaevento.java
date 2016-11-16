@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Victor M
+ * @author Vitória
  */
 @Entity
 @Table(name = "CATEGORIAEVENTO")
@@ -33,7 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Categoriaevento.findByIdCategoriaevento", query = "SELECT c FROM Categoriaevento c WHERE c.idCategoriaevento = :idCategoriaevento"),
     @NamedQuery(name = "Categoriaevento.findByNomecategoriaevento", query = "SELECT c FROM Categoriaevento c WHERE c.nomecategoriaevento = :nomecategoriaevento")})
 public class Categoriaevento implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

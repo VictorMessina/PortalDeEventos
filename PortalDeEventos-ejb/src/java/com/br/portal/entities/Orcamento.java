@@ -17,11 +17,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Victor M
+ * @author Vitória
  */
 @Entity
 @Table(name = "ORCAMENTO")
@@ -29,9 +30,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Orcamento.findAll", query = "SELECT o FROM Orcamento o"),
     @NamedQuery(name = "Orcamento.findByIdOrcamento", query = "SELECT o FROM Orcamento o WHERE o.idOrcamento = :idOrcamento"),
-    @NamedQuery(name = "Orcamento.findByValor", query = "SELECT o FROM Orcamento o WHERE o.valor = :valor")})
+    @NamedQuery(name = "Orcamento.findByValor", query = "SELECT o FROM Orcamento o WHERE o.valor = :valor"),
+    @NamedQuery(name = "Orcamento.findByDescricao", query = "SELECT o FROM Orcamento o WHERE o.descricao = :descricao")})
 public class Orcamento implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,15 +42,18 @@ public class Orcamento implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "VALOR")
     private Double valor;
-    @JoinColumn(name = "FK_EVENTO", referencedColumnName = "ID_EVENTO")
-    @ManyToOne
-    private Evento fkEvento;
-    @JoinColumn(name = "FK_SOLICITANTE", referencedColumnName = "ID_USUARIO")
-    @ManyToOne
-    private Usuario fkSolicitante;
+    @Size(max = 500)
+    @Column(name = "DESCRICAO")
+    private String descricao;
     @JoinColumn(name = "FK_PROMOTER", referencedColumnName = "ID_USUARIO")
     @ManyToOne
     private Usuario fkPromoter;
+    @JoinColumn(name = "FK_SOLICITANTE", referencedColumnName = "ID_USUARIO")
+    @ManyToOne
+    private Usuario fkSolicitante;
+    @JoinColumn(name = "FK_EVENTO", referencedColumnName = "ID_EVENTO")
+    @ManyToOne
+    private Evento fkEvento;
 
     public Orcamento() {
     }
@@ -74,12 +78,20 @@ public class Orcamento implements Serializable {
         this.valor = valor;
     }
 
-    public Evento getFkEvento() {
-        return fkEvento;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setFkEvento(Evento fkEvento) {
-        this.fkEvento = fkEvento;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Usuario getFkPromoter() {
+        return fkPromoter;
+    }
+
+    public void setFkPromoter(Usuario fkPromoter) {
+        this.fkPromoter = fkPromoter;
     }
 
     public Usuario getFkSolicitante() {
@@ -90,12 +102,12 @@ public class Orcamento implements Serializable {
         this.fkSolicitante = fkSolicitante;
     }
 
-    public Usuario getFkPromoter() {
-        return fkPromoter;
+    public Evento getFkEvento() {
+        return fkEvento;
     }
 
-    public void setFkPromoter(Usuario fkPromoter) {
-        this.fkPromoter = fkPromoter;
+    public void setFkEvento(Evento fkEvento) {
+        this.fkEvento = fkEvento;
     }
 
     @Override

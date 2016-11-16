@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Victor M
+ * @author Vitória
  */
 @Entity
 @Table(name = "SERVICO")
@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Servico.findByDescricao", query = "SELECT s FROM Servico s WHERE s.descricao = :descricao"),
     @NamedQuery(name = "Servico.findByPre\u00e7o", query = "SELECT s FROM Servico s WHERE s.pre\u00e7o = :pre\u00e7o")})
 public class Servico implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,12 +52,12 @@ public class Servico implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PRE\u00c7O")
     private Double preço;
-    @JoinColumn(name = "FK_CATEGORIASERVICO", referencedColumnName = "ID_CATEGORIASERVICO")
-    @ManyToOne
-    private Categoriaservico fkCategoriaservico;
     @JoinColumn(name = "FK_FORNECEDOR", referencedColumnName = "ID_USUARIO")
     @ManyToOne(optional = false)
     private Usuario fkFornecedor;
+    @JoinColumn(name = "FK_CATEGORIASERVICO", referencedColumnName = "ID_CATEGORIASERVICO")
+    @ManyToOne
+    private Categoriaservico fkCategoriaservico;
 
     public Servico() {
     }
@@ -104,20 +103,20 @@ public class Servico implements Serializable {
         this.preço = preço;
     }
 
-    public Categoriaservico getFkCategoriaservico() {
-        return fkCategoriaservico;
-    }
-
-    public void setFkCategoriaservico(Categoriaservico fkCategoriaservico) {
-        this.fkCategoriaservico = fkCategoriaservico;
-    }
-
     public Usuario getFkFornecedor() {
         return fkFornecedor;
     }
 
     public void setFkFornecedor(Usuario fkFornecedor) {
         this.fkFornecedor = fkFornecedor;
+    }
+
+    public Categoriaservico getFkCategoriaservico() {
+        return fkCategoriaservico;
+    }
+
+    public void setFkCategoriaservico(Categoriaservico fkCategoriaservico) {
+        this.fkCategoriaservico = fkCategoriaservico;
     }
 
     @Override
