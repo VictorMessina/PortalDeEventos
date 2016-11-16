@@ -8,14 +8,17 @@ package com.br.portal.command;
 import com.br.portal.dao.CaracteristicaseventoDAO;
 import com.br.portal.dao.CategoriaEventoDAO;
 import com.br.portal.dao.EventoDAO;
+import com.br.portal.dao.OrcamentoDAO;
 import com.br.portal.dao.UsuarioDAO;
 import com.br.portal.entities.Caracteristicasevento;
 import com.br.portal.entities.Categoriaevento;
 import com.br.portal.entities.Evento;
+import com.br.portal.entities.Orcamento;
 import com.br.portal.entities.Usuario;
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,15 +34,13 @@ import javax.servlet.http.HttpServletResponse;
  * @author HugoKeniti
  */
 public class EventoCommand implements Command {
-
+    
+    OrcamentoDAO orcamentoDAO = lookupOrcamentoDAOBean();
     CaracteristicaseventoDAO caracteristicaseventoDAO = lookupCaracteristicaseventoDAOBean();
-
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
     CategoriaEventoDAO categoriaEventoDAO = lookupCategoriaEventoDAOBean();
     EventoDAO eventoDAO = lookupEventoDAOBean();
     
-    
-
     private String returnPage = "/index.jsp";
     private HttpServletRequest request;
     private HttpServletResponse response;
@@ -127,11 +128,31 @@ public class EventoCommand implements Command {
             case "orcamentosEvento":
                 Evento eventoAtual4 = eventoDAO.findById(Integer.parseInt(request.getParameter("idEvento")));
                 
+                List<Orcamento> listaOrcamentoAux = orcamentoDAO.find();
+                List<Orcamento> listaOrcamento = new ArrayList<>();
+
+                for (Orcamento orcamento : listaOrcamentoAux) {                    
+                    if (orcamento.getFkEvento().getIdEvento().equals(eventoAtual4.getIdEvento())) {
+                        listaOrcamento.add(orcamento);
+                    }                    
+                }
                 
+                request.getSession().setAttribute("listaOrcamento", listaOrcamento);  
                 request.getSession().setAttribute("eventoAtual", eventoAtual4);
                 returnPage = "/eventoOrcamentos.jsp";
                 break;
-            
+            case "addPromoter":
+                Evento eventoAtual5 = eventoDAO.findById(Integer.parseInt(request.getParameter("idEvento")));
+                Usuario promoter = usuarioDAO.findById(Integer.parseInt(request.getParameter("idPromoter")));
+               
+                eventoAtual5.setFkPromoter(promoter);
+                eventoDAO.update(eventoAtual5);
+                
+                request.getSession().setAttribute("successmsg", "Promoter adicionado ao evento com sucesso!");  
+                request.getSession().setAttribute("eventoAtual", eventoAtual5);
+                returnPage = "/eventoOrcamentos.jsp";
+                
+                break;
         }
     }
 
@@ -174,6 +195,16 @@ public class EventoCommand implements Command {
         try {
             Context c = new InitialContext();
             return (CaracteristicaseventoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/CaracteristicaseventoDAO!com.br.portal.dao.CaracteristicaseventoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private OrcamentoDAO lookupOrcamentoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (OrcamentoDAO) c.lookup("java:global/PortalDeEventos/PortalDeEventos-ejb/OrcamentoDAO!com.br.portal.dao.OrcamentoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

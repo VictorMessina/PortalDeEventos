@@ -65,24 +65,24 @@
             <div class="cadastro">
                 <h1> ${usuarioPerfil.getUsuarioinfo().getNome()} </h3>
                 <h3> Dados pessoais: </h3>
-                <p> Email: ${usuarioPerfil.getUsuarioinfo().getEmail()} </p>
-                <p> Telefone: ${usuarioPerfil.getUsuarioinfo().getTelefone1()} </p>
-                <p> Telefone 2: ${usuarioPerfil.getUsuarioinfo().getTelefone2()} </p>
-                <p> Descrição: ${usuarioPerfil.getUsuarioinfo().getDescricao()} </p>
+                <p> <b>Email:</b> ${usuarioPerfil.getUsuarioinfo().getEmail()} </p>
+                <p> <b>Telefone:</b> ${usuarioPerfil.getUsuarioinfo().getTelefone1()} </p>
+                <p> <b>Telefone 2:</b> ${usuarioPerfil.getUsuarioinfo().getTelefone2()} </p>
+                <p> <b>Descrição:</b> ${usuarioPerfil.getUsuarioinfo().getDescricao()} </p>
                     <c:choose>                       
 
                         <c:when test="${usuarioPerfil.getFkTipousuario().getIdTipousuario() == 2}">
-                            <p> Comissão: ${usuarioPerfil.getUsuarioinfo().getComissao()} %</p>
+                            <p> <b>Comissão:</b>  ${usuarioPerfil.getUsuarioinfo().getComissao()} %</p>
                         </c:when>
 
                         <c:when test="${usuarioPerfil.getFkTipousuario().getIdTipousuario() == 3}">                            
                             <br>
                             <h3> Dados de serviços: </h3>
                             <c:forEach var="servico" items="${listaServico}">
-                                <p> Nome: ${servico.getTitulo()} </p> 
-                                <p> Categoria: ${servico.getFkCategoriaservico().getNomecategoriaservico()}</p> 
-                                <p> Descrição: ${servico.getDescricao()} </p>  
-                                <p> Preço: ${servico.getPreço()}</p>  
+                                <p> <b>Nome:</b> ${servico.getTitulo()} </p> 
+                                <p> <b>Categoria:</b> ${servico.getFkCategoriaservico().getNomecategoriaservico()}</p> 
+                                <p> <b>Descrição:</b> ${servico.getDescricao()} </p>  
+                                <p> <b>Preço:</b> ${servico.getPreço()}</p>  
                                 <br>
                             </c:forEach>
                         </c:when>

@@ -25,7 +25,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .footer{
-                margin-top: 35%;
+                margin-top: 45%;
             }
         </style>
     </head>
@@ -96,10 +96,11 @@
                                         <p>Clique abaixo para visualizar as informações do evento e enviar um orçamento.</p>
                                     </c:if>
                                     <c:if test="${orcamento.getValor()!=null}">
-                                        <p style="color:#0093B2">Orçamento enviado: ${orcamento.getValor()}  </p>
+                                        <p style="color:#0093B2"><b>Orçamento enviado:</b> R$ ${orcamento.getValor()}  </p>
+                                        <p style="color:#0093B2"><b>Descrição:</b> ${orcamentoAtual.getDescricao()}  </p>
                                         <p>Clique abaixo para visualizar as informações do evento e editar o orçamento enviado.</p>
                                     </c:if>
-                                    <a href="FrontController?command=Evento&action=perfilEvento&idEvento=${evento.getIdEvento()}"><input type="submit" value="ENVIAR ORÇAMENTO"/></a>
+                                    <a href="FrontController?command=Promoter&action=visualizarOrcamento&idOrcamento=${orcamento.getIdOrcamento()}"><input type="submit" value="ENVIAR ORÇAMENTO"/></a>
                                 </div>                               
                         </div>                      
 

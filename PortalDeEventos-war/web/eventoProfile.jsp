@@ -115,16 +115,17 @@
                     </div>
 
                     <div class="ecaixa">                        
-                        <p> Local: <c:out value="${eventoAtual.getLugar()}"/></p>
-                        <p> Descrição: <c:out value="${eventoAtual.getDescricao()}"/></p>                        
-                        <p> Inicio: <c:out value="${eventoAtual.getDataini()}"/></p>
-                        <p> Fim: <c:out value="${eventoAtual.getDatafim()}"/></p>
-                        <p> Categoria: <c:out value="${eventoAtual.getFkCategoriaevento().getNomecategoriaevento()}"/></p>
-                        <p> Tema: <c:out value="${eventoAtual.getCaracteristicasevento().getTema()}"/></p>
-                        <p> Número de convidados: <c:out value="${eventoAtual.getCaracteristicasevento().getNconvidados()}"/></p>
-                        <p> Descrição do buffet: <c:out value="${eventoAtual.getCaracteristicasevento().getBuffet()}"/></p>
-                        <p> Descrição da decoração: <c:out value="${eventoAtual.getCaracteristicasevento().getDecoracao()}"/></p>
-                        <p> Descrição das atrações: <c:out value="${eventoAtual.getCaracteristicasevento().getAtracoes()}"/></p>
+                        <p> <b>Dono do evento:</b>  <a href="FrontController?command=Usuario&action=perfil&idUsuario=${eventoAtual.getFkCliente().getIdUsuario()}"> <c:out value="${eventoAtual.getFkCliente().getUsuarioinfo().getNome()}"/></a></p>
+                        <p> <b>Local:</b>  <c:out value="${eventoAtual.getLugar()}"/></p>
+                        <p> <b>Descrição:</b>  <c:out value="${eventoAtual.getDescricao()}"/></p>                        
+                        <p> <b>Inicio:</b>  <c:out value="${eventoAtual.getDataini()}"/></p>
+                        <p> <b>Fim:</b>  <c:out value="${eventoAtual.getDatafim()}"/></p>
+                        <p> <b>Categoria:</b>  <c:out value="${eventoAtual.getFkCategoriaevento().getNomecategoriaevento()}"/></p>
+                        <p> <b>Tema:</b>  <c:out value="${eventoAtual.getCaracteristicasevento().getTema()}"/></p>
+                        <p> <b>Número de convidados:</b>  <c:out value="${eventoAtual.getCaracteristicasevento().getNconvidados()}"/></p>
+                        <p> <b>Descrição do buffet:</b>  <c:out value="${eventoAtual.getCaracteristicasevento().getBuffet()}"/></p>
+                        <p> <b>Descrição da decoração:</b>  <c:out value="${eventoAtual.getCaracteristicasevento().getDecoracao()}"/></p>
+                        <p> <b>Descrição das atrações:</b>  <c:out value="${eventoAtual.getCaracteristicasevento().getAtracoes()}"/></p>                                                
                                                 
                         <c:if test="${usuarioSessao.getFkTipousuario().getIdTipousuario()==1}" >
                             <div style="text-align: center" >

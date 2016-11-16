@@ -93,7 +93,7 @@
                                 <form action="FrontController" method="POST">
                                     <select name="idEvento" required>
                                         <option value="-1"> Selecione um evento </option>
-                                        <c:forEach var="evento" items="${usuarioSessao.getEventoList2()}">
+                                        <c:forEach var="evento" items="${listaEventos}">
                                             <option value="${evento.getIdEvento()}"> ${evento.getTitulo()} </option>
                                         </c:forEach>
                                     </select>

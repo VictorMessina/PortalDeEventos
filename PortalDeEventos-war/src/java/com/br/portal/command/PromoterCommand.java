@@ -87,19 +87,39 @@ public class PromoterCommand implements Command {
                 break;
 
             case "buscaOrcamento":
-                Usuario usuarioSessao = (Usuario) request.getSession().getAttribute("usuarioSessao");
+                Usuario usuarioSessao9 = (Usuario) request.getSession().getAttribute("usuarioSessao");
                 
                 List<Orcamento> listaOrcamentoAux = orcamentoDAO.find();
                 List<Orcamento> listaOrcamento = new ArrayList<>();
 
                 for (Orcamento orcamento : listaOrcamentoAux) {                    
-                    if (orcamento.getFkPromoter().getIdUsuario().equals(usuarioSessao.getIdUsuario())) {
+                    if (orcamento.getFkPromoter().getIdUsuario().equals(usuarioSessao9.getIdUsuario())) {
                         listaOrcamento.add(orcamento);
                     }                    
                 }
                 
                 request.getSession().setAttribute("listaOrcamento", listaOrcamento);                             
                 returnPage = "/promoterOrcamentos.jsp";
+
+                break;
+            case "visualizarOrcamento":                
+                Orcamento orcamentoAtual = orcamentoDAO.findById(Integer.parseInt(request.getParameter("idOrcamento")));
+                
+                request.getSession().setAttribute("orcamentoAtual", orcamentoAtual);                             
+                returnPage = "/visualizarOrcamento.jsp";
+
+                break;
+            case "enviarOrcamento":                
+                Orcamento orcamentoAtual2 = orcamentoDAO.findById(Integer.parseInt(request.getParameter("idOrcamento")));
+                
+                orcamentoAtual2.setValor(Double.parseDouble(request.getParameter("valor")));
+                orcamentoAtual2.setDescricao(request.getParameter("descricao"));
+
+                orcamentoDAO.update(orcamentoAtual2);
+                
+                request.getSession().setAttribute("successmsg", "Orçamento enviado com sucesso");
+                request.getSession().setAttribute("orcamentoAtual", orcamentoAtual2);                             
+                returnPage = "/visualizarOrcamento.jsp";
 
                 break;
 

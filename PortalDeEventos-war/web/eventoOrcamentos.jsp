@@ -114,9 +114,33 @@
                         </c:if>
                     </div>
 
+                
                          
-                <div class="ecaixa">                        
-                        <p> Este evento não possui orçamentos.</p> 
+                <div class="ecaixa"> 
+                    <c:if test="${eventoAtual.getFkPromoter()!=null}" > 
+                        <p><b>ATENÇÃO: Este evento já possui um promoter. Ao escolher outro, o promoter atual será substituído.</b></p>
+                        <p>----------------------------------------------------------------------------------------------------------------------</p>
+                    </c:if>
+                    <c:forEach var="orcamento" items="${listaOrcamento}">
+                        <div >                            
+                            <p>Promoter: <a href="FrontController?command=Usuario&action=perfil&idUsuario=${orcamento.getFkPromoter().getIdUsuario()}"> <c:out value="${orcamento.getFkPromoter().getUsuarioinfo().getNome()}"/></a></p> 
+                        </div>
+
+                        <div >  
+                            <div style="text-align: center" >
+                                <c:if test="${orcamento.getValor()==null}">
+                                    <p style="color:#0093B2">Esta solicitação de orçamento ainda não foi respondida.</p>
+                                </c:if>
+                                <c:if test="${orcamento.getValor()!=null}">
+                                    <p style="color:#0093B2"><b>Orçamento recebido:</b> R$ ${orcamento.getValor()}  </p>
+                                    <p style="color:#0093B2"><b>Descrição:</b> ${orcamento.getDescricao()}  </p>
+                                </c:if>
+                                <a href="FrontController?command=Evento&action=addPromoter&idEvento=${eventoAtual.getIdEvento()}&idPromoter=${orcamento.getFkPromoter().getIdUsuario()}"><input type="submit" value="ESCOLHER PROMOTER"/></a>
+                                <p>----------------------------------------------------------------------------------------------------------------------</p>
+                            </div>                               
+                        </div>                      
+
+                    </c:forEach>
                </div>  
                    
             </div>

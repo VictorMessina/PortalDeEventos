@@ -92,9 +92,10 @@ public class ClienteCommand implements Command {
                     orcamento.setValor(null); 
 
                     orcamentoDAO.persist(orcamento);
+                    
+                    request.getSession().setAttribute("successmsg", "Orçamento solicitado com sucesso");
                 }
 
-                request.getSession().setAttribute("successmsg", "Orçamento solicitado com sucesso");
                 returnPage = "FrontController?command=Cliente&action=buscarPromoter";
 
                 break;
