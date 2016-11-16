@@ -92,10 +92,10 @@
                                 <option value="${catEvento.getIdCategoriaevento()}"> ${catEvento.getNomecategoriaevento()} </option>
                             </c:forEach>
                         </select>
-                        <h1> Título: * <br><input type="text" name="titulo" placeholder="título" required/></h1>
-                        <h1> Descrição: *<br><input type="text" name="descricao" placeholder="descriçao"/></h1>
-                        <h1> Local: *<br><input type="text" name="local" placeholder="local" required/></h1>
-                        <h1> Data Inicial: *</h1><br><input type="text" id="txtFromDate" name="dataini"/>
+                        <h1> Título: * <br><input type="text" name="titulo" placeholder="título" class="inputTexto" required/></h1>
+                        <h1> Descrição: *<br><input type="text" name="descricao" placeholder="descriçao" class="inputTexto" required/></h1>
+                        <h1> Local: *<br><input type="text" name="local" placeholder="local" class="inputTexto" required/></h1>
+                        <h1> Data Inicial: *</h1><input type="text" id="txtFromDate" name="dataini"/>
                         <h1> Hora de Inicio: *<br>
                             <select name="horaini" placeholder="HH">
                                 <c:forEach var="h" begin="0" end="24">
@@ -148,11 +148,11 @@
                                 </select>
                                 M
                             </h1>
-                            <h1> Tema: *<br><input type="text" name="tema" placeholder="Insira o tema do seu evento" required /></h1>
+                            <h1> Tema: *<br><input type="text" name="tema" placeholder="Insira o tema do seu evento" class="inputTexto" required /></h1>
                             <h1> Numero de convidados: *<br><input type="number"  name="nconvidados" placeholder="Numero de convidados" required /></h1>
-                            <h1> Descrição do Buffet: *<br><input type="text" name="buffet" placeholder="Descrição do Buffet" required /></h1>
-                            <h1> Descrição da decoração: *<br><input type="text" name="decoracao" placeholder="Descrição da decoração" required /></h1>
-                            <h1> Descrição das atrações: *<br><input type="text" name="atracoes" placeholder="Descrição das atrações" required /></h1>
+                            <h1> Descrição do Buffet: *<br><input type="text" name="buffet" placeholder="Descrição do Buffet" class="inputTexto" required /></h1>
+                            <h1> Descrição da decoração: *<br><input type="text" name="decoracao" placeholder="Descrição da decoração" class="inputTexto" required /></h1>
+                            <h1> Descrição das atrações: *<br><input type="text" name="atracoes" placeholder="Descrição das atrações" class="inputTexto" required /></h1>
 
                             <h1><input type="hidden" name="command" value="Evento"/></h1>
                             <h1><input type="hidden" name="action" value="insert"/></h1>

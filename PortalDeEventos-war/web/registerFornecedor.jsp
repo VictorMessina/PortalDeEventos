@@ -60,7 +60,7 @@
                     <h1> Email: *<br><input type="email" name="email" placeholder="Ex.: email@email.com" maxlength="50" required/></h1>
                     <h1> Telefone 1 (com DDD, sem traços): *<br><input type="tel" name="telefone1" placeholder="Ex.: 11922223333" maxlength="11" required/></h1>
                     <h1> Telefone 2 (com DDD, sem traços):<br><input type="tel" name="telefone2" placeholder="Ex.: 11922223333" maxlength="11" /></h1>
-                    <h1> Descrição: (Aparecerá no seu perfil público)<br><input type="text" name="descricao" placeholder="Descrição" maxlength="150" /></h1>
+                    <h1> Descrição: (Aparecerá no seu perfil público)<br><input type="text" name="descricao" placeholder="Descrição" maxlength="150" class="inputTexto2" /></h1>
                         <c:choose>
                             <c:when test="${usuarioSessao.getFkTipopessoa().getIdTipopessoa() == 1}">
                             <h1> CPF (sem pontos ou traços):*<br><input type="text" name="numeroCadastro" placeholder="Ex.: 12345678910" maxlength="11" required/></h1>
@@ -80,7 +80,7 @@
                         </c:forEach>
                     </select>
                     <h1> Nome do serviço: * <br><input type="text" name="nomeServico" placeholder="nome do serviço" required/></h1>
-                    <h1> Descrição do serviço: *<br><input type="text" name="descricaoServico" placeholder="descrição do serviço" required/></h1>
+                    <h1> Descrição do serviço: *<br><input type="text" name="descricaoServico" placeholder="descrição do serviço" class="inputTexto2" required/></h1>
                     <h1> Valor inicial do serviço (R$): *<br><input type="number" name="valorServico" placeholder="Ex.: 0,00" required/></h1>
 
                     <h1><input type="hidden" name="command" value="Fornecedor"/></h1>

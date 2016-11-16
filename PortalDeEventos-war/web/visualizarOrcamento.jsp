@@ -111,7 +111,7 @@
                             <form action="FrontController" method="post">
                                 <br><p> * Informações Obrigatórias </p>
                                 <p> Valor: *<br><input type="number" name="valor" placeholder="Ex.: 1000" required/></p>
-                                <p> Descrição: *<br><input type="text" name="descricao" placeholder="Ex.: Aberto a negociações." maxlength="200" required/></p>
+                                <p> Descrição: *<br><input type="text" name="descricao" placeholder="Ex.: Aberto a negociações." class="inputTexto2" required/></p>
                                 <h1><input type="hidden" name="command" value="Promoter"/></h1>
                                 <h1><input type="hidden" name="action" value="enviarOrcamento"/></h1>
                                 <h1><input type="hidden" name="idOrcamento" value="${orcamentoAtual.getIdOrcamento()}"/></h1>

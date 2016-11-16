@@ -59,7 +59,7 @@
                     <h1> Email: *<br><input type="email" name="email" placeholder="Ex.: email@email.com" maxlength="50" required/></h1>
                     <h1> Telefone 1 (com DDD, sem traços): *<br><input type="tel" name="telefone1" placeholder="Ex.: 11922223333" maxlength="11" required/></h1>
                     <h1> Telefone 2 (com DDD, sem traços):<br><input type="tel" name="telefone2" placeholder="Ex.: 11922223333" maxlength="11" /></h1>
-                    <h1> Descrição: (Aparecerá no seu perfil público)<br><input type="text" name="descricao" placeholder="Descrição" maxlength="150" /></h1>
+                    <h1> Descrição: (Aparecerá no seu perfil público)<br><input type="text" name="descricao" placeholder="Descrição" maxlength="150" class="inputTexto2" /></h1>
                         <c:choose>
                             <c:when test="${usuarioSessao.getFkTipopessoa().getIdTipopessoa() == 1}">
                             <h1> CPF (sem pontos ou traços):*<br><input type="text" name="numeroCadastro" placeholder="Ex.: 12345678910" maxlength="11" required/></h1>

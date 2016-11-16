@@ -336,3 +336,11 @@ input[type="submit"]:hover,
 .selecionado{
     color: #FF7700;
 }
+
+.inputTexto{
+    width: 500px;
+}
+
+.inputTexto2{
+    width: 350px;
+}

@@ -114,6 +114,8 @@ public class UsuarioCommand implements Command {
 
                     } else if (up.getFkTipousuario().getIdTipousuario() == 3 && up.getPassword().equals(md5Login)) {
                         //jmsProdutor.sendMessage(MsgType.LOGIN,"Usuario Fornecedor de Serviços: " + up.getUsername() + " realizou login" + "\n");
+                        List<Evento> listaEventos = new ArrayList<>();
+                        request.getSession().setAttribute("listaEventos", listaEventos);
                         request.getSession().setAttribute("usuarioSessao", up);
 
                         returnPage = "/homepage.jsp";
